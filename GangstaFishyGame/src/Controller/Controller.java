@@ -30,7 +30,7 @@ public class Controller {
 	private double right = 0;
 	private double up = 0;
 	private double down = 0;
-	private double inertiaStep = 0.8;
+	private double inertiaStep = 0.6;
 	private boolean leftPressed, rightPressed, upPressed, downPressed;
 	
 	public Controller(){
@@ -146,34 +146,37 @@ public class Controller {
 			down += 1;
 	}
 	private void moveIfEnoughCredits(){
-		if(left > 0){
+		if(left > 0 && left > right){
  			moveLeft();
  		}
- 		if(right > 0){
+ 		if(right > 0 && right > left){
  			moveRight();
  		}
- 		if(up > 0){
+ 		if(up > 0 && up > down){
  			moveUp();
  		}
- 		if(down > 0){
+ 		if(down > 0 && down > up){
  			moveDown();
  		}
 	}
 	
 	private void moveLeft(){
-		if(gamePanel.getXPlayer()>0){
-    		gamePanel.setXPlayer(gamePanel.getXPlayer()-5);
-    		gamePanel.setPlayerSprite(sprite.getSubimage(0, 0, 1703, 1672));
- 			left -= inertiaStep;
+		if(gamePanel.getXPlayer()<-gamePanel.getWidthPlayer()){
+			gamePanel.setXPlayer(viewFrame.getWidth());
     	}
+		gamePanel.setXPlayer(gamePanel.getXPlayer()-5);
+		gamePanel.setPlayerSprite(sprite.getSubimage(0, 0, 1703, 1672));
+		left -= inertiaStep;
 	}
 	
 	private void moveRight(){
-		if(gamePanel.getXPlayer()<(viewFrame.getWidth() - gamePanel.getWidthPlayer()-10)){
-    		gamePanel.setXPlayer(gamePanel.getXPlayer()+5);
-    		gamePanel.setPlayerSprite(sprite.getSubimage(1703, 0, 1703, 1672));
- 			right -= inertiaStep;
-    	}
+		if(gamePanel.getXPlayer()>(viewFrame.getWidth())){
+			gamePanel.setXPlayer(-gamePanel.getWidthPlayer());
+		}
+    	gamePanel.setXPlayer(gamePanel.getXPlayer()+5);
+    	gamePanel.setPlayerSprite(sprite.getSubimage(1703, 0, 1703, 1672));
+ 		right -= inertiaStep;
+    	
 	}
 	
 	private void moveUp(){
