@@ -14,7 +14,7 @@ public class Enemy {
 	public Enemy(int size){
 		this.size = size;
 	}
-	
+//comment
 	public void createEnemy1(){
 		try {
 			sprite = ImageIO.read(new File("img/enemy1.png"));
