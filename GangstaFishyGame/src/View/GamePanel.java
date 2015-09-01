@@ -14,6 +14,7 @@ import javax.swing.JPanel;
  * 
  * @author Kamran Tadzjibov
  *
+ * Canvas to draw sprites etc.
  */
 
 public class GamePanel extends JPanel{
@@ -41,54 +42,101 @@ public class GamePanel extends JPanel{
 		g.drawString("Score: " + score, 30, 30);
 		
 		// Collision Boundary will use later
-		g.drawOval(xPlayer, yPlayer, widthPlayer, heightPlayer);
+//		g.drawOval(xPlayer, yPlayer, widthPlayer, heightPlayer);
 	}
 
-	
+	/**
+	 * 
+	 * @return Sprite image of the player
+	 */
 	public Image getPlayerSprite() {
 		return playerSprite;
 	}
 
+	/**
+	 * 
+	 * @param playerSprite Sprite image of the player 
+	 */
 	public void setPlayerSprite(Image playerSprite) {
 		this.playerSprite = playerSprite;
 	}
-
+	
+	/**
+	 * 
+	 * @return get x-coordinate of the player 
+	 */
 	public int getXPlayer() {
 		return xPlayer;
 	}
-
+	
+	/**
+	 * 
+	 * @param set x-coordinate of the player
+	 */
 	public void setXPlayer(int xPlayer) {
 		this.xPlayer = xPlayer;
 	}
 
+	/**
+	 * 
+	 * @return get y-coordinate of the player 
+	 */
 	public int getYPlayer() {
 		return yPlayer;
 	}
 
+	/**
+	 * 
+	 * @param set y-coordinate of the player
+	 */
 	public void setYPlayer(int yPlayer) {
 		this.yPlayer = yPlayer;
 	}
-
+	
+	/**
+	 * 
+	 * @return get width of the player (sprite) 
+	 */
 	public int getWidthPlayer() {
 		return widthPlayer;
 	}
-
+	
+	/**
+	 * 
+	 * @param set width of the player (sprite) 
+	 */
 	public void setWidthPlayer(int widthPlayer) {
 		this.widthPlayer = widthPlayer;
 	}
 
+	/**
+	 * 
+	 * @return get height of the player (sprite) 
+	 */
 	public int getHeightPlayer() {
 		return heightPlayer;
 	}
 
+	/**
+	 * 
+	 * @param set height of the player (sprite) 
+	 */
 	public void setHeightPlayer(int heightPlayer) {
 		this.heightPlayer = heightPlayer;
 	}
 
+	/**
+	 * 
+	 * @return player score
+	 */
 	public int getScore() {
 		return score;
 	}
-
+	
+	/**
+	 * 
+	 * @return player score
+	 */
 	public void setScore(int score) {
 		this.score = score;
 	}

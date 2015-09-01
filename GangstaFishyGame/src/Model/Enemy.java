@@ -3,32 +3,46 @@ package Model;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 
 public class Enemy {
 	
+	private static List<Image> sprites = new ArrayList<Image>();
 	private Image sprite;
 	private int size;
 	
 	public Enemy(int size){
 		this.size = size;
 	}
-//comment
-	public void createEnemy1(){
+
+	/**
+	 *  Load all sprites only once and reuse them
+	 */
+	public static void loadSprites(){
 		try {
-			sprite = ImageIO.read(new File("img/enemy1.png"));
+			sprites.add(ImageIO.read(new File("img/enemy1.png")));
+			sprites.add(ImageIO.read(new File("img/enemy2.png")));
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
+	/**
+	 * Enemy1 creator method
+	 */
+	public void createEnemy1(){
+		sprite = sprites.get(0);
+	}
+	
+	/**
+	 * Enemy2 creator method
+	 */
 	public void createEnemy2(){
-		try {
-			sprite = ImageIO.read(new File("img/enemy2.png"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		sprite = sprites.get(1);
 	}
 	
 	public Image getSprite() {

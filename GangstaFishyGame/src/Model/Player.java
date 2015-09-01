@@ -29,4 +29,12 @@ public class Player {
 	public Image getSprite() {
 		return sprite;
 	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
 }
