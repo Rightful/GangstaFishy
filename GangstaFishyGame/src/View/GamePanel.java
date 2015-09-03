@@ -17,6 +17,7 @@ import javax.swing.JPanel;
  * Canvas to draw sprites etc.
  */
 
+@SuppressWarnings("serial")
 public class GamePanel extends JPanel{
 	
 	private Image playerSprite; 
@@ -37,7 +38,7 @@ public class GamePanel extends JPanel{
     	super.paintComponent(g);
     	g.drawImage(bgImage, 0, 0, null);
 		g.drawImage(playerSprite, xPlayer, yPlayer, widthPlayer, heightPlayer, this);
-		g.setFont (new Font ("Calibri", Font.BOLD , 30));
+		g.setFont(new Font ("Calibri", Font.BOLD , 30));
 		g.setColor(Color.white);
 		g.drawString("Score: " + score, 30, 30);
 		

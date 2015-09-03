@@ -13,6 +13,7 @@ import javax.swing.JPanel;
  * Actual game window
  */
 
+@SuppressWarnings("serial")
 public class Frame extends JFrame{
 	 
 	private GamePanel gamePanel;
