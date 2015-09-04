@@ -15,8 +15,6 @@ public class Application{
 	      
 	    	@Override
 	      public void run() {
-//	    	  Frame viewFrame = new Frame();
-
               Controller controller = new Controller();
 //              controller.control();
 	    	}

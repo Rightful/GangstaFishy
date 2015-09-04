@@ -11,6 +11,7 @@ import javax.swing.Timer;
 import Model.Player;
 import View.Frame;
 import View.GamePanel;
+import View.StartPanel;
 
 /**
  * 
@@ -20,10 +21,11 @@ import View.GamePanel;
 
 public class Controller {
 	
-	Frame viewFrame = new Frame();
-	GamePanel gamePanel = new GamePanel();
-	Player p = new Player();
-	BufferedImage sprite = (BufferedImage) p.getSprite();
+	private Frame viewFrame = new Frame();
+	private StartPanel startPanel = new StartPanel(viewFrame);
+	private GamePanel gamePanel = new GamePanel();
+	private Player p = new Player();
+	private BufferedImage sprite = (BufferedImage) p.getSprite();
 	
 	private double score = 1;
 	private double left = 0;
@@ -43,8 +45,9 @@ public class Controller {
 	 */
 	private void init(){
 		configureGamePanel();
-		viewFrame.setGamePanel(gamePanel);
+		configureStartPanel();
 		viewFrame.add(gamePanel);
+		viewFrame.add(startPanel);	
 		
 		viewFrame.setVisible(true);
 	}
@@ -64,6 +67,23 @@ public class Controller {
 		
 		update();
 	}
+	
+	/**
+	 * initial configuration of the game panel
+	 */
+	private void configureStartPanel(){
+		startPanel.getStartbutt().addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				gamePanel.setVisible(true);
+				startPanel.setVisible(false);
+			}
+			
+		});
+		
+	}
+	
 	
 	/**
 	 * update game state (scores etc.)

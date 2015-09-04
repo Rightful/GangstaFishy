@@ -25,6 +25,7 @@ public class GamePanel extends JPanel{
 	private int xPlayer, yPlayer, widthPlayer, heightPlayer, score;
 	
 	public GamePanel(){
+		setVisible(false);
 		try {
 			bgImage = ImageIO.read(new File("img/bg1.jpg"));
 		} catch (IOException e) {

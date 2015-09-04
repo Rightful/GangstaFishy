@@ -18,7 +18,6 @@ public class Frame extends JFrame{
 	 
 	private GamePanel gamePanel;
 
-
 	/**
 	 * screen width and height
 	 */
