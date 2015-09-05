@@ -6,9 +6,13 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
+
+import Model.Enemy;
 
 /**
  * 
@@ -24,13 +28,13 @@ public class GamePanel extends JPanel{
 	private Image bgImage;
 	private int xPlayer, yPlayer, widthPlayer, heightPlayer, score;
 	private String fishSpeed = "0 / 0";
+	private List<Enemy> enemies = new ArrayList<Enemy>();
 	
 	public GamePanel(){
 		setVisible(false);
 		try {
 			bgImage = ImageIO.read(new File("img/bg1.jpg"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
 	}
@@ -39,14 +43,18 @@ public class GamePanel extends JPanel{
     protected void paintComponent(Graphics g) {
     	super.paintComponent(g);
     	g.drawImage(bgImage, 0, 0, null);
+		for(Enemy e: enemies){
+			g.drawImage(e.getAnimSprite(), e.getX(), e.getY(), e.getWidth(), e.getHeight(), this);
+		}
+		
 		g.drawImage(playerSprite, xPlayer, yPlayer, widthPlayer, heightPlayer, this);
+		// Collision Boundary will use later
+//		g.drawOval(xPlayer, yPlayer, widthPlayer, heightPlayer);
 		g.setFont(new Font ("Calibri", Font.BOLD , 30));
 		g.setColor(Color.white);
 		g.drawString("Score: " + score, 30, 30);
 		g.setFont(new Font ("Calibri", Font.BOLD , 16));
 		g.drawString("speed/repaintTime: " + fishSpeed, 30, 60);
-		// Collision Boundary will use later
-//		g.drawOval(xPlayer, yPlayer, widthPlayer, heightPlayer);
 	}
 
 	/**
@@ -151,6 +159,10 @@ public class GamePanel extends JPanel{
 
 	public void setFishSpeed(String fishSpeed) {
 		this.fishSpeed = fishSpeed;
+	}
+
+	public List<Enemy> getEnemies() {
+		return enemies;
 	}
 
 }

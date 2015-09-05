@@ -6,6 +6,13 @@ import java.awt.event.KeyEvent;
 
 import Model.Player;
 
+/**
+ * 
+ * @author Kamran Tadzjibov
+ * 
+ * Handle keyboard input
+ *
+ */
 public class KeyListener {
 
 	private boolean leftPressed, rightPressed, upPressed, downPressed;

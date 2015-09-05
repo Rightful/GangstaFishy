@@ -5,11 +5,11 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.Timer;
 
+import Model.Enemy;
 import Model.Player;
 import View.Frame;
 import View.GamePanel;
 import View.StartPanel;
-
 /**
  * 
  * @author Kamran Tadzjibov
@@ -38,11 +38,20 @@ public class Controller {
 		configureGamePanel();
 		configureStartPanel();
 		viewFrame.add(gamePanel);
-		viewFrame.add(startPanel);	
+		viewFrame.add(startPanel);
+		
+		Enemy.loadSprites();	
 		
 		viewFrame.setVisible(true);
+
+		KeyListener kl = new KeyListener();
+		kl.movePlayerKeyListener(p);
 		
+		//temp
 		p.setMaxSpeed(7);
+//		Enemy e = new Enemy();
+//		e.createEnemy1();
+//		gamePanel.getEnemies().add(Enemy.createEnemy1());
 	}
 	
 	/**
@@ -71,6 +80,8 @@ public class Controller {
 			public void actionPerformed(ActionEvent e) {
 				gamePanel.setVisible(true);
 				startPanel.setVisible(false);
+				//start animation
+				t.start();
 			}
 			
 		});
@@ -86,21 +97,23 @@ public class Controller {
 	}
 	
 	public void movePlayer(){
-		KeyListener kl = new KeyListener();
-		kl.movePlayerKeyListener(p);
 		ActionListener move = new ActionListener() {
 	         @Override
 	         public void actionPerformed(ActionEvent evt) {
 	        	movingHandler();
 	        	 
+	        	if(gamePanel.getEnemies().size()<5){
+	        		gamePanel.getEnemies().add(Enemy.createEnemy());
+	        	}
+	        	
 	     		gamePanel.repaint();
 	     		p.speedController();
 	     		gamePanel.setFishSpeed(p.getSpeed() + "/"+p.getRepaintTime() + "  accelerating: "+p.isAccelerating() + " moving: "+p.isMoving() + " dir: "+p.getDir() + " lastDir:"+p.getLastDir());
-	     		t.setDelay(p.getRepaintTime());
+//	     		t.setDelay(p.getRepaintTime());
 	         }
 	      };
-	      t =  new Timer(p.getRepaintTime(), move);
-	      t.start();
+	      t =  new Timer(15, move);//p.getRepaintTime()
+	      
 	}
 	
 	public void movingHandler(){
@@ -124,6 +137,25 @@ public class Controller {
 			if(dir.contains("down")){
 				moveDown();
 			}
+		}
+		
+		int i = 0;
+		while(i<gamePanel.getEnemies().size()){
+//		for(Enemy e: gamePanel.getEnemies()){
+			moveEnemy(gamePanel.getEnemies().get(i));
+			i++;
+			
+		}
+	}
+	
+	private void moveEnemy(Enemy e){
+		if(e.isToLeft()){
+			e.setX(e.getX() - e.getSpeed());
+		}else{
+			e.setX(e.getX() + e.getSpeed());
+		}
+		if(e.getX()>Frame.getFrameWidth()+10 || e.getX()<-e.getWidth()-10){
+			gamePanel.getEnemies().remove(e);
 		}
 	}
 	

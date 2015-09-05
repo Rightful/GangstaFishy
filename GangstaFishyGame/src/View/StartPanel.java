@@ -14,7 +14,7 @@ import javax.swing.JPanel;
  * @author Shivam
  *
  */
-
+@SuppressWarnings("serial")
 public class StartPanel extends JPanel {
 	private Image bgImage;
 	private JButton startbutt;
