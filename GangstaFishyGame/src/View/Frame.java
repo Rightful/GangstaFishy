@@ -30,7 +30,7 @@ public class Frame extends JFrame{
 		this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2-15);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setTitle("Fishy Game - Group 36");  
+		setTitle("GangstaFishy Game - Group 36");  
 	}
 
 	

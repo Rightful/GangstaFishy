@@ -23,6 +23,7 @@ public class GamePanel extends JPanel{
 	private Image playerSprite; 
 	private Image bgImage;
 	private int xPlayer, yPlayer, widthPlayer, heightPlayer, score;
+	private String fishSpeed = "0 / 0";
 	
 	public GamePanel(){
 		setVisible(false);
@@ -42,7 +43,8 @@ public class GamePanel extends JPanel{
 		g.setFont(new Font ("Calibri", Font.BOLD , 30));
 		g.setColor(Color.white);
 		g.drawString("Score: " + score, 30, 30);
-		
+		g.setFont(new Font ("Calibri", Font.BOLD , 16));
+		g.drawString("speed/repaintTime: " + fishSpeed, 30, 60);
 		// Collision Boundary will use later
 //		g.drawOval(xPlayer, yPlayer, widthPlayer, heightPlayer);
 	}
@@ -141,6 +143,14 @@ public class GamePanel extends JPanel{
 	 */
 	public void setScore(int score) {
 		this.score = score;
+	}
+
+	public String getFishSpeed() {
+		return fishSpeed;
+	}
+
+	public void setFishSpeed(String fishSpeed) {
+		this.fishSpeed = fishSpeed;
 	}
 
 }

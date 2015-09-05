@@ -1,9 +1,6 @@
 package Controller;
-import java.awt.KeyEventDispatcher;
-import java.awt.KeyboardFocusManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
 import javax.swing.Timer;
@@ -26,14 +23,8 @@ public class Controller {
 	private GamePanel gamePanel = new GamePanel();
 	private Player p = new Player();
 	private BufferedImage sprite = (BufferedImage) p.getSprite();
-	
+	private Timer t;
 	private double score = 1;
-	private double left = 0;
-	private double right = 0;
-	private double up = 0;
-	private double down = 0;
-	private double inertiaStep = 0.6;
-	private boolean leftPressed, rightPressed, upPressed, downPressed;
 	
 	public Controller(){
 		init();
@@ -50,6 +41,8 @@ public class Controller {
 		viewFrame.add(startPanel);	
 		
 		viewFrame.setVisible(true);
+		
+		p.setMaxSpeed(7);
 	}
 	
 	/**
@@ -92,124 +85,73 @@ public class Controller {
 		gamePanel.setScore((int)(score*10-10));
 	}
 	
-	
-	public void movePlayerKeyListener(){
-		KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new KeyEventDispatcher() {
-
-            @Override
-            public boolean dispatchKeyEvent(KeyEvent ke) {
-            	if(ke.getID() == KeyEvent.KEY_PRESSED){
-	                    switch (ke.getKeyCode()) {
-	                    case KeyEvent.VK_LEFT:
-	                    	leftPressed = true;
-	                        break;
-	                    case KeyEvent.VK_RIGHT:
-	                    	rightPressed = true;
-	                        break;
-	                    case KeyEvent.VK_UP:
-	                    	upPressed = true;
-	                        break;
-	                    case KeyEvent.VK_DOWN:
-	                    	downPressed = true;
-	                        break;
-	                    }
-	                    
-//	                    gamePanel.repaint();
-	              }
-            	if(ke.getID() == KeyEvent.KEY_RELEASED){
-                    switch (ke.getKeyCode()) {
-                    case KeyEvent.VK_LEFT:
-                    	leftPressed = false;
-                        break;
-                    case KeyEvent.VK_RIGHT:
-                    	rightPressed = false;
-                        break;
-                    case KeyEvent.VK_UP:
-                    	upPressed = false;
-                        break;
-                    case KeyEvent.VK_DOWN:
-                    	downPressed = false;
-                        break;
-                    } 
-            	}
-//            	
-//            	movePlayer();
-                return false;
-            }
-            
-        });
-	}
-	
 	public void movePlayer(){
-		movePlayerKeyListener();
+		KeyListener kl = new KeyListener();
+		kl.movePlayerKeyListener(p);
 		ActionListener move = new ActionListener() {
 	         @Override
 	         public void actionPerformed(ActionEvent evt) {
-	        	 increaseMoveCredits();
-	        	 moveIfEnoughCredits();
-	     		
+	        	movingHandler();
+	        	 
 	     		gamePanel.repaint();
+	     		p.speedController();
+	     		gamePanel.setFishSpeed(p.getSpeed() + "/"+p.getRepaintTime() + "  accelerating: "+p.isAccelerating() + " moving: "+p.isMoving() + " dir: "+p.getDir() + " lastDir:"+p.getLastDir());
+	     		t.setDelay(p.getRepaintTime());
 	         }
 	      };
-	      Timer t =  new Timer(50, move);
+	      t =  new Timer(p.getRepaintTime(), move);
 	      t.start();
 	}
 	
-	private void increaseMoveCredits(){
-		if(leftPressed)
-			left += 1;
-		if(rightPressed)
-			right += 1;
-		if(upPressed)
-			up += 1;
-		if(downPressed)
-			down += 1;
-	}
-	private void moveIfEnoughCredits(){
-		if(left > 0 && left > right){
- 			moveLeft();
- 		}
- 		if(right > 0 && right > left){
- 			moveRight();
- 		}
- 		if(up > 0 && up > down){
- 			moveUp();
- 		}
- 		if(down > 0 && down > up){
- 			moveDown();
- 		}
+	public void movingHandler(){
+		if(p.isMoving()){
+			String dir = "";
+			if(p.getDir().equals("")){
+				dir = p.getLastDir();
+			}else{
+				dir = p.getDir();
+			}
+			if(dir.contains("left")){
+				moveLeft();
+			}
+			if(dir.contains("right")){
+				moveRight();
+			}
+			
+			if(dir.contains("up")){
+				moveUp();
+			}
+			if(dir.contains("down")){
+				moveDown();
+			}
+		}
 	}
 	
 	private void moveLeft(){
-		if(gamePanel.getXPlayer()<-gamePanel.getWidthPlayer()){
+		if(gamePanel.getXPlayer() < -gamePanel.getWidthPlayer()){
 			gamePanel.setXPlayer(viewFrame.getWidth());
     	}
-		gamePanel.setXPlayer(gamePanel.getXPlayer()-5);
+		gamePanel.setXPlayer(gamePanel.getXPlayer()-p.getSpeed());
 		gamePanel.setPlayerSprite(sprite.getSubimage(0, 0, 1703, 1672));
-		left -= inertiaStep;
 	}
 	
 	private void moveRight(){
 		if(gamePanel.getXPlayer()>(viewFrame.getWidth())){
 			gamePanel.setXPlayer(-gamePanel.getWidthPlayer());
 		}
-    	gamePanel.setXPlayer(gamePanel.getXPlayer()+5);
-    	gamePanel.setPlayerSprite(sprite.getSubimage(1703, 0, 1703, 1672));
- 		right -= inertiaStep;
-    	
+    	gamePanel.setXPlayer(gamePanel.getXPlayer()+p.getSpeed());
+    	gamePanel.setPlayerSprite(sprite.getSubimage(1703, 0, 1703, 1672));    	
 	}
 	
 	private void moveUp(){
 		if(gamePanel.getYPlayer()>0){
-    		gamePanel.setYPlayer(gamePanel.getYPlayer()-5);
- 			up -= inertiaStep;
+    		gamePanel.setYPlayer(gamePanel.getYPlayer()-p.getSpeed());
     	}
 	}
 	
 	private void moveDown(){
 		if(gamePanel.getYPlayer()<(viewFrame.getHeight() - gamePanel.getHeightPlayer()-30)){
-    		gamePanel.setYPlayer(gamePanel.getYPlayer()+5);
- 			down -= inertiaStep;
+    		gamePanel.setYPlayer(gamePanel.getYPlayer()+p.getSpeed());
     	}
 	}
 }
