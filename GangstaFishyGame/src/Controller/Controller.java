@@ -27,7 +27,7 @@ public class Controller {
 	private Player p = new Player();
 	private BufferedImage sprite = (BufferedImage) p.getSprite();
 	private Timer t;
-	private double score = 1;
+	private double score;
 	
 	public Controller(){
 		init();
@@ -38,6 +38,7 @@ public class Controller {
 	 * Initializing a Game
 	 */
 	private void init(){
+		score = p.getScore();
 		configureGamePanel();
 		configureStartPanel();
 		configureHighPanel();
@@ -124,6 +125,7 @@ public class Controller {
 	 * update game state (scores etc.)
 	 */
 	public void update(){
+		score = p.getScore();
 		gamePanel.setScore((int)(score*10-10));
 	}
 	
