@@ -18,7 +18,7 @@ public class KeyListener {
 	private boolean leftPressed, rightPressed, upPressed, downPressed;
 	private String dir = "";
 	
-	public void movePlayerKeyListener(Player p){
+	public void movePlayerKeyListener(final Player p){
 		KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new KeyEventDispatcher() {
 
             @Override
