@@ -13,7 +13,7 @@ import javax.imageio.ImageIO;
 
 public class Player extends Unit{
 	
-	private int score = 0;
+	private double score = 1.5, acceleration = 0.2;
 //	private Image sprite;
 	//private double speed = 10, repaintTime = 10;
 	private boolean moving = false, accelerating = false;
@@ -31,10 +31,10 @@ public class Player extends Unit{
 	
 	public void speedController(){
 		if(accelerating && speed<maxSpeed){
-			setSpeed(speed+0.5);
+			setSpeed(speed+acceleration);
 		}
 		else if(!accelerating && speed>1){
-			setSpeed(speed-0.5);
+			setSpeed(speed-acceleration);
 		}
 		
 		if(speed<=1.0 && dir.equals("")){//
@@ -54,11 +54,11 @@ public class Player extends Unit{
 		}
 	}
 
-	public int getScore() {
+	public double getScore() {
 		return score;
 	}
 
-	public void setScore(int score) {
+	public void setScore(double score) {
 		this.score = score;
 	}
 
