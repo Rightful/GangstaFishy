@@ -13,7 +13,6 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.table.JTableHeader;
 /**
  * 
  * @author Shivam
@@ -44,7 +43,6 @@ public class HighScorePanel extends JPanel {
 		Object[][] data = { { "1.", "Sample", "Data" }, { "2.", "Sample", "Data" }, { "3.", "Sample", "Data" } };
 		JTable table = new JTable(data, columnNames);
 		table.setMinimumSize(new Dimension(600, 200));
-		JTableHeader header = table.getTableHeader();
 		JScrollPane pane = new JScrollPane(table);
 		pane.setMinimumSize(new Dimension(600, 23));
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);

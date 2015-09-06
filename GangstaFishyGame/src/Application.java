@@ -1,4 +1,6 @@
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 
@@ -9,6 +11,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 import Controller.Controller;
+import View.StartPanel;
 
 /**
  * 
@@ -17,13 +20,27 @@ import Controller.Controller;
  */
 
 public class Application {
+	static boolean Sound = true;
+	/**
+	 * @return the playSound
+	 */
+	public boolean getSound() {
+		return Sound;
+	}
+
+	/**
+	 * @param playSound the playSound to set
+	 */
+	public void setSound(boolean playSound) {
+		Application.Sound = playSound;
+	}
 
 	public static synchronized void playSound(final String filename) {
 		new Thread(new Runnable() {
 			// The wrapper thread is unnecessary, unless it blocks on the
 			// Clip finishing; see comments.
 			public void run() {
-
+				if(Sound){
 		        AudioInputStream inputStream = null;
 				try {
 					inputStream = AudioSystem.getAudioInputStream(new File(filename));
@@ -50,7 +67,8 @@ public class Application {
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				} // looping as long as this thread is alive
+				}
+			}// looping as long as this thread is alive
 			}
 		}).start();
 	}
@@ -62,6 +80,15 @@ public class Application {
 			@Override
 			public void run() {
 				Controller controller = new Controller();
+				StartPanel start = controller.getStartPanel();
+				start.getHighbutt().addActionListener(new ActionListener(){
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						Sound = false;
+					}
+				});
+
 				playSound("sound/Thug_Life_Music.wav");
 				// controller.control();
 			}

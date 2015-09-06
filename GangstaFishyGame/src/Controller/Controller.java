@@ -22,7 +22,21 @@ import View.StartPanel;
 public class Controller {
 	
 	private Frame viewFrame = new Frame();
-	private StartPanel startPanel = new StartPanel(viewFrame);
+	StartPanel startPanel = new StartPanel(viewFrame);
+	/**
+	 * @return the startPanel
+	 */
+	public StartPanel getStartPanel() {
+		return startPanel;
+	}
+
+	/**
+	 * @param startPanel the startPanel to set
+	 */
+	public void setStartPanel(StartPanel startPanel) {
+		this.startPanel = startPanel;
+	}
+
 	private AboutPanel aboutPanel = new AboutPanel(viewFrame);
 	private HighScorePanel highPanel = new HighScorePanel(viewFrame);
 	private GamePanel gamePanel = new GamePanel();
