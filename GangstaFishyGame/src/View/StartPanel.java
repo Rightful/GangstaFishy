@@ -38,8 +38,6 @@ public class StartPanel extends JPanel {
 		setVisible(true);
 		viewFrame = vframe;
 		setLayout(null);
-		
-		
 
 		startbutt = new JButton("Start");
 		add(startbutt);
@@ -65,18 +63,27 @@ public class StartPanel extends JPanel {
 				vframe.getHeight() / 2 - (int) highbutt.getPreferredSize().getHeight() / 2 + 60,
 				(int) highbutt.getPreferredSize().getWidth(), (int) highbutt.getPreferredSize().getHeight());
 
-		abbutt= new JButton("About");
+		abbutt = new JButton("About");
 		add(abbutt);
 		abbutt.setBounds(vframe.getWidth() / 2 - (int) abbutt.getPreferredSize().getWidth() / 2,
 				vframe.getHeight() / 2 - (int) abbutt.getPreferredSize().getHeight() / 2 + 90,
 				(int) abbutt.getPreferredSize().getWidth(), (int) abbutt.getPreferredSize().getHeight());
 
-		exbutt= new JButton("Exit");
+		exbutt = new JButton("Exit");
 		add(exbutt);
 		exbutt.setBounds(vframe.getWidth() / 2 - (int) exbutt.getPreferredSize().getWidth() / 2,
 				vframe.getHeight() / 2 - (int) exbutt.getPreferredSize().getHeight() / 2 + 120,
 				(int) exbutt.getPreferredSize().getWidth(), (int) exbutt.getPreferredSize().getHeight());
 
+	}
+
+	@Override
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		g.drawImage(bgImage, 0, 0, null);
+		g.setFont(new Font("Calibri", Font.BOLD, 35));
+		g.setColor(Color.RED);
+		g.drawString("GangstaFishy", viewFrame.getWidth() / 3, viewFrame.getHeight() / 4);
 	}
 
 	/**
@@ -87,21 +94,12 @@ public class StartPanel extends JPanel {
 	}
 
 	/**
-	 * @param exbutt the exbutt to set
+	 * @param exbutt
+	 *            the exbutt to set
 	 */
 	public void setExbutt(JButton exbutt) {
 		this.exbutt = exbutt;
 	}
-
-	@Override
-	protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		g.drawImage(bgImage, 0, 0, null);
-		g.setFont(new Font("Calibri", Font.BOLD, 35));
-		g.setColor(Color.BLUE);
-		g.drawString("GangstaFishy", viewFrame.getWidth()/3, viewFrame.getHeight()/4);
-	}
-
 
 	/**
 	 * @return the bgImage
@@ -111,7 +109,8 @@ public class StartPanel extends JPanel {
 	}
 
 	/**
-	 * @param bgImage the bgImage to set
+	 * @param bgImage
+	 *            the bgImage to set
 	 */
 	public void setBgImage(Image bgImage) {
 		this.bgImage = bgImage;
@@ -125,7 +124,8 @@ public class StartPanel extends JPanel {
 	}
 
 	/**
-	 * @param viewFrame the viewFrame to set
+	 * @param viewFrame
+	 *            the viewFrame to set
 	 */
 	public void setViewFrame(Frame viewFrame) {
 		this.viewFrame = viewFrame;
@@ -139,7 +139,8 @@ public class StartPanel extends JPanel {
 	}
 
 	/**
-	 * @param highbutt the highbutt to set
+	 * @param highbutt
+	 *            the highbutt to set
 	 */
 	public void setHighbutt(JButton highbutt) {
 		this.highbutt = highbutt;
@@ -153,7 +154,8 @@ public class StartPanel extends JPanel {
 	}
 
 	/**
-	 * @param startbutt the startbutt to set
+	 * @param startbutt
+	 *            the startbutt to set
 	 */
 	public void setStartbutt(JButton startbutt) {
 		this.startbutt = startbutt;
@@ -167,7 +169,8 @@ public class StartPanel extends JPanel {
 	}
 
 	/**
-	 * @param helpbutt the helpbutt to set
+	 * @param helpbutt
+	 *            the helpbutt to set
 	 */
 	public void setHelpbutt(JButton helpbutt) {
 		this.helpbutt = helpbutt;
@@ -181,7 +184,8 @@ public class StartPanel extends JPanel {
 	}
 
 	/**
-	 * @param sbutt the sbutt to set
+	 * @param sbutt
+	 *            the sbutt to set
 	 */
 	public void setSbutt(JButton sbutt) {
 		this.sbutt = sbutt;
@@ -195,7 +199,8 @@ public class StartPanel extends JPanel {
 	}
 
 	/**
-	 * @param abbutt the abbutt to set
+	 * @param abbutt
+	 *            the abbutt to set
 	 */
 	public void setAbbutt(JButton abbutt) {
 		this.abbutt = abbutt;
