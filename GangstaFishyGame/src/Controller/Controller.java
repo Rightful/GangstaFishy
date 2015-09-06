@@ -3,12 +3,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 
+import javax.swing.JFrame;
 import javax.swing.Timer;
 
 import Model.Enemy;
 import Model.Player;
 import View.Frame;
 import View.GamePanel;
+import View.HighScorePanel;
 import View.StartPanel;
 /**
  * 
@@ -20,6 +22,7 @@ public class Controller {
 	
 	private Frame viewFrame = new Frame();
 	private StartPanel startPanel = new StartPanel(viewFrame);
+	private HighScorePanel highPanel = new HighScorePanel(viewFrame);
 	private GamePanel gamePanel = new GamePanel();
 	private Player p = new Player();
 	private BufferedImage sprite = (BufferedImage) p.getSprite();
@@ -37,9 +40,10 @@ public class Controller {
 	private void init(){
 		configureGamePanel();
 		configureStartPanel();
+		configureHighPanel();
 		viewFrame.add(gamePanel);
+		viewFrame.add(highPanel);
 		viewFrame.add(startPanel);
-		
 		Enemy.loadSprites();	
 		
 		viewFrame.setVisible(true);
@@ -83,11 +87,38 @@ public class Controller {
 				//start animation
 				t.start();
 			}
-			
+		});
+		
+		startPanel.getHighbutt().addActionListener(new ActionListener(){
+
+			@Override 
+			public void actionPerformed(ActionEvent e){
+				highPanel.setVisible(true);
+				startPanel.setVisible(false);
+			}
+		});
+		
+		startPanel.getExbutt().addActionListener(new ActionListener(){
+
+			@Override 
+			public void actionPerformed(ActionEvent e){
+			viewFrame.dispose();
+			}
 		});
 		
 	}
 	
+	private void configureHighPanel(){
+		highPanel.setSize(viewFrame.getSize());
+		highPanel.getBackbutt().addActionListener(new ActionListener(){
+			@Override 
+			public void actionPerformed(ActionEvent e){
+				highPanel.setVisible(false);
+				startPanel.setVisible(true);
+			}
+		});
+		update();
+	}
 	
 	/**
 	 * update game state (scores etc.)
