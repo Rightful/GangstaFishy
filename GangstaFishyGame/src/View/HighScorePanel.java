@@ -14,7 +14,11 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.JTableHeader;
-
+/**
+ * 
+ * @author Shivam
+ *
+ */
 @SuppressWarnings("serial")
 public class HighScorePanel extends JPanel {
 	private Image bgImage;
