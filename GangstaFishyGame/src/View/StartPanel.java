@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class StartPanel extends JPanel {
 	private Image bgImage;
+	private JButton highbutt;
 	private JButton startbutt;
 	private JButton helpbutt;
 	private JButton sbutt;
@@ -43,10 +44,16 @@ public class StartPanel extends JPanel {
 				vframe.getHeight() / 2 - (int) helpbutt.getPreferredSize().getHeight() / 2 + 30,
 				(int) helpbutt.getPreferredSize().getWidth(), (int) helpbutt.getPreferredSize().getHeight());
 
-		abbutt = new JButton("About");
+		highbutt = new JButton("HighScore");
+		add(highbutt);
+		highbutt.setBounds(vframe.getWidth() / 2 - (int) highbutt.getPreferredSize().getWidth() / 2,
+				vframe.getHeight() / 2 - (int) highbutt.getPreferredSize().getHeight() / 2 + 60,
+				(int) highbutt.getPreferredSize().getWidth(), (int) highbutt.getPreferredSize().getHeight());
+
+		abbutt= new JButton("About");
 		add(abbutt);
 		abbutt.setBounds(vframe.getWidth() / 2 - (int) abbutt.getPreferredSize().getWidth() / 2,
-				vframe.getHeight() / 2 - (int) abbutt.getPreferredSize().getHeight() / 2 + 60,
+				vframe.getHeight() / 2 - (int) abbutt.getPreferredSize().getHeight() / 2 + 90,
 				(int) abbutt.getPreferredSize().getWidth(), (int) abbutt.getPreferredSize().getHeight());
 
 		try {
