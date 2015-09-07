@@ -19,6 +19,8 @@ public class Player extends Unit{
 	private boolean moving = false, accelerating = false;
 	private int maxSpeed = 7;
 	private String dir = "", lastDir="";
+	private boolean toLeft = true;
+	private boolean isDead = false;
 
 	public Player(){
 		try {
@@ -38,7 +40,8 @@ public class Player extends Unit{
 		}
 		
 		if(speed<=1.0 && dir.equals("")){//
-			moving = false;
+			//moving = false;
+			System.out.println(this.getY());
 		}
 	}
 	
@@ -47,6 +50,14 @@ public class Player extends Unit{
 		this.dir = dir;
 //		System.out.println("==="+dir+"===");
 		if(!dir.equals("")){
+			 if (dir.contains("right") && toLeft) {
+				flipImage(dir);
+				toLeft = false;
+			}
+			else if (dir.contains("left") && !toLeft) {
+				flipImage(dir);
+				toLeft = true;
+			}
 			lastDir = dir;
 			accelerating = true;
 		}else{
@@ -102,5 +113,13 @@ public class Player extends Unit{
 	public void setMaxSpeed(int maxSpeed) {
 		if(maxSpeed<=20)
 			this.maxSpeed = maxSpeed;
+	}
+	
+	public boolean isDead() {
+		return this.isDead;
+	}
+	
+	public void setDead() {
+		this.isDead = true;
 	}
 }
