@@ -36,6 +36,10 @@ public class Application {
 	}
 
 	public static synchronized void playSound(final String filename) {
+		
+		//Dit kan zonder Thread en alles mag in een try catch block als je toch alleen e.printStackTrace(); doet
+		//Als je iets anders wilt doen voor een specifieke exception, een try met multiple catch blocks.
+		
 		new Thread(new Runnable() {
 			// The wrapper thread is unnecessary, unless it blocks on the
 			// Clip finishing; see comments.
