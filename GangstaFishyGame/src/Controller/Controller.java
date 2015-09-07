@@ -166,6 +166,9 @@ public class Controller {
 		gamePanel.setScore((int)(score*10-10));
 	}
 	
+	//Opmerking: Functies moeten doen wat de naam zegt. Deze functie doet te veel. 
+	//De structuur van de Controller en van het spel is onoverzichtelijk en moet verbeterd worden.  
+	
 	public void movePlayer(){
 		ActionListener move = new ActionListener() {
 	         @Override
