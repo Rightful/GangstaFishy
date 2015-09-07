@@ -35,15 +35,15 @@ public class Application {
 		Application.Sound = playSound;
 	}
 
-<<<<<<< HEAD
-	public static synchronized void playSound(final String filename) {
+//<<<<<<< HEAD
+//	public static synchronized void playSound(final String filename) {
 		//Dit moet eigenlijk deel zijn van de View.
 		//Dit kan zonder Thread en alles mag in een try catch block als je toch alleen e.printStackTrace(); doet
 		//Als je iets anders wilt doen voor een specifieke exception, een try met multiple catch blocks.
 		
-=======
+//=======
 	public synchronized static void playSound(final String filename) {
->>>>>>> Ravi
+//>>>>>>> Ravi
 		new Thread(new Runnable() {
 			// The wrapper thread is unnecessary, unless it blocks on the
 			// Clip finishing; see comments.
