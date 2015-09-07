@@ -35,7 +35,7 @@ public class Application {
 		Application.Sound = playSound;
 	}
 
-	public static synchronized void playSound(final String filename) {
+	public synchronized static void playSound(final String filename) {
 		new Thread(new Runnable() {
 			// The wrapper thread is unnecessary, unless it blocks on the
 			// Clip finishing; see comments.

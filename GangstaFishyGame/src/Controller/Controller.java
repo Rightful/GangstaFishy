@@ -127,7 +127,6 @@ public class Controller {
 		});
 
 		startPanel.getExbutt().addActionListener(new ActionListener(){
-
 			@Override 
 			public void actionPerformed(ActionEvent e){
 			viewFrame.dispose();
