@@ -45,8 +45,8 @@ public class Player extends Unit{
 		}
 		
 		if(speed<=1.0 && dir.equals("")){//
-			//moving = false;
-			System.out.println(this.getY());
+			moving = false;
+//			System.out.println(this.getY());
 		}
 	}
 	/*
