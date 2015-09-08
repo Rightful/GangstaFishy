@@ -49,6 +49,10 @@ public class Player extends Unit{
 			System.out.println(this.getY());
 		}
 	}
+	/*
+	 * if(alive)
+	 * setsound
+	 */
 	
 	public void setMovingDirection(String dir){
 		moving = true;

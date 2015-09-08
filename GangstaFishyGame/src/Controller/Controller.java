@@ -11,6 +11,7 @@ import View.AboutPanel;
 import View.Frame;
 import View.GamePanel;
 import View.HighScorePanel;
+import View.Sound;
 import View.StartPanel;
 /**
  * 
@@ -53,6 +54,7 @@ public class Controller {
 	 * Initializing a Game
 	 */
 	private void init(){
+		Sound.playSound("sound/Thug_Life_Music.wav");
 		score = p.getScore();
 		configureGamePanel();
 		configureStartPanel();
