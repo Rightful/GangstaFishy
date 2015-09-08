@@ -1,5 +1,6 @@
 package Model;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
@@ -21,6 +22,8 @@ public class Player extends Unit{
 	private String dir = "", lastDir="";
 	private boolean toLeft = true;
 	private boolean isDead = false;
+	private BufferedImage spriteLeft;
+	private BufferedImage spriteRight;
 
 	public Player(){
 		try {
@@ -28,6 +31,8 @@ public class Player extends Unit{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		spriteLeft = ((BufferedImage)sprite).getSubimage(0, 0, 1703, 1672);
+		spriteRight = ((BufferedImage)sprite).getSubimage(1703, 0, 1703, 1672);
 		
 	}
 	
@@ -121,5 +126,13 @@ public class Player extends Unit{
 	
 	public void setDead() {
 		this.isDead = true;
+	}
+
+	public BufferedImage getSpriteLeft() {
+		return spriteLeft;
+	}
+
+	public BufferedImage getSpriteRight() {
+		return spriteRight;
 	}
 }

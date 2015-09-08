@@ -34,6 +34,7 @@ public class Enemy extends Unit{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 	}
 	
 	/**

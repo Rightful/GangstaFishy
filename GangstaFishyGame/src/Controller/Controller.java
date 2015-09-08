@@ -235,7 +235,7 @@ public class Controller {
 			gamePanel.setXPlayer(viewFrame.getWidth());
     	}
 		gamePanel.setXPlayer(gamePanel.getXPlayer()-p.getSpeed());
-//		gamePanel.setPlayerSprite(sprite.getSubimage(0, 0, 1703, 1672)); Memory explodes!
+		gamePanel.setPlayerSprite(p.getSpriteLeft()); //Memory explodes!
 	}
 	
 	private void moveRight(){
@@ -243,7 +243,7 @@ public class Controller {
 			gamePanel.setXPlayer(-gamePanel.getWidthPlayer());
 		}
     	gamePanel.setXPlayer(gamePanel.getXPlayer()+p.getSpeed());
-  //  	gamePanel.setPlayerSprite(sprite.getSubimage(1703, 0, 1703, 1672)); Memory explodes!
+    	gamePanel.setPlayerSprite(p.getSpriteRight()); //Memory explodes!
 	}
 	
 	private void moveUp(){
