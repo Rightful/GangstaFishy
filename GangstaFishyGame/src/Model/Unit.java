@@ -1,6 +1,9 @@
 package Model;
 
+import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Ellipse2D.Double;
 
 /**
  * 
@@ -14,7 +17,16 @@ public class Unit {
 	protected Image sprite;
 	protected boolean stop = true;
 	protected int x = 0, y = 0;
+    protected Ellipse2D boundary = new Ellipse2D.Double();
 	
+	public Ellipse2D getBoundary() {
+		return boundary;
+	}
+
+	public void setBoundary(Ellipse2D boundary) {
+		this.boundary = boundary;
+	}
+
 	public int getRepaintTime() {
 		return (int)repaintTime;
 	}
