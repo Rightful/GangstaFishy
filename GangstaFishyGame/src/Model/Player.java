@@ -45,10 +45,14 @@ public class Player extends Unit{
 		}
 		
 		if(speed<=1.0 && dir.equals("")){//
-			//moving = false;
-			System.out.println(this.getY());
+			moving = false;
+//			System.out.println(this.getY());
 		}
 	}
+	/*
+	 * if(alive)
+	 * setsound
+	 */
 	
 	public void setMovingDirection(String dir){
 		moving = true;
