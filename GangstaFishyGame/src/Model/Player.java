@@ -3,6 +3,8 @@ package Model;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
+import java.util.Map.Entry;
 
 import javax.imageio.ImageIO;
 
@@ -14,6 +16,7 @@ import javax.imageio.ImageIO;
 
 public class Player extends Unit{
 	
+	private List<Entry<String, Integer>> highscore;
 	private double score = 1.5, acceleration = 0.2;
 //	private Image sprite;
 	//private double speed = 10, repaintTime = 10;
@@ -26,6 +29,9 @@ public class Player extends Unit{
 	private BufferedImage spriteRight;
 
 	public Player(){
+		highscore = JSonRW.reader();
+		//highscore.add("RealGangsta,99999");
+		JSonRW.writer(highscore);
 		try {
 			sprite = ImageIO.read(new File("img/player.png"));
 		} catch (IOException e) {
@@ -138,5 +144,9 @@ public class Player extends Unit{
 
 	public BufferedImage getSpriteRight() {
 		return spriteRight;
+	}
+
+	public List<Entry<String, Integer>> getHighscore() {
+		return highscore;
 	}
 }

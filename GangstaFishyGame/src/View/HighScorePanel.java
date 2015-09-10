@@ -23,7 +23,8 @@ public class HighScorePanel extends JPanel {
 	private Image bgImage;
 	private Frame viewFrame;
 	private JButton backbutt;
-
+	private JTable table;
+	
 	public HighScorePanel(Frame vFrame) {
 		viewFrame = vFrame;
 		setLayout(null);
@@ -39,9 +40,9 @@ public class HighScorePanel extends JPanel {
 		backbutt.setBounds(vFrame.getWidth() / 5, vFrame.getHeight() - vFrame.getHeight() / 5,
 				(int) backbutt.getPreferredSize().getWidth(), (int) backbutt.getPreferredSize().getHeight());
 
-		String[] columnNames = { " ", "Name", "Score" };
-		Object[][] data = { { "1.", "Sample", "Data" }, { "2.", "Sample", "Data" }, { "3.", "Sample", "Data" } };
-		JTable table = new JTable(data, columnNames);
+		String[] columnNames = { "Rank", "Name", "Score" };
+		Object[][] data = { { "", "", "" },{ "", "", "" },{ "", "", "" }};
+		table  = new JTable(data, columnNames);
 		table.setMinimumSize(new Dimension(600, 200));
 		JScrollPane pane = new JScrollPane(table);
 		pane.setMinimumSize(new Dimension(600, 23));
@@ -105,5 +106,13 @@ public class HighScorePanel extends JPanel {
 		g.setColor(Color.BLUE);
 		g.drawString("GangstaFishy", viewFrame.getWidth() / 3, viewFrame.getHeight() / 4);
 
+	}
+
+	public JTable getTable() {
+		return table;
+	}
+
+	public void setTable(JTable table) {
+		this.table = table;
 	}
 }

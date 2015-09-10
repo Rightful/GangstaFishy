@@ -2,10 +2,13 @@ package Controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.util.List;
+import java.util.Map.Entry;
 
 import javax.swing.Timer;
 
 import Model.Enemy;
+import Model.JSonRW;
 import Model.Player;
 import View.AboutPanel;
 import View.Frame;
@@ -138,11 +141,21 @@ public class Controller {
 	
 	private void configureHighPanel(){
 		highPanel.setSize(viewFrame.getSize());
+		
+		List<Entry<String, Integer>> highscore = p.getHighscore();
+		for(int i = 0; i< highPanel.getTable().getRowCount(); i++){
+
+			highPanel.getTable().setValueAt(i+1, i, 0);
+			if(i<highscore.size()){
+				highPanel.getTable().setValueAt(highscore.get(i).getKey(), i, 1);
+				highPanel.getTable().setValueAt(highscore.get(i).getValue(), i, 2);
+			}
+		}
 		highPanel.getBackbutt().addActionListener(new ActionListener(){
 			@Override 
 			public void actionPerformed(ActionEvent e){
 				highPanel.setVisible(false);
-				startPanel.setVisible(true);
+				startPanel.setVisible(true);				
 			}
 		});
 	}
