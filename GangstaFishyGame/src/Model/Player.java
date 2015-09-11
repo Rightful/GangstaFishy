@@ -9,6 +9,8 @@ import java.util.Map.Entry;
 
 import javax.imageio.ImageIO;
 
+import View.Frame;
+
 /**
  * 
  * @author Kamran Tadzjibov
@@ -54,9 +56,8 @@ public class Player extends Unit{
 		
 		if(speed<=1.0 && dir.equals("")){
 			moving = false;
-			if (y<500) {
-				y++;
-			}
+			speed = 1;
+			moveDown(Frame.getFrameHeight());
 		}
 	}
 	/*
