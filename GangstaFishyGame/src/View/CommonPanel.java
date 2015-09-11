@@ -138,13 +138,16 @@ public class CommonPanel extends JPanel {
 				viewFrame.getHeight() / 4 + 60);
 		g.drawString("press \u2192 to move GangaFishy right", 20,
 				viewFrame.getHeight() / 4 + 90);
+		g.drawString("Press P to Pause/Resume the game",
+				20, viewFrame.getHeight() / 4 + 120);
 		g.drawString(
 				"Navigate GangstaFishy through the deep dark ocean of terror and",
-				20, viewFrame.getHeight() / 4 + 120);
+				20, viewFrame.getHeight() / 4 + 150);
 		g.drawString("devour smaller fishies.", 20,
-				viewFrame.getHeight() / 4 + 150);
+				viewFrame.getHeight() / 4 + 180);
 		g.drawString("Look out for bigger GangstaPiranhas and don't get eaten",
-				20, viewFrame.getHeight() / 4 + 180);
+				20, viewFrame.getHeight() / 4 + 210);
+		
 		repaint();
 	}
 
