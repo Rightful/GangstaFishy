@@ -31,6 +31,14 @@ public class KeyListener {
 
 	private String dir = "";
 
+
+/**
+ * Checking what key is pressed and determining what direction the player
+ * should move to.
+ * 
+ * @param p
+ *            The player of the game.
+ */
 	public void movePlayerKeyListener(final Player p) {
 		KeyboardFocusManager.getCurrentKeyboardFocusManager()
 				.addKeyEventDispatcher(new KeyEventDispatcher() {
@@ -114,6 +122,11 @@ public class KeyListener {
 
 				});
 	}
+
+
+/**
+ * calculate what direction the player will move depending on the key that was pressed.
+ */
 
 	public void calcDir() {
 		if (leftPressed && !rightPressed && !dir.contains("left"))

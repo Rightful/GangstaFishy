@@ -9,7 +9,6 @@ import java.util.Map.Entry;
 import javax.swing.Timer;
 
 import Model.Enemy;
-import Model.JSonRW;
 import Model.Player;
 import View.CommonPanel;
 import View.Frame;
@@ -51,10 +50,13 @@ public class Controller {
 	private BufferedImage sprite = (BufferedImage) p.getSprite();
 	private Timer t;
 	private double score;
-	private int difficulty = 5;// easy
-	private int gameSpeed = 15;// easy
-	private KeyListener kl;
 
+	private int difficulty = 5;
+	private int gameSpeed = 15;
+	private KeyListener kl;
+	/**
+	 * Constructor to initialize the Controller.
+	 */
 	public Controller() {
 
 		init();
@@ -83,11 +85,8 @@ public class Controller {
 		kl = new KeyListener();
 		kl.movePlayerKeyListener(p);
 
-		// temp
 		p.setMaxSpeed(7);
-		// Enemy e = new Enemy();
-		// e.createEnemy1();
-		// gamePanel.getEnemies().add(Enemy.createEnemy1());
+
 	}
 
 	/**
@@ -96,22 +95,17 @@ public class Controller {
 	private void configureGamePanel() {
 
 		gamePanel.setSize(viewFrame.getSize());
-		// gamePanel.setWidthPlayer((int)(1703/15*score));
-		// gamePanel.setHeightPlayer((int)(1672/15*score));
-		// gamePanel.setXPlayer(viewFrame.getWidth()/2-gamePanel.getWidthPlayer()/2);
-		// gamePanel.setYPlayer(viewFrame.getHeight()/2-gamePanel.getHeightPlayer()/2);
 
 		p.setX(viewFrame.getWidth() / 2 - p.getX() / 2);
 		p.setY(viewFrame.getHeight() / 2 - p.getY() / 2);
 		p.update();
 
-		// gamePanel.setPlayerSprite(sprite.getSubimage(0, 0, 1703, 1672));
-
 		update();
 	}
 
 	/**
-	 * initial configuration of the game panel
+	 * initial configuration of the Start panel Adding the menu button
+	 * functions.
 	 */
 	private void configureStartPanel() {
 		startPanel.getStartbutt().addActionListener(new ActionListener() {
@@ -120,7 +114,8 @@ public class Controller {
 			public void actionPerformed(ActionEvent e) {
 				gamePanel.setVisible(true);
 				startPanel.setVisible(false);
-				// start animation
+
+
 				t.start();
 			}
 		});
@@ -161,6 +156,11 @@ public class Controller {
 
 	}
 
+
+	/**
+	 * Configure the highscore panel to show top scores.
+	 */
+
 	private void configureHighPanel() {
 		highPanel.setSize(viewFrame.getSize());
 
@@ -169,10 +169,10 @@ public class Controller {
 
 			highPanel.getTable().setValueAt(i + 1, i, 0);
 			if (i < highscore.size()) {
-				highPanel.getTable()
-						.setValueAt(highscore.get(i).getKey(), i, 1);
-				highPanel.getTable().setValueAt(highscore.get(i).getValue(), i,
-						2);
+
+				highPanel.getTable().setValueAt(highscore.get(i).getKey(), i, 1);
+				highPanel.getTable().setValueAt(highscore.get(i).getValue(), i, 2);
+
 			}
 		}
 		highPanel.getBackbutt().addActionListener(new ActionListener() {
@@ -183,6 +183,11 @@ public class Controller {
 			}
 		});
 	}
+
+
+	/**
+	 * Configure About panel and the back button.
+	 */
 
 	private void configureAboutPanel() {
 		commonPanel.setchar('a');
@@ -209,25 +214,25 @@ public class Controller {
 	}
 
 	/**
-	 * update game state (scores etc.)
+	 * Update game state (scores etc.).
 	 */
 	public void update() {
 		score = p.getScore();
-		// gamePanel.setScore((int)(score*10-10));
+
 	}
 
-	// Opmerking: Functies moeten doen wat de naam zegt. Deze functie doet te
-	// veel.
-	// De structuur van de Controller en van het spel is onoverzichtelijk en
-	// moet verbeterd worden.
+	/**
+	 * Update the frame when the player moves by repainting the scene.
+	 */
 
 	public void updateFrames() {
 		ActionListener move = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent evt) {
 				if (p.isDead()) {
-					// handle game over
+
 				} else {
+
 
 					Collision.collide(gamePanel.getEnemies(), p);
 					movingHandler();
@@ -237,6 +242,7 @@ public class Controller {
 					}
 					gamePanel.repaint();
 					p.speedController();
+
 					gamePanel.setFishSpeed(p.getSpeed() + "/"
 							+ p.getRepaintTime() + "  accelerating: "
 							+ p.isAccelerating() + " moving: " + p.isMoving()
@@ -250,16 +256,11 @@ public class Controller {
 		kl.setT(t);
 	}
 
-//	public void pauseListener(){
-//
-//				if (kl.isPaused() == true) {
-//					t.stop();
-//				} else{
-//					t.start();
-//				}
-//			
-//	}
-	
+	/**
+	 * Handle the direction the player is moving and send to appropriate
+	 * function.
+	 */
+
 	public void movingHandler() {
 		if (p.isMoving()) {
 			String dir = "";
@@ -285,21 +286,29 @@ public class Controller {
 
 		int i = 0;
 		while (i < gamePanel.getEnemies().size()) {
-			// for(Enemy e: gamePanel.getEnemies()){
+
 			moveEnemy(gamePanel.getEnemies().get(i));
 			i++;
 
 		}
 	}
 
+
+	/**
+	 * Function to move the enemy and repaint it on the Frame.
+	 * 
+	 * @param e
+	 *            The current enemy you want to move and repaint.
+	 */
 	private void moveEnemy(Enemy e) {
 		if (e.isToLeft()) {
 			e.setX(e.getX() - e.getSpeed());
 		} else {
 			e.setX(e.getX() + e.getSpeed());
 		}
-		if (e.getX() > Frame.getFrameWidth() + 10
-				|| e.getX() < -e.getWidth() - 10) {
+
+		if (e.getX() > Frame.getFrameWidth() + 10 || e.getX() < -e.getWidth() - 10) {
+
 			gamePanel.getEnemies().remove(e);
 		}
 		e.getBoundary().setFrame(e.getX(), e.getY(), e.getWidth(),

@@ -44,8 +44,8 @@ public class HighScorePanel extends JPanel {
 						.getPreferredSize().getHeight());
 
 		String[] columnNames = { "Rank", "Name", "Score" };
-		Object[][] data = { { "", "", "" }, { "", "", "" }, { "", "", "" },
-				{ "", "", "" }, { "", "", "" } };
+
+		Object[][] data = { { "", "", "" }, { "", "", "" }, { "", "", "" }, { "", "", "" }, { "", "", "" } };
 		table = new JTable(data, columnNames);
 		table.setMinimumSize(new Dimension(600, 200));
 		JScrollPane pane = new JScrollPane(table);
@@ -113,10 +113,20 @@ public class HighScorePanel extends JPanel {
 
 	}
 
+	/**
+	 * Get the table of with high scores.
+	 * 
+	 * @return
+	 */
 	public JTable getTable() {
 		return table;
 	}
 
+	/**
+	 * set the table for highscores.
+	 * 
+	 * @param table
+	 */
 	public void setTable(JTable table) {
 		this.table = table;
 	}

@@ -45,17 +45,11 @@ public class GamePanel extends JPanel {
 		super.paintComponent(g);
 		g.drawImage(bgImage, 0, 0, null);
 		for (Enemy e : enemies) {
-			g.drawImage(e.getAnimSprite(), e.getX(), e.getY(), e.getWidth(),
-					e.getHeight(), this);
-			// g.drawOval(e.getX(), e.getY(), e.getWidth(), e.getHeight());
+
+			g.drawImage(e.getAnimSprite(), e.getX(), e.getY(), e.getWidth(), e.getHeight(), this);
 		}
 
-		g.drawImage(player.getSpriteFinal(), player.getX(), player.getY(),
-				player.getWidth(), player.getHeight(), this);
-
-		// Collision Boundary will use later
-		// g.drawOval(player.getX(), player.getY(), player.getWidth(),
-		// player.getHeight());
+		g.drawImage(player.getSpriteFinal(), player.getX(), player.getY(), player.getWidth(), player.getHeight(), this);
 		g.setFont(new Font("Calibri", Font.BOLD, 30));
 		g.setColor(Color.white);
 		g.drawString("Score: " + player.getScore(), 30, 30);
@@ -63,22 +57,65 @@ public class GamePanel extends JPanel {
 		g.drawString("speed/repaintTime: " + fishSpeed, 30, 60);
 	}
 
+
+	/**
+	 * @return the bgImage
+	 */
+	public Image getBgImage() {
+		return bgImage;
+	}
+
+	/**
+	 * @param bgImage
+	 *            the bgImage to set
+	 */
+	public void setBgImage(Image bgImage) {
+		this.bgImage = bgImage;
+	}
+
+	/**
+	 * @return the fishSpeed
+	 */
 	public String getFishSpeed() {
 		return fishSpeed;
 	}
 
+	/**
+	 * @param fishSpeed
+	 *            the fishSpeed to set
+	 */
 	public void setFishSpeed(String fishSpeed) {
 		this.fishSpeed = fishSpeed;
 	}
 
+	/**
+	 * @param enemies
+	 *            the enemies to set
+	 */
+	public void setEnemies(List<Enemy> enemies) {
+		this.enemies = enemies;
+	}
+
+	/**
+	 * get list of the enemies.
+	 * 
+	 * @return
+	 */
 	public List<Enemy> getEnemies() {
 		return enemies;
 	}
 
+	/**
+	 * @return the player
+	 */
 	public Player getPlayer() {
 		return player;
 	}
 
+	/**
+	 * @param player
+	 *            the player to set
+	 */
 	public void setPlayer(Player player) {
 		this.player = player;
 	}

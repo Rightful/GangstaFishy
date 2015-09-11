@@ -27,6 +27,11 @@ public class StartPanel extends JPanel {
 	private JButton abbutt;
 	private JButton exbutt;
 
+	/**
+	 * Start panel for mainmenu.
+	 * 
+	 * @param vframe
+	 */
 	public StartPanel(Frame vframe) {
 
 		try {
