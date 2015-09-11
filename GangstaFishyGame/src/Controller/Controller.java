@@ -1,4 +1,5 @@
 package Controller;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -8,7 +9,6 @@ import java.util.Map.Entry;
 import javax.swing.Timer;
 
 import Model.Enemy;
-import Model.JSonRW;
 import Model.Player;
 import View.CommonPanel;
 import View.Frame;
@@ -16,6 +16,7 @@ import View.GamePanel;
 import View.HighScorePanel;
 import View.Sound;
 import View.StartPanel;
+
 /**
  * 
  * @author Kamran Tadzjibov
@@ -23,9 +24,10 @@ import View.StartPanel;
  */
 
 public class Controller {
-	
+
 	private Frame viewFrame = new Frame();
 	StartPanel startPanel = new StartPanel(viewFrame);
+
 	/**
 	 * @return the startPanel
 	 */
@@ -34,7 +36,8 @@ public class Controller {
 	}
 
 	/**
-	 * @param startPanel the startPanel to set
+	 * @param startPanel
+	 *            the startPanel to set
 	 */
 	public void setStartPanel(StartPanel startPanel) {
 		this.startPanel = startPanel;
@@ -47,18 +50,21 @@ public class Controller {
 	private BufferedImage sprite = (BufferedImage) p.getSprite();
 	private Timer t;
 	private double score;
-	private int difficulty = 5;//easy
-	private int gameSpeed = 15;//easy
+	private int difficulty = 5;
+	private int gameSpeed = 15;
 	
-	public Controller(){
+	/**
+	 * Constructor to initialize the Controller. 
+	 */
+	public Controller() {
 		init();
 		movePlayer();
 	}
-	
+
 	/**
 	 * Initializing a Game
 	 */
-	private void init(){
+	private void init() {
 		Sound.playSound("sound/Thug_Life_Music.wav");
 		score = p.getScore();
 		configureIntructionPanel();
@@ -70,129 +76,124 @@ public class Controller {
 		viewFrame.add(commonPanel);
 		viewFrame.add(highPanel);
 		viewFrame.add(startPanel);
-		Enemy.loadSprites();	
-		
+		Enemy.loadSprites();
+
 		viewFrame.setVisible(true);
 
 		KeyListener kl = new KeyListener();
 		kl.movePlayerKeyListener(p);
-		
-		//temp
+
 		p.setMaxSpeed(7);
-//		Enemy e = new Enemy();
-//		e.createEnemy1();
-//		gamePanel.getEnemies().add(Enemy.createEnemy1());
 	}
-	
+
 	/**
 	 * initial configuration of the game panel
 	 */
-	private void configureGamePanel(){
-		
-		gamePanel.setSize(viewFrame.getSize());
-//		gamePanel.setWidthPlayer((int)(1703/15*score));
-//		gamePanel.setHeightPlayer((int)(1672/15*score));
-//		gamePanel.setXPlayer(viewFrame.getWidth()/2-gamePanel.getWidthPlayer()/2);
-//		gamePanel.setYPlayer(viewFrame.getHeight()/2-gamePanel.getHeightPlayer()/2);
-		
-		p.setX(viewFrame.getWidth()/2-p.getX()/2);
-		p.setY(viewFrame.getHeight()/2-p.getY()/2);
-		p.update();
+	private void configureGamePanel() {
 
-	//	gamePanel.setPlayerSprite(sprite.getSubimage(0, 0, 1703, 1672));
-		
+		gamePanel.setSize(viewFrame.getSize());
+		p.setX(viewFrame.getWidth() / 2 - p.getX() / 2);
+		p.setY(viewFrame.getHeight() / 2 - p.getY() / 2);
+		p.update();
 		update();
 	}
-	
+
 	/**
-	 * initial configuration of the game panel
+	 * initial configuration of the Start panel Adding the menu button
+	 * functions.
 	 */
-	private void configureStartPanel(){
-		startPanel.getStartbutt().addActionListener(new ActionListener(){
+	private void configureStartPanel() {
+		startPanel.getStartbutt().addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				gamePanel.setVisible(true);
 				startPanel.setVisible(false);
-				//start animation
 				t.start();
 			}
 		});
-		
-		startPanel.getHighbutt().addActionListener(new ActionListener(){
 
-			@Override 
-			public void actionPerformed(ActionEvent e){
+		startPanel.getHighbutt().addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
 				highPanel.setVisible(true);
 				startPanel.setVisible(false);
 			}
 		});
 
-		startPanel.getAbbutt().addActionListener(new ActionListener(){
+		startPanel.getAbbutt().addActionListener(new ActionListener() {
 
-			@Override 
-			public void actionPerformed(ActionEvent e){
+			@Override
+			public void actionPerformed(ActionEvent e) {
 				commonPanel.setchar('a');
 				commonPanel.setVisible(true);
 				startPanel.setVisible(false);
 			}
 		});
-		startPanel.getHelpbutt().addActionListener(new ActionListener(){
-			@Override 
-			public void actionPerformed(ActionEvent e){
+		startPanel.getHelpbutt().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
 				commonPanel.setchar('i');
 				commonPanel.setVisible(true);
 				startPanel.setVisible(false);
 			}
 		});
 
-		startPanel.getExbutt().addActionListener(new ActionListener(){
-			@Override 
-			public void actionPerformed(ActionEvent e){
-			viewFrame.dispose();
+		startPanel.getExbutt().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				viewFrame.dispose();
 			}
 		});
-		
-	}
-	
-	private void configureHighPanel(){
-		highPanel.setSize(viewFrame.getSize());
-		
-		List<Entry<String, Integer>> highscore = p.getHighscore();
-		for(int i = 0; i< highPanel.getTable().getRowCount(); i++){
 
-			highPanel.getTable().setValueAt(i+1, i, 0);
-			if(i<highscore.size()){
+	}
+
+	/**
+	 * Configure the highscore panel to show top scores.
+	 */
+	private void configureHighPanel() {
+		highPanel.setSize(viewFrame.getSize());
+
+		List<Entry<String, Integer>> highscore = p.getHighscore();
+		for (int i = 0; i < highPanel.getTable().getRowCount(); i++) {
+
+			highPanel.getTable().setValueAt(i + 1, i, 0);
+			if (i < highscore.size()) {
 				highPanel.getTable().setValueAt(highscore.get(i).getKey(), i, 1);
 				highPanel.getTable().setValueAt(highscore.get(i).getValue(), i, 2);
 			}
 		}
-		highPanel.getBackbutt().addActionListener(new ActionListener(){
-			@Override 
-			public void actionPerformed(ActionEvent e){
+		highPanel.getBackbutt().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
 				highPanel.setVisible(false);
-				startPanel.setVisible(true);				
+				startPanel.setVisible(true);
 			}
 		});
 	}
 
-	private void configureAboutPanel(){
+	/**
+	 * Configure About panel and the back button.
+	 */
+	private void configureAboutPanel() {
 		commonPanel.setchar('a');
 		commonPanel.setSize(viewFrame.getSize());
-		commonPanel.getBackbutt().addActionListener(new ActionListener(){
-			@Override 
-			public void actionPerformed(ActionEvent e){
+		commonPanel.getBackbutt().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
 				commonPanel.setVisible(false);
 				startPanel.setVisible(true);
 			}
 		});
 	}
-	private void configureIntructionPanel(){
+
+	private void configureIntructionPanel() {
 		commonPanel.setchar('i');
 		commonPanel.setSize(viewFrame.getSize());
-		commonPanel.getBackbutt().addActionListener(new ActionListener(){
-			@Override 
-			public void actionPerformed(ActionEvent e){
+		commonPanel.getBackbutt().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
 				commonPanel.setVisible(false);
 				startPanel.setVisible(true);
 			}
@@ -200,78 +201,86 @@ public class Controller {
 	}
 
 	/**
-	 * update game state (scores etc.)
+	 * Update game state (scores etc.).
 	 */
-	public void update(){
+	public void update() {
 		score = p.getScore();
-		//gamePanel.setScore((int)(score*10-10));
 	}
-	
-	//Opmerking: Functies moeten doen wat de naam zegt. Deze functie doet te veel. 
-	//De structuur van de Controller en van het spel is onoverzichtelijk en moet verbeterd worden.  
-	
-	public void movePlayer(){
+
+	/**
+	 * Basic function to move listen to an action and repaint the player.
+	 */
+	public void movePlayer() {
 		ActionListener move = new ActionListener() {
-	         @Override
-	         public void actionPerformed(ActionEvent evt) {
-	        	Collision.collide(gamePanel.getEnemies(), p);
-	        	movingHandler();
-	        	 
-	        	if(gamePanel.getEnemies().size()<difficulty){
-	        		gamePanel.getEnemies().add(Enemy.createEnemy());
-	        	}
-	     		gamePanel.repaint();
-	     		p.speedController();
-	     		gamePanel.setFishSpeed(p.getSpeed() + "/"+p.getRepaintTime() + "  accelerating: "+p.isAccelerating() + " moving: "+p.isMoving() + " dir: "+p.getDir() + " lastDir:"+p.getLastDir());
-//	     		t.setDelay(p.getRepaintTime());
-	         }
-	      };
-	      t =  new Timer(gameSpeed, move);//p.getRepaintTime()
-	      
+			@Override
+			public void actionPerformed(ActionEvent evt) {
+				Collision.collide(gamePanel.getEnemies(), p);
+				movingHandler();
+
+				if (gamePanel.getEnemies().size() < difficulty) {
+					gamePanel.getEnemies().add(Enemy.createEnemy());
+				}
+				gamePanel.repaint();
+				p.speedController();
+				gamePanel.setFishSpeed(p.getSpeed() + "/" + p.getRepaintTime() + "  accelerating: " + p.isAccelerating()
+						+ " moving: " + p.isMoving() + " dir: " + p.getDir() + " lastDir:" + p.getLastDir());
+			}
+		};
+		t = new Timer(gameSpeed, move);
+
 	}
-	
-	public void movingHandler(){
-		if(p.isMoving()){
+
+	/**
+	 * Handle the direction the player is moving and send to appropriate
+	 * function.
+	 */
+	public void movingHandler() {
+		if (p.isMoving()) {
 			String dir = "";
-			if(p.getDir().equals("")){
+			if (p.getDir().equals("")) {
 				dir = p.getLastDir();
-			}else{
+			} else {
 				dir = p.getDir();
 			}
-			if(dir.contains("left")){
+			if (dir.contains("left")) {
 				p.moveLeft(viewFrame.getWidth());
 			}
-			if(dir.contains("right")){
+			if (dir.contains("right")) {
 				p.moveRight(viewFrame.getWidth());
 			}
-			
-			if(dir.contains("up")){
+
+			if (dir.contains("up")) {
 				p.moveUp();
 			}
-			if(dir.contains("down")){
+			if (dir.contains("down")) {
 				p.moveDown(viewFrame.getHeight());
 			}
 		}
-		
+
 		int i = 0;
-		while(i<gamePanel.getEnemies().size()){
-//		for(Enemy e: gamePanel.getEnemies()){
+		while (i < gamePanel.getEnemies().size()) {
 			moveEnemy(gamePanel.getEnemies().get(i));
 			i++;
-			
+
 		}
 	}
-	
-	private void moveEnemy(Enemy e){
-		if(e.isToLeft()){
+
+	/**
+	 * Function to move the enemy and repaint it on the Frame.
+	 * 
+	 * @param e
+	 *            The current enemy you want to move and repaint.
+	 */
+	private void moveEnemy(Enemy e) {
+		if (e.isToLeft()) {
 			e.setX(e.getX() - e.getSpeed());
-		}else{
+		} else {
 			e.setX(e.getX() + e.getSpeed());
 		}
-		if(e.getX()>Frame.getFrameWidth()+10 || e.getX()<-e.getWidth()-10){
+		if (e.getX() > Frame.getFrameWidth() + 10 || e.getX() < -e.getWidth() - 10) {
 			gamePanel.getEnemies().remove(e);
 		}
 		e.getBoundary().setFrame(e.getX(), e.getY(), e.getWidth(), e.getHeight());
 	}
-	
+
 }

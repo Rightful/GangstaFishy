@@ -3,7 +3,6 @@ package Model;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.AbstractMap;
 import java.util.List;
 import java.util.Map.Entry;
 
@@ -21,8 +20,6 @@ public class Player extends Unit{
 	
 	private List<Entry<String, Integer>> highscore;
 	private double score = 0, acceleration = 0.2;
-//	private Image sprite;
-	//private double speed = 10, repaintTime = 10;
 	private boolean moving = false, accelerating = false;
 	private int maxSpeed = 7;
 	private String dir = "", lastDir="";
@@ -33,8 +30,6 @@ public class Player extends Unit{
 
 	public Player(){
 		highscore = JSonRW.reader();
-		//highscore.add(new AbstractMap.SimpleEntry<String, Integer>("Jasper Gangsta",99999));
-		//JSonRW.writer(highscore);
 		try {
 			sprite = ImageIO.read(new File("img/player.png"));
 		} catch (IOException e) {
@@ -60,15 +55,10 @@ public class Player extends Unit{
 			moveDown(Frame.getFrameHeight());
 		}
 	}
-	/*
-	 * if(alive)
-	 * setsound
-	 */
 	
 	public void setMovingDirection(String dir){
 		moving = true;
 		this.dir = dir;
-//		System.out.println("==="+dir+"===");
 		if(!dir.equals("")){
 			lastDir = dir;
 			accelerating = true;
@@ -100,9 +90,6 @@ public class Player extends Unit{
 			y -= speed;
 			boundary.setFrame(x, y, width, height);
     	}
-//		if(gamePanel.getYPlayer()>0){
-//    		gamePanel.setYPlayer(gamePanel.getYPlayer()-p.getSpeed());
-//    	}
 	}
 	
 	public void moveDown(int fHeight){
@@ -110,16 +97,10 @@ public class Player extends Unit{
 			y += speed;
 			boundary.setFrame(x, y, width, height);
     	}
-//		if(gamePanel.getYPlayer()<(viewFrame.getHeight() - gamePanel.getHeightPlayer()-30)){
-//    		gamePanel.setYPlayer(gamePanel.getYPlayer()+p.getSpeed());
-//    	}
 	}
 	
 	public void update(){
-		//boundary.getBounds().setSize((int)(1703/15*score), (int)(1672/15*score));
 		if (width < 200 && height < 200){
-			//width = (int)(1703/20*score);
-			//height = (int)(1672/20*score);
 			width = (int)(score+75);
 			height = (int)(score+75);
 		}
