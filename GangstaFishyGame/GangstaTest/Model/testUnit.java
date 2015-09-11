@@ -1,6 +1,5 @@
 package Model;
 
-
 import static org.junit.Assert.*;
 import java.awt.Image;
 import java.awt.geom.Ellipse2D;
