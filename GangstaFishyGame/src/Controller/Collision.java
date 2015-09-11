@@ -34,15 +34,15 @@ public class Collision {
 					(pB.getCenterX()) - (eB.getCenterX()), 2)
 					+ Math.pow((pB.getCenterY()) - (eB.getCenterY()), 2));
 
-			if ((int) distance < (pB.getWidth())
-					&& pB.getWidth() > eB.getWidth()) {
+			if ((int) distance < (pB.getHeight())
+					&& pB.getHeight() > eB.getHeight()) {
 				player.setScore(player.getScore() + 10);
 				enemies.remove(e);
 				player.update();
 
 			}
 
-			else if ((int) distance < (pB.getWidth()) && pB.getWidth() < eB.getWidth()) {
+			else if ((int) distance < (pB.getHeight()) && pB.getHeight() < eB.getHeight()) {
 				player.setDead(true);
 			}
 

@@ -304,6 +304,8 @@ public class Controller {
 				public void actionPerformed(ActionEvent e){
 					commonPanel.setVisible(false);
 					startPanel.setVisible(true);
+					p.clean();
+					gamePanel.getEnemies().clear();
 				}
 			});
 		}

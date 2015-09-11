@@ -147,13 +147,27 @@ public class Player extends Unit {
 	 */
 	public void update() {
 		if (width < 200 && height < 200) {
-
 			width = (int) (score + 75);
 			height = (int) (score + 75);
 		}
 		boundary.setFrame(x, y, width, height);
 	}
 
+	public void clean(){
+		score = 0;
+		acceleration = 0.2;
+		moving = false;
+		accelerating = false;
+		maxSpeed = 7;
+		dir = "";
+		lastDir = "";
+		isDead = false;
+		update();
+		x = Frame.getFrameWidth() / 2 - width / 2;
+		y = Frame.getFrameHeight() / 2 - width / 2;
+		boundary.setFrame(x, y, width, height);
+	}
+	
 	/**
 	 * get score of player.
 	 * 

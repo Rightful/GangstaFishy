@@ -45,7 +45,7 @@ public class GamePanel extends JPanel {
 		super.paintComponent(g);
 		g.drawImage(bgImage, 0, 0, null);
 		for (Enemy e : enemies) {
-
+			g.drawOval(e.getX(), e.getY(), e.getWidth(), e.getHeight());
 			g.drawImage(e.getAnimSprite(), e.getX(), e.getY(), e.getWidth(),
 					e.getHeight(), this);
 		}
