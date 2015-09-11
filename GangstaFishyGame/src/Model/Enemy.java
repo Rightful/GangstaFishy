@@ -16,7 +16,6 @@ public class Enemy extends Unit{
 	
 	private static List<Image> sprites = new ArrayList<Image>();
 	private BufferedImage animSprite;
-	private int width, height;
 	private static Random generator = new Random();
 	private boolean toLeft = false;
 //	private double speed = 10, repaintTime = 10;
@@ -61,21 +60,6 @@ public class Enemy extends Unit{
 		return e;
 	}
 	
-	public int getWidth() {
-		return width;
-	}
-	public void setWidth(int width) {
-		this.width = width;
-	}
-
-	public int getHeight() {
-		return height;
-	}
-
-	public void setHeight(int height) {
-		this.height = height;
-	}
-
 	public boolean isToLeft() {
 		return toLeft;
 	}

@@ -42,8 +42,8 @@ public class Controller {
 
 	private AboutPanel aboutPanel = new AboutPanel(viewFrame);
 	private HighScorePanel highPanel = new HighScorePanel(viewFrame);
-	private GamePanel gamePanel = new GamePanel();
 	private Player p = new Player();
+	private GamePanel gamePanel = new GamePanel(p);
 	private BufferedImage sprite = (BufferedImage) p.getSprite();
 	private Timer t;
 	private double score;
@@ -87,12 +87,16 @@ public class Controller {
 	private void configureGamePanel(){
 		
 		gamePanel.setSize(viewFrame.getSize());
-		gamePanel.setWidthPlayer((int)(1703/15*score));
-		gamePanel.setHeightPlayer((int)(1672/15*score));
-		gamePanel.setXPlayer(viewFrame.getWidth()/2-gamePanel.getWidthPlayer()/2);
-		gamePanel.setYPlayer(viewFrame.getHeight()/2-gamePanel.getHeightPlayer()/2);
+//		gamePanel.setWidthPlayer((int)(1703/15*score));
+//		gamePanel.setHeightPlayer((int)(1672/15*score));
+//		gamePanel.setXPlayer(viewFrame.getWidth()/2-gamePanel.getWidthPlayer()/2);
+//		gamePanel.setYPlayer(viewFrame.getHeight()/2-gamePanel.getHeightPlayer()/2);
 		
-		gamePanel.setPlayerSprite(sprite.getSubimage(0, 0, 1703, 1672));
+		p.setX(viewFrame.getWidth()/2-p.getX()/2);
+		p.setY(viewFrame.getHeight()/2-p.getY()/2);
+		p.update();
+
+	//	gamePanel.setPlayerSprite(sprite.getSubimage(0, 0, 1703, 1672));
 		
 		update();
 	}
@@ -176,7 +180,7 @@ public class Controller {
 	 */
 	public void update(){
 		score = p.getScore();
-		gamePanel.setScore((int)(score*10-10));
+		//gamePanel.setScore((int)(score*10-10));
 	}
 	
 	//Opmerking: Functies moeten doen wat de naam zegt. Deze functie doet te veel. 
@@ -186,12 +190,12 @@ public class Controller {
 		ActionListener move = new ActionListener() {
 	         @Override
 	         public void actionPerformed(ActionEvent evt) {
+	        	Collision.collide(gamePanel.getEnemies(), p);
 	        	movingHandler();
 	        	 
 	        	if(gamePanel.getEnemies().size()<5){
 	        		gamePanel.getEnemies().add(Enemy.createEnemy());
 	        	}
-	        	
 	     		gamePanel.repaint();
 	     		p.speedController();
 	     		gamePanel.setFishSpeed(p.getSpeed() + "/"+p.getRepaintTime() + "  accelerating: "+p.isAccelerating() + " moving: "+p.isMoving() + " dir: "+p.getDir() + " lastDir:"+p.getLastDir());
@@ -211,17 +215,17 @@ public class Controller {
 				dir = p.getDir();
 			}
 			if(dir.contains("left")){
-				moveLeft();
+				p.moveLeft(viewFrame.getWidth());
 			}
 			if(dir.contains("right")){
-				moveRight();
+				p.moveRight(viewFrame.getWidth());
 			}
 			
 			if(dir.contains("up")){
-				moveUp();
+				p.moveUp();
 			}
 			if(dir.contains("down")){
-				moveDown();
+				p.moveDown(viewFrame.getHeight());
 			}
 		}
 		
@@ -243,33 +247,7 @@ public class Controller {
 		if(e.getX()>Frame.getFrameWidth()+10 || e.getX()<-e.getWidth()-10){
 			gamePanel.getEnemies().remove(e);
 		}
+		e.getBoundary().setFrame(e.getX(), e.getY(), e.getWidth(), e.getHeight());
 	}
 	
-	private void moveLeft(){
-		if(gamePanel.getXPlayer() < -gamePanel.getWidthPlayer()){
-			gamePanel.setXPlayer(viewFrame.getWidth());
-    	}
-		gamePanel.setXPlayer(gamePanel.getXPlayer()-p.getSpeed());
-		gamePanel.setPlayerSprite(p.getSpriteLeft()); //Memory explodes!
-	}
-	
-	private void moveRight(){
-		if(gamePanel.getXPlayer()>(viewFrame.getWidth())){
-			gamePanel.setXPlayer(-gamePanel.getWidthPlayer());
-		}
-    	gamePanel.setXPlayer(gamePanel.getXPlayer()+p.getSpeed());
-    	gamePanel.setPlayerSprite(p.getSpriteRight()); //Memory explodes!
-	}
-	
-	private void moveUp(){
-		if(gamePanel.getYPlayer()>0){
-    		gamePanel.setYPlayer(gamePanel.getYPlayer()-p.getSpeed());
-    	}
-	}
-	
-	private void moveDown(){
-		if(gamePanel.getYPlayer()<(viewFrame.getHeight() - gamePanel.getHeightPlayer()-30)){
-    		gamePanel.setYPlayer(gamePanel.getYPlayer()+p.getSpeed());
-    	}
-	}
 }

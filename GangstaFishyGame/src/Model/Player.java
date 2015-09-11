@@ -27,6 +27,7 @@ public class Player extends Unit{
 	private boolean isDead = false;
 	private BufferedImage spriteLeft;
 	private BufferedImage spriteRight;
+	private BufferedImage spriteFinal;
 
 	public Player(){
 		highscore = JSonRW.reader();
@@ -39,7 +40,8 @@ public class Player extends Unit{
 		}
 		spriteLeft = ((BufferedImage)sprite).getSubimage(0, 0, 1703, 1672);
 		spriteRight = ((BufferedImage)sprite).getSubimage(1703, 0, 1703, 1672);
-		
+		spriteFinal = spriteLeft;
+		update();
 	}
 	
 	public void speedController(){
@@ -66,11 +68,9 @@ public class Player extends Unit{
 //		System.out.println("==="+dir+"===");
 		if(!dir.equals("")){
 			 if (dir.contains("right") && toLeft) {
-				flipImage(dir);
 				toLeft = false;
 			}
 			else if (dir.contains("left") && !toLeft) {
-				flipImage(dir);
 				toLeft = true;
 			}
 			lastDir = dir;
@@ -80,6 +80,51 @@ public class Player extends Unit{
 		}
 	}
 
+	public void moveLeft(int fWidth){
+		if(x < -width){
+			x = fWidth;
+    	}
+		x -= speed;
+		spriteFinal = spriteLeft;
+		boundary.setFrame(x, y, width, height);
+	}
+	
+	public void moveRight(int fWidth){
+		if(x > fWidth){
+			x = -width;
+    	}
+		x += speed;
+		spriteFinal = spriteRight;
+		boundary.setFrame(x, y, width, height);
+	}
+	
+	public void moveUp(){
+		if(y > 0){
+			y -= speed;
+			boundary.setFrame(x, y, width, height);
+    	}
+//		if(gamePanel.getYPlayer()>0){
+//    		gamePanel.setYPlayer(gamePanel.getYPlayer()-p.getSpeed());
+//    	}
+	}
+	
+	public void moveDown(int fHeight){
+		if(y < fHeight - height - 30){
+			y += speed;
+			boundary.setFrame(x, y, width, height);
+    	}
+//		if(gamePanel.getYPlayer()<(viewFrame.getHeight() - gamePanel.getHeightPlayer()-30)){
+//    		gamePanel.setYPlayer(gamePanel.getYPlayer()+p.getSpeed());
+//    	}
+	}
+	
+	public void update(){
+		//boundary.getBounds().setSize((int)(1703/15*score), (int)(1672/15*score));
+		width = (int)(1703/15*score);
+		height = (int)(1672/15*score);
+		boundary.setFrame(x, y, width, height);
+	}
+	
 	public double getScore() {
 		return score;
 	}
@@ -148,5 +193,13 @@ public class Player extends Unit{
 
 	public List<Entry<String, Integer>> getHighscore() {
 		return highscore;
+	}
+
+	public BufferedImage getSpriteFinal() {
+		return spriteFinal;
+	}
+
+	public void setSpriteFinal(BufferedImage spriteFinal) {
+		this.spriteFinal = spriteFinal;
 	}
 }
