@@ -5,6 +5,7 @@ import java.util.List;
 
 import Model.Enemy;
 import Model.Player;
+
 /**
  * Class to calculate collisions.
  * 
@@ -15,10 +16,13 @@ public class Collision {
 
 	/**
 	 * Method for determining a collision between the player and enemies.
-	 * @param enemies List of enemies the player can collide with.
-	 * @param player The player of the game.
+	 * 
+	 * @param enemies
+	 *            List of enemies the player can collide with.
+	 * @param player
+	 *            The player of the game.
 	 */
-	public static void collide(List<Enemy> enemies, Player player){
+	public static void collide(List<Enemy> enemies, Player player) {
 
 		Ellipse2D pB = player.getBoundary();
 
@@ -35,11 +39,12 @@ public class Collision {
 				player.setScore(player.getScore() + 10);
 				enemies.remove(e);
 				player.update();
-			
+
 			}
 
-	        else if((int)distance<(pB.getWidth()) && pB.getWidth() < eB.getWidth()){
-	        }
+			else if ((int) distance < (pB.getWidth())
+					&& pB.getWidth() < eB.getWidth()) {
+			}
 
 		}
 	}

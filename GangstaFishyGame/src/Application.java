@@ -16,7 +16,6 @@ public class Application {
 	// Als je iets anders wilt doen voor een specifieke exception, een try met
 	// multiple catch blocks.
 
-
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 

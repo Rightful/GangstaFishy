@@ -21,7 +21,6 @@ public class Player extends Unit {
 	private List<Entry<String, Integer>> highscore;
 	private double score = 0, acceleration = 0.2;
 
-
 	private boolean moving = false, accelerating = false;
 	private int maxSpeed = 7;
 	private String dir = "", lastDir = "";
@@ -29,7 +28,6 @@ public class Player extends Unit {
 	private BufferedImage spriteLeft;
 	private BufferedImage spriteRight;
 	private BufferedImage spriteFinal;
-
 
 	/**
 	 * Constructor for the player.
@@ -47,7 +45,6 @@ public class Player extends Unit {
 		spriteFinal = spriteLeft;
 		update();
 	}
-
 
 	/**
 	 * Set the speed at which the player can move.
@@ -67,7 +64,6 @@ public class Player extends Unit {
 		}
 	}
 
-
 	/**
 	 * Set the direction the player is moving to.
 	 * 
@@ -86,7 +82,6 @@ public class Player extends Unit {
 		}
 	}
 
-
 	/**
 	 * configure the move left action.
 	 * 
@@ -103,7 +98,6 @@ public class Player extends Unit {
 		boundary.setFrame(x, y, width, height);
 	}
 
-
 	/**
 	 * configure the move right action.
 	 * 
@@ -119,7 +113,6 @@ public class Player extends Unit {
 		spriteFinal = spriteRight;
 		boundary.setFrame(x, y, width, height);
 	}
-
 
 	/**
 	 * configure the move up action.
@@ -160,7 +153,6 @@ public class Player extends Unit {
 		}
 		boundary.setFrame(x, y, width, height);
 	}
-
 
 	/**
 	 * get score of player.
@@ -224,7 +216,6 @@ public class Player extends Unit {
 		return dir;
 	}
 
-
 	/**
 	 * 
 	 * @return Return the previous direction player was facing.
@@ -271,7 +262,6 @@ public class Player extends Unit {
 			this.maxSpeed = maxSpeed;
 	}
 
-
 	/**
 	 * Determine if the player is dead.
 	 * 
@@ -281,7 +271,6 @@ public class Player extends Unit {
 	public boolean isDead() {
 		return this.isDead;
 	}
-
 
 	/**
 	 * set that the player is dead.

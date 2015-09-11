@@ -26,7 +26,6 @@ public class JSonRW {
 
 	private static String filePath = "database.json";// "jsonTest.json";
 
-
 	/**
 	 * Read the Json file.
 	 * 
@@ -53,12 +52,14 @@ public class JSonRW {
 				tempName = innerObj.get("Name").toString();
 				tempScore = Integer.parseInt(innerObj.get("Score").toString());
 
-				result.add(new AbstractMap.SimpleEntry<String, Integer>(tempName, tempScore));
+				result.add(new AbstractMap.SimpleEntry<String, Integer>(
+						tempName, tempScore));
 			}
 
 			Collections.sort(result, new Comparator<Entry<String, Integer>>() {
 				@Override
-				public int compare(Entry<String, Integer> x, Entry<String, Integer> y) {
+				public int compare(Entry<String, Integer> x,
+						Entry<String, Integer> y) {
 
 					return y.getValue() - x.getValue();
 				}
@@ -92,7 +93,6 @@ public class JSonRW {
 		try {
 			FileWriter file = new FileWriter(filePath);
 			file.write(obj.toJSONString());
-
 
 			file.flush();
 			file.close();

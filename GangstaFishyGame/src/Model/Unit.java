@@ -5,13 +5,11 @@ import java.awt.geom.Ellipse2D;
 
 /**
  * 
- * @author Kamran Tadzjibov
-<<<<<<< HEAD
+ * @author Kamran Tadzjibov <<<<<<< HEAD
  *
-=======
+ *         =======
  * 
->>>>>>> origin/master
- *         Parent class for Player and Enemy
+ *         >>>>>>> origin/master Parent class for Player and Enemy
  */
 public class Unit {
 
@@ -20,7 +18,6 @@ public class Unit {
 	protected boolean stop = true;
 	protected int x = 0, y = 0, width = 0, height = 0;
 	protected Ellipse2D boundary = new Ellipse2D.Double();
-
 
 	/**
 	 * Constuctor for the unit class.
@@ -78,7 +75,6 @@ public class Unit {
 
 	}
 
-
 	/**
 	 * return the image of the unit.
 	 * 
@@ -87,7 +83,6 @@ public class Unit {
 	public Image getSprite() {
 		return sprite;
 	}
-
 
 	/**
 	 * set the image of the unit.
@@ -107,7 +102,6 @@ public class Unit {
 	public boolean isStop() {
 		return stop;
 	}
-
 
 	/**
 	 * set that the unit is still or not.

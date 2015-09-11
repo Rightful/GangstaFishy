@@ -45,7 +45,8 @@ public class HighScorePanel extends JPanel {
 
 		String[] columnNames = { "Rank", "Name", "Score" };
 
-		Object[][] data = { { "", "", "" }, { "", "", "" }, { "", "", "" }, { "", "", "" }, { "", "", "" } };
+		Object[][] data = { { "", "", "" }, { "", "", "" }, { "", "", "" },
+				{ "", "", "" }, { "", "", "" } };
 		table = new JTable(data, columnNames);
 		table.setMinimumSize(new Dimension(600, 200));
 		JScrollPane pane = new JScrollPane(table);

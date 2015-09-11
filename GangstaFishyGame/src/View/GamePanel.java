@@ -46,17 +46,18 @@ public class GamePanel extends JPanel {
 		g.drawImage(bgImage, 0, 0, null);
 		for (Enemy e : enemies) {
 
-			g.drawImage(e.getAnimSprite(), e.getX(), e.getY(), e.getWidth(), e.getHeight(), this);
+			g.drawImage(e.getAnimSprite(), e.getX(), e.getY(), e.getWidth(),
+					e.getHeight(), this);
 		}
 
-		g.drawImage(player.getSpriteFinal(), player.getX(), player.getY(), player.getWidth(), player.getHeight(), this);
+		g.drawImage(player.getSpriteFinal(), player.getX(), player.getY(),
+				player.getWidth(), player.getHeight(), this);
 		g.setFont(new Font("Calibri", Font.BOLD, 30));
 		g.setColor(Color.white);
 		g.drawString("Score: " + player.getScore(), 30, 30);
 		g.setFont(new Font("Calibri", Font.BOLD, 16));
 		g.drawString("speed/repaintTime: " + fishSpeed, 30, 60);
 	}
-
 
 	/**
 	 * @return the bgImage

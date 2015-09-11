@@ -8,14 +8,17 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+
 /**
  * For creating background music.
+ * 
  * @author Shivam
  *
  */
 public class Sound {
 	/**
 	 * create thread to play the sound.
+	 * 
 	 * @param filename
 	 */
 	public synchronized static void playSound(final String filename) {

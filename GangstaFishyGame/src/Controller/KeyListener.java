@@ -20,6 +20,7 @@ public class KeyListener {
 	private boolean leftPressed, rightPressed, upPressed, downPressed,
 			paused = false;
 	private Timer t;
+
 	public Timer getT() {
 		return t;
 	}
@@ -28,17 +29,15 @@ public class KeyListener {
 		this.t = t;
 	}
 
-
 	private String dir = "";
 
-
-/**
- * Checking what key is pressed and determining what direction the player
- * should move to.
- * 
- * @param p
- *            The player of the game.
- */
+	/**
+	 * Checking what key is pressed and determining what direction the player
+	 * should move to.
+	 * 
+	 * @param p
+	 *            The player of the game.
+	 */
 	public void movePlayerKeyListener(final Player p) {
 		KeyboardFocusManager.getCurrentKeyboardFocusManager()
 				.addKeyEventDispatcher(new KeyEventDispatcher() {
@@ -72,12 +71,12 @@ public class KeyListener {
 							case KeyEvent.VK_S:
 								downPressed = true;
 								break;
-							case KeyEvent.VK_P:	
-								if(t != null){
+							case KeyEvent.VK_P:
+								if (t != null) {
 									if (paused) {
 										paused = false;
 										t.start();
-									} else{
+									} else {
 										paused = true;
 										t.stop();
 									}
@@ -123,10 +122,10 @@ public class KeyListener {
 				});
 	}
 
-
-/**
- * calculate what direction the player will move depending on the key that was pressed.
- */
+	/**
+	 * calculate what direction the player will move depending on the key that
+	 * was pressed.
+	 */
 
 	public void calcDir() {
 		if (leftPressed && !rightPressed && !dir.contains("left"))
@@ -154,5 +153,5 @@ public class KeyListener {
 	}
 
 	// methode aanmaken voor pauzeren.
-	
+
 }

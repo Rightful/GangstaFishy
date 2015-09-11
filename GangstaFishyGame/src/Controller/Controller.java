@@ -54,6 +54,7 @@ public class Controller {
 	private int difficulty = 5;
 	private int gameSpeed = 15;
 	private KeyListener kl;
+
 	/**
 	 * Constructor to initialize the Controller.
 	 */
@@ -67,7 +68,7 @@ public class Controller {
 	 * Initializing a Game
 	 */
 	private void init() {
-		Sound.playSound("sound/Thug_Life_Music.wav");
+		Sound.playSound("sound/Fish.wav");
 		score = p.getScore();
 		configureIntructionPanel();
 		configureGamePanel();
@@ -115,7 +116,6 @@ public class Controller {
 				gamePanel.setVisible(true);
 				startPanel.setVisible(false);
 
-
 				t.start();
 			}
 		});
@@ -156,7 +156,6 @@ public class Controller {
 
 	}
 
-
 	/**
 	 * Configure the highscore panel to show top scores.
 	 */
@@ -170,8 +169,10 @@ public class Controller {
 			highPanel.getTable().setValueAt(i + 1, i, 0);
 			if (i < highscore.size()) {
 
-				highPanel.getTable().setValueAt(highscore.get(i).getKey(), i, 1);
-				highPanel.getTable().setValueAt(highscore.get(i).getValue(), i, 2);
+				highPanel.getTable()
+						.setValueAt(highscore.get(i).getKey(), i, 1);
+				highPanel.getTable().setValueAt(highscore.get(i).getValue(), i,
+						2);
 
 			}
 		}
@@ -183,7 +184,6 @@ public class Controller {
 			}
 		});
 	}
-
 
 	/**
 	 * Configure About panel and the back button.
@@ -232,7 +232,6 @@ public class Controller {
 				if (p.isDead()) {
 
 				} else {
-
 
 					Collision.collide(gamePanel.getEnemies(), p);
 					movingHandler();
@@ -293,7 +292,6 @@ public class Controller {
 		}
 	}
 
-
 	/**
 	 * Function to move the enemy and repaint it on the Frame.
 	 * 
@@ -307,7 +305,8 @@ public class Controller {
 			e.setX(e.getX() + e.getSpeed());
 		}
 
-		if (e.getX() > Frame.getFrameWidth() + 10 || e.getX() < -e.getWidth() - 10) {
+		if (e.getX() > Frame.getFrameWidth() + 10
+				|| e.getX() < -e.getWidth() - 10) {
 
 			gamePanel.getEnemies().remove(e);
 		}
