@@ -25,7 +25,7 @@ public class Collision {
 		        player.update();
 			}
 	        else if((int)distance<(pB.getWidth()) && pB.getWidth() < eB.getWidth()){
-	        	player.setDead(true);
+	        	//player.setDead(true);
 //	        	System.exit(0);
 	        	// Moet eigenlijk naar 'enter name' pagina doorgestuurd worden en daarna naar 'high scores'/'start' panel.
 	        }

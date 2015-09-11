@@ -52,7 +52,7 @@ public class Controller {
 	
 	public Controller(){
 		init();
-		movePlayer();
+		updateFrames();
 	}
 	
 	/**
@@ -210,20 +210,24 @@ public class Controller {
 	//Opmerking: Functies moeten doen wat de naam zegt. Deze functie doet te veel. 
 	//De structuur van de Controller en van het spel is onoverzichtelijk en moet verbeterd worden.  
 	
-	public void movePlayer(){
+	public void updateFrames(){
 		ActionListener move = new ActionListener() {
 	         @Override
 	         public void actionPerformed(ActionEvent evt) {
-	        	Collision.collide(gamePanel.getEnemies(), p);
-	        	movingHandler();
-	        	 
-	        	if(gamePanel.getEnemies().size()<difficulty){
-	        		gamePanel.getEnemies().add(Enemy.createEnemy());
-	        	}
-	     		gamePanel.repaint();
-	     		p.speedController();
-	     		gamePanel.setFishSpeed(p.getSpeed() + "/"+p.getRepaintTime() + "  accelerating: "+p.isAccelerating() + " moving: "+p.isMoving() + " dir: "+p.getDir() + " lastDir:"+p.getLastDir());
-//	     		t.setDelay(p.getRepaintTime());
+	        	 if(p.isDead()){
+	        		 //handle game over
+	        	 }else{
+		        	Collision.collide(gamePanel.getEnemies(), p);
+		        	movingHandler();
+		        	 
+		        	if(gamePanel.getEnemies().size()<difficulty){
+		        		gamePanel.getEnemies().add(Enemy.createEnemy());
+		        	}
+		     		gamePanel.repaint();
+		     		p.speedController();
+		     		gamePanel.setFishSpeed(p.getSpeed() + "/"+p.getRepaintTime() + "  accelerating: "+p.isAccelerating() + " moving: "+p.isMoving() + " dir: "+p.getDir() + " lastDir:"+p.getLastDir());
+	//	     		t.setDelay(p.getRepaintTime());
+	        	 }
 	         }
 	      };
 	      t =  new Timer(gameSpeed, move);//p.getRepaintTime()
