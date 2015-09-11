@@ -160,7 +160,11 @@ public class CommonPanel extends JPanel {
 		{
 		    System.out.println("Hostname can not be resolved");
 		}
-		g.drawString("Game Over" + host, viewFrame.getWidth() / 3 + 10, viewFrame.getHeight() / 2);
+		g.drawString("Game Over " + host, 
+					viewFrame.getWidth() / 3 + 10, viewFrame.getHeight() / 2);
+		g.drawString("Your score: " + score, 
+				viewFrame.getWidth() / 3 + 10, viewFrame.getHeight() / 2 + 20);
+		
 		repaint();
 	}
 	/**

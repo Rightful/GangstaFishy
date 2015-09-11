@@ -3,12 +3,16 @@ package Controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.util.AbstractMap;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map.Entry;
 
 import javax.swing.Timer;
 
 import Model.Enemy;
+import Model.JSonRW;
 import Model.Player;
 import View.CommonPanel;
 import View.Frame;
@@ -124,6 +128,19 @@ public class Controller {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				List<Entry<String, Integer>> highscore = p.getHighscore();
+				for (int i = 0; i < highPanel.getTable().getRowCount(); i++) {
+
+					highPanel.getTable().setValueAt(i + 1, i, 0);
+					if (i < highscore.size()) {
+
+						highPanel.getTable()
+								.setValueAt(highscore.get(i).getKey(), i, 1);
+						highPanel.getTable().setValueAt(highscore.get(i).getValue(), i,
+								2);
+
+					}
+				}
 				highPanel.setVisible(true);
 				startPanel.setVisible(false);
 			}
@@ -163,19 +180,7 @@ public class Controller {
 	private void configureHighPanel() {
 		highPanel.setSize(viewFrame.getSize());
 
-		List<Entry<String, Integer>> highscore = p.getHighscore();
-		for (int i = 0; i < highPanel.getTable().getRowCount(); i++) {
-
-			highPanel.getTable().setValueAt(i + 1, i, 0);
-			if (i < highscore.size()) {
-
-				highPanel.getTable()
-						.setValueAt(highscore.get(i).getKey(), i, 1);
-				highPanel.getTable().setValueAt(highscore.get(i).getValue(), i,
-						2);
-
-			}
-		}
+		
 		highPanel.getBackbutt().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -296,6 +301,8 @@ public class Controller {
 		if(p.isDead()){
 			t.stop();
 			commonPanel.setC('g');
+			commonPanel.setScore((int)p.getScore());
+			saveScores();
 			commonPanel.setSize(viewFrame.getSize());
 			commonPanel.setVisible(true);
 			gamePanel.setVisible(false);
@@ -331,6 +338,21 @@ public class Controller {
 		}
 		e.getBoundary().setFrame(e.getX(), e.getY(), e.getWidth(),
 				e.getHeight());
+	}
+	
+	public void saveScores(){
+		p.getHighscore().add(new AbstractMap.SimpleEntry<String, Integer>(
+						"Player", (int)p.getScore()));
+		
+		Collections.sort(p.getHighscore(), new Comparator<Entry<String, Integer>>() {
+			@Override
+			public int compare(Entry<String, Integer> x,
+					Entry<String, Integer> y) {
+
+				return y.getValue() - x.getValue();
+			}
+		});
+		JSonRW.writer(p.getHighscore());
 	}
 
 }
