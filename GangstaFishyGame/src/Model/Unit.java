@@ -70,13 +70,4 @@ public class Unit {
 		this.y = y;
 	}
 	
-	// Draai afbeelding andere kant op
-	public void flipImage(String dir) {
-		if (dir.contains("left")){
-			// Draai naar rechts
-		}else {
-			// Draai naar links
-		}
-	}
-
 }

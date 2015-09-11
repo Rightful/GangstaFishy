@@ -44,9 +44,9 @@ public class Player extends Unit{
 			setSpeed(speed-acceleration);
 		}
 		
-		if(speed<=1.0 && dir.equals("")){//
+		if(speed<=1.0 && dir.equals("")){
 			moving = false;
-//			System.out.println(this.getY());
+			//System.out.println(this.getY());
 		}
 	}
 	/*
@@ -59,14 +59,6 @@ public class Player extends Unit{
 		this.dir = dir;
 //		System.out.println("==="+dir+"===");
 		if(!dir.equals("")){
-			 if (dir.contains("right") && toLeft) {
-				flipImage(dir);
-				toLeft = false;
-			}
-			else if (dir.contains("left") && !toLeft) {
-				flipImage(dir);
-				toLeft = true;
-			}
 			lastDir = dir;
 			accelerating = true;
 		}else{
