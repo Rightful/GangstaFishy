@@ -41,39 +41,58 @@ public class StartPanel extends JPanel {
 
 		startbutt = new JButton("Start");
 		add(startbutt);
-		startbutt.setBounds(vframe.getWidth() / 2 - (int) startbutt.getPreferredSize().getWidth() / 2,
-				vframe.getHeight() / 2 - (int) startbutt.getPreferredSize().getHeight() / 2 - 30,
-				(int) startbutt.getPreferredSize().getWidth(), (int) startbutt.getPreferredSize().getHeight());
+		startbutt.setBounds(vframe.getWidth() / 2
+				- (int) startbutt.getPreferredSize().getWidth() / 2,
+				vframe.getHeight() / 2
+						- (int) startbutt.getPreferredSize().getHeight() / 2
+						- 30, (int) startbutt.getPreferredSize().getWidth(),
+				(int) startbutt.getPreferredSize().getHeight());
 
 		sbutt = new JButton("Settings");
 		add(sbutt);
-		sbutt.setBounds(vframe.getWidth() / 2 - (int) sbutt.getPreferredSize().getWidth() / 2,
-				vframe.getHeight() / 2 - (int) sbutt.getPreferredSize().getHeight() / 2,
-				(int) sbutt.getPreferredSize().getWidth(), (int) sbutt.getPreferredSize().getHeight());
+		sbutt.setBounds(vframe.getWidth() / 2
+				- (int) sbutt.getPreferredSize().getWidth() / 2,
+				vframe.getHeight() / 2
+						- (int) sbutt.getPreferredSize().getHeight() / 2,
+				(int) sbutt.getPreferredSize().getWidth(), (int) sbutt
+						.getPreferredSize().getHeight());
 
 		helpbutt = new JButton("Instructions");
 		add(helpbutt);
-		helpbutt.setBounds(vframe.getWidth() / 2 - (int) helpbutt.getPreferredSize().getWidth() / 2,
-				vframe.getHeight() / 2 - (int) helpbutt.getPreferredSize().getHeight() / 2 + 30,
-				(int) helpbutt.getPreferredSize().getWidth(), (int) helpbutt.getPreferredSize().getHeight());
+		helpbutt.setBounds(vframe.getWidth() / 2
+				- (int) helpbutt.getPreferredSize().getWidth() / 2,
+				vframe.getHeight() / 2
+						- (int) helpbutt.getPreferredSize().getHeight() / 2
+						+ 30, (int) helpbutt.getPreferredSize().getWidth(),
+				(int) helpbutt.getPreferredSize().getHeight());
 
 		highbutt = new JButton("HighScore");
 		add(highbutt);
-		highbutt.setBounds(vframe.getWidth() / 2 - (int) highbutt.getPreferredSize().getWidth() / 2,
-				vframe.getHeight() / 2 - (int) highbutt.getPreferredSize().getHeight() / 2 + 60,
-				(int) highbutt.getPreferredSize().getWidth(), (int) highbutt.getPreferredSize().getHeight());
+		highbutt.setBounds(vframe.getWidth() / 2
+				- (int) highbutt.getPreferredSize().getWidth() / 2,
+				vframe.getHeight() / 2
+						- (int) highbutt.getPreferredSize().getHeight() / 2
+						+ 60, (int) highbutt.getPreferredSize().getWidth(),
+				(int) highbutt.getPreferredSize().getHeight());
 
 		abbutt = new JButton("About");
 		add(abbutt);
-		abbutt.setBounds(vframe.getWidth() / 2 - (int) abbutt.getPreferredSize().getWidth() / 2,
-				vframe.getHeight() / 2 - (int) abbutt.getPreferredSize().getHeight() / 2 + 90,
-				(int) abbutt.getPreferredSize().getWidth(), (int) abbutt.getPreferredSize().getHeight());
+		abbutt.setBounds(vframe.getWidth() / 2
+				- (int) abbutt.getPreferredSize().getWidth() / 2,
+				vframe.getHeight() / 2
+						- (int) abbutt.getPreferredSize().getHeight() / 2 + 90,
+				(int) abbutt.getPreferredSize().getWidth(), (int) abbutt
+						.getPreferredSize().getHeight());
 
 		exbutt = new JButton("Exit");
 		add(exbutt);
-		exbutt.setBounds(vframe.getWidth() / 2 - (int) exbutt.getPreferredSize().getWidth() / 2,
-				vframe.getHeight() / 2 - (int) exbutt.getPreferredSize().getHeight() / 2 + 120,
-				(int) exbutt.getPreferredSize().getWidth(), (int) exbutt.getPreferredSize().getHeight());
+		exbutt.setBounds(
+				vframe.getWidth() / 2
+						- (int) exbutt.getPreferredSize().getWidth() / 2,
+				vframe.getHeight() / 2
+						- (int) exbutt.getPreferredSize().getHeight() / 2 + 120,
+				(int) exbutt.getPreferredSize().getWidth(), (int) exbutt
+						.getPreferredSize().getHeight());
 
 	}
 
@@ -83,7 +102,8 @@ public class StartPanel extends JPanel {
 		g.drawImage(bgImage, 0, 0, null);
 		g.setFont(new Font("Calibri", Font.BOLD, 35));
 		g.setColor(Color.RED);
-		g.drawString("GangstaFishy", viewFrame.getWidth() / 3, viewFrame.getHeight() / 4);
+		g.drawString("GangstaFishy", viewFrame.getWidth() / 3,
+				viewFrame.getHeight() / 4);
 	}
 
 	/**

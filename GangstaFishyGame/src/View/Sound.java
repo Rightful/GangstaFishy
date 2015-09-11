@@ -15,7 +15,8 @@ public class Sound {
 			public void run() {
 				AudioInputStream inputStream = null;
 				try {
-					inputStream = AudioSystem.getAudioInputStream(new File(filename));
+					inputStream = AudioSystem.getAudioInputStream(new File(
+							filename));
 				} catch (UnsupportedAudioFileException | IOException e) {
 					e.printStackTrace();
 				}
@@ -39,7 +40,5 @@ public class Sound {
 			}// looping as long as this thread is alive
 		}).start();
 	}
-	
-	
 
 }

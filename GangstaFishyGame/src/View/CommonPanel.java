@@ -34,8 +34,10 @@ public class CommonPanel extends JPanel {
 		setVisible(false);
 		backbutt = new JButton("Back");
 		add(backbutt);
-		backbutt.setBounds(vFrame.getWidth() / 5, vFrame.getHeight() - vFrame.getHeight() / 5,
-				(int) backbutt.getPreferredSize().getWidth(), (int) backbutt.getPreferredSize().getHeight());
+		backbutt.setBounds(vFrame.getWidth() / 5,
+				vFrame.getHeight() - vFrame.getHeight() / 5, (int) backbutt
+						.getPreferredSize().getWidth(), (int) backbutt
+						.getPreferredSize().getHeight());
 	}
 
 	/**
@@ -100,19 +102,30 @@ public class CommonPanel extends JPanel {
 	}
 
 	public void about(Graphics g) {
-		g.drawString("A tale of a mysterious GangstaFishy as he fight and struggles to", 0, viewFrame.getHeight() / 4);
-		g.drawString("survive in the deep dark ocean of terror.", 0, viewFrame.getHeight() / 4 + 20);
+		g.drawString(
+				"A tale of a mysterious GangstaFishy as he fight and struggles to",
+				0, viewFrame.getHeight() / 4);
+		g.drawString("survive in the deep dark ocean of terror.", 0,
+				viewFrame.getHeight() / 4 + 20);
 		repaint();
 	}
 
 	public void instruction(Graphics g) {
-		g.drawString("press ↑ to move GangaFishy up", 20, viewFrame.getHeight() / 4);
-		g.drawString("press ↓ to move GangaFishy down", 20, viewFrame.getHeight() / 4+30);
-		g.drawString("press ← to move GangaFishy left", 20, viewFrame.getHeight() / 4+60);
-		g.drawString("press → to move GangaFishy right", 20, viewFrame.getHeight() / 4+90);
-		g.drawString("Navigate GangstaFishy through the deep dark ocean of terror and", 20, viewFrame.getHeight() / 4+120);
-		g.drawString("devour smaller fishies.", 20, viewFrame.getHeight() / 4+150);
-		g.drawString("Look out for bigger GangstaPiranhas and don't get eaten", 20, viewFrame.getHeight() / 4+180);
+		g.drawString("press â†‘ to move GangaFishy up", 20,
+				viewFrame.getHeight() / 4);
+		g.drawString("press â†“ to move GangaFishy down", 20,
+				viewFrame.getHeight() / 4 + 30);
+		g.drawString("press â†� to move GangaFishy left", 20,
+				viewFrame.getHeight() / 4 + 60);
+		g.drawString("press â†’ to move GangaFishy right", 20,
+				viewFrame.getHeight() / 4 + 90);
+		g.drawString(
+				"Navigate GangstaFishy through the deep dark ocean of terror and",
+				20, viewFrame.getHeight() / 4 + 120);
+		g.drawString("devour smaller fishies.", 20,
+				viewFrame.getHeight() / 4 + 150);
+		g.drawString("Look out for bigger GangstaPiranhas and don't get eaten",
+				20, viewFrame.getHeight() / 4 + 180);
 		repaint();
 	}
 

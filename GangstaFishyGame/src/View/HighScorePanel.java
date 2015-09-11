@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+
 /**
  * 
  * @author Shivam
@@ -24,7 +25,7 @@ public class HighScorePanel extends JPanel {
 	private Frame viewFrame;
 	private JButton backbutt;
 	private JTable table;
-	
+
 	public HighScorePanel(Frame vFrame) {
 		viewFrame = vFrame;
 		setLayout(null);
@@ -37,12 +38,15 @@ public class HighScorePanel extends JPanel {
 		setVisible(false);
 		backbutt = new JButton("Back");
 		add(backbutt);
-		backbutt.setBounds(vFrame.getWidth() / 5, vFrame.getHeight() - vFrame.getHeight() / 5,
-				(int) backbutt.getPreferredSize().getWidth(), (int) backbutt.getPreferredSize().getHeight());
+		backbutt.setBounds(vFrame.getWidth() / 5,
+				vFrame.getHeight() - vFrame.getHeight() / 5, (int) backbutt
+						.getPreferredSize().getWidth(), (int) backbutt
+						.getPreferredSize().getHeight());
 
 		String[] columnNames = { "Rank", "Name", "Score" };
-		Object[][] data = { { "", "", "" },{ "", "", "" },{ "", "", "" }, { "", "", "" },{ "", "", "" }};
-		table  = new JTable(data, columnNames);
+		Object[][] data = { { "", "", "" }, { "", "", "" }, { "", "", "" },
+				{ "", "", "" }, { "", "", "" } };
+		table = new JTable(data, columnNames);
 		table.setMinimumSize(new Dimension(600, 200));
 		JScrollPane pane = new JScrollPane(table);
 		pane.setMinimumSize(new Dimension(600, 23));
@@ -104,7 +108,8 @@ public class HighScorePanel extends JPanel {
 		g.drawImage(bgImage, 0, 0, null);
 		g.setFont(new Font("Calibri", Font.BOLD, 35));
 		g.setColor(Color.BLUE);
-		g.drawString("GangstaFishy", viewFrame.getWidth() / 3, viewFrame.getHeight() / 4);
+		g.drawString("GangstaFishy", viewFrame.getWidth() / 3,
+				viewFrame.getHeight() / 4);
 
 	}
 
