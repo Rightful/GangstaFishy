@@ -31,6 +31,10 @@ public class Enemy extends Unit {
 	public static void loadSprites() {
 		try {
 			sprites.add(ImageIO.read(new File("img/enemy1.png")));
+			sprites.add(ImageIO.read(new File("img/rwina.png")));
+			sprites.add(ImageIO.read(new File("img/Brown.png")));
+			sprites.add(ImageIO.read(new File("img/bluepiranha.png")));
+			sprites.add(ImageIO.read(new File("img/redpiranha.png")));
 
 		} catch (IOException e) {
 			e.printStackTrace();
