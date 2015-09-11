@@ -215,7 +215,6 @@ public class Controller {
 			@Override
 			public void actionPerformed(ActionEvent evt) {
 				if (p.isDead()) {
-					// handle game over
 				} else {
 					Collision.collide(gamePanel.getEnemies(), p);
 					movingHandler();
@@ -231,7 +230,7 @@ public class Controller {
 				}
 			}
 		};
-		t = new Timer(gameSpeed, move);// p.getRepaintTime()
+		t = new Timer(gameSpeed, move);
 	}
 
 	/**

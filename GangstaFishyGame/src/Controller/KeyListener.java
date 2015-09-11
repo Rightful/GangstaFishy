@@ -10,115 +10,122 @@ import Model.Player;
  * 
  * @author Kamran Tadzjibov
  * 
- * Handle keyboard input
+ *         Handle keyboard input
  *
  */
 public class KeyListener {
 
 	private boolean leftPressed, rightPressed, upPressed, downPressed;
 	private String dir = "";
-	
-	public void movePlayerKeyListener(final Player p){
+
+	/**
+	 * Checking what key is pressed and determining what direction the player
+	 * should move to.
+	 * 
+	 * @param p
+	 *            The player of the game.
+	 */
+	public void movePlayerKeyListener(final Player p) {
 		KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new KeyEventDispatcher() {
+			@Override
+			public boolean dispatchKeyEvent(KeyEvent ke) {
 
-            @Override
-            public boolean dispatchKeyEvent(KeyEvent ke) {
-            	
-            	if(ke.getID() == KeyEvent.KEY_PRESSED){
-	                    switch (ke.getKeyCode()) {
-	                    case KeyEvent.VK_LEFT:
-	                    	leftPressed = true;
-	                        break;
-	                    case KeyEvent.VK_RIGHT:
-	                    	
-	                    	rightPressed = true;
-	                        break;
-	                    case KeyEvent.VK_UP:
-	                    	
-	                    	upPressed = true;
-	                        break;
-	                    case KeyEvent.VK_DOWN:
-	                    	
-	                    	downPressed = true;
-	                        break;
-	                    case KeyEvent.VK_A:
-	                    	leftPressed = true;
-	                        break;
-	                    case KeyEvent.VK_D:
-	                    	
-	                    	rightPressed = true;
-	                        break;
-	                    case KeyEvent.VK_W:
-	                    	
-	                    	upPressed = true;
-	                        break;
-	                    case KeyEvent.VK_S:
-	                    	
-	                    	downPressed = true;
-	                        break;
-	                    }
-	                    
-	              }
-            	if(ke.getID() == KeyEvent.KEY_RELEASED){
-                    switch (ke.getKeyCode()) {
-                    case KeyEvent.VK_LEFT:
-                    	leftPressed = false;
-                        break;
-                    case KeyEvent.VK_RIGHT:
-                    	rightPressed = false;
-                        break;
-                    case KeyEvent.VK_UP:
-                    	upPressed = false;
-                        break;
-                    case KeyEvent.VK_DOWN:
-                    	downPressed = false;
-                        break;
-                    case KeyEvent.VK_A:
-                    	leftPressed = false;
-                        break;
-                    case KeyEvent.VK_D:
-                    	rightPressed = false;
-                        break;
-                    case KeyEvent.VK_W:
-                    	upPressed = false;
-                        break;
-                    case KeyEvent.VK_S:
-                    	downPressed = false;
-                        break;
-                    } 
-            	}
+				if (ke.getID() == KeyEvent.KEY_PRESSED) {
+					switch (ke.getKeyCode()) {
+					case KeyEvent.VK_LEFT:
+						leftPressed = true;
+						break;
+					case KeyEvent.VK_RIGHT:
 
-            	calcDir();
-            	p.setMovingDirection(dir);
-                return false;
-            }
-            
-        });
+						rightPressed = true;
+						break;
+					case KeyEvent.VK_UP:
+
+						upPressed = true;
+						break;
+					case KeyEvent.VK_DOWN:
+
+						downPressed = true;
+						break;
+					case KeyEvent.VK_A:
+						leftPressed = true;
+						break;
+					case KeyEvent.VK_D:
+
+						rightPressed = true;
+						break;
+					case KeyEvent.VK_W:
+
+						upPressed = true;
+						break;
+					case KeyEvent.VK_S:
+
+						downPressed = true;
+						break;
+					}
+
+				}
+				if (ke.getID() == KeyEvent.KEY_RELEASED) {
+					switch (ke.getKeyCode()) {
+					case KeyEvent.VK_LEFT:
+						leftPressed = false;
+						break;
+					case KeyEvent.VK_RIGHT:
+						rightPressed = false;
+						break;
+					case KeyEvent.VK_UP:
+						upPressed = false;
+						break;
+					case KeyEvent.VK_DOWN:
+						downPressed = false;
+						break;
+					case KeyEvent.VK_A:
+						leftPressed = false;
+						break;
+					case KeyEvent.VK_D:
+						rightPressed = false;
+						break;
+					case KeyEvent.VK_W:
+						upPressed = false;
+						break;
+					case KeyEvent.VK_S:
+						downPressed = false;
+						break;
+					}
+				}
+
+				calcDir();
+				p.setMovingDirection(dir);
+				return false;
+			}
+
+		});
 	}
-	
-	public void calcDir(){
-		if(leftPressed && !rightPressed && !dir.contains("left"))
-    		dir += " left";
-		if(!leftPressed && rightPressed && !dir.contains("right"))
-    		dir += " right";
-		if(upPressed && !downPressed && !dir.contains("up"))
-    		dir += " up";
-		if(!upPressed && downPressed && !dir.contains("down"))
-    		dir += " down";
-		
-		if(!leftPressed){
+/**
+ * calculate what direction the player will move depending on the key that was pressed.
+ */
+	public void calcDir() {
+		if (leftPressed && !rightPressed && !dir.contains("left"))
+			dir += " left";
+		if (!leftPressed && rightPressed && !dir.contains("right"))
+			dir += " right";
+		if (upPressed && !downPressed && !dir.contains("up"))
+			dir += " up";
+		if (!upPressed && downPressed && !dir.contains("down"))
+			dir += " down";
+
+		if (!leftPressed) {
 			dir = dir.replaceAll(" left", "");
 		}
-		if(!rightPressed){
+		if (!rightPressed) {
 			dir = dir.replaceAll(" right", "");
 		}
-		if(!upPressed){
+		if (!upPressed) {
 			dir = dir.replaceAll(" up", "");
 		}
-		if(!downPressed){
+		if (!downPressed) {
 			dir = dir.replaceAll(" down", "");
 		}
 
-		
 	}
 }

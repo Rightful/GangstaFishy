@@ -2,13 +2,21 @@ package Controller;
 
 import java.awt.geom.Ellipse2D;
 import java.util.List;
-import View.*;
 
 import Model.Enemy;
 import Model.Player;
-
+/**
+ * Class to calculate collisions.
+ * 
+ * @author Kamran
+ *
+ */
 public class Collision {
-	
+	/**
+	 * Method for determining a collision between the player and enemies.
+	 * @param enemies List of enemies the player can collide with.
+	 * @param player The player of the game.
+	 */
 	public static void collide(List<Enemy> enemies, Player player){
 		Ellipse2D pB = player.getBoundary();
 		
@@ -25,9 +33,6 @@ public class Collision {
 		        player.update();
 			}
 	        else if((int)distance<(pB.getWidth()) && pB.getWidth() < eB.getWidth()){
-	        	//player.setDead(true);
-//	        	System.exit(0);
-	        	// Moet eigenlijk naar 'enter name' pagina doorgestuurd worden en daarna naar 'high scores'/'start' panel.
 	        }
 		}
 	}
