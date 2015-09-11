@@ -68,7 +68,7 @@ public class Controller {
 	 * Initializing a Game
 	 */
 	private void init() {
-		Sound.playSound("sound/Fish.wav");
+		Sound.playSound("sound/ManyMen.wav");
 		score = p.getScore();
 		configureIntructionPanel();
 		configureGamePanel();
