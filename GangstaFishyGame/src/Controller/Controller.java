@@ -10,7 +10,7 @@ import javax.swing.Timer;
 import Model.Enemy;
 import Model.JSonRW;
 import Model.Player;
-import View.AboutPanel;
+import View.CommonPanel;
 import View.Frame;
 import View.GamePanel;
 import View.HighScorePanel;
@@ -40,7 +40,7 @@ public class Controller {
 		this.startPanel = startPanel;
 	}
 
-	private AboutPanel aboutPanel = new AboutPanel(viewFrame);
+	private CommonPanel commonPanel = new CommonPanel(viewFrame);
 	private HighScorePanel highPanel = new HighScorePanel(viewFrame);
 	private Player p = new Player();
 	private GamePanel gamePanel = new GamePanel(p);
@@ -66,7 +66,7 @@ public class Controller {
 		configureHighPanel();
 		configureAboutPanel();
 		viewFrame.add(gamePanel);
-		viewFrame.add(aboutPanel);
+		viewFrame.add(commonPanel);
 		viewFrame.add(highPanel);
 		viewFrame.add(startPanel);
 		Enemy.loadSprites();	
@@ -131,7 +131,7 @@ public class Controller {
 
 			@Override 
 			public void actionPerformed(ActionEvent e){
-				aboutPanel.setVisible(true);
+				commonPanel.setVisible(true);
 				startPanel.setVisible(false);
 			}
 		});
@@ -167,11 +167,11 @@ public class Controller {
 	}
 
 	private void configureAboutPanel(){
-		aboutPanel.setSize(viewFrame.getSize());
-		aboutPanel.getBackbutt().addActionListener(new ActionListener(){
+		commonPanel.setSize(viewFrame.getSize());
+		commonPanel.getBackbutt().addActionListener(new ActionListener(){
 			@Override 
 			public void actionPerformed(ActionEvent e){
-				aboutPanel.setVisible(false);
+				commonPanel.setVisible(false);
 				startPanel.setVisible(true);
 			}
 		});

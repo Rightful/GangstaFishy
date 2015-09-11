@@ -15,12 +15,12 @@ import javax.swing.JPanel;
  *
  */
 @SuppressWarnings("serial")
-public class AboutPanel extends JPanel {
+public class CommonPanel extends JPanel {
 	private Image bgImage;
 	private Frame viewFrame;
 	private JButton backbutt;
 
-	public AboutPanel(Frame vFrame) {
+	public CommonPanel(Frame vFrame) {
 		viewFrame = vFrame;
 		setLayout(null);
 		try {
