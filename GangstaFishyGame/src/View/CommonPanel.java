@@ -9,6 +9,7 @@ import java.io.File;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+
 /**
  * 
  * @author Shivam
@@ -19,6 +20,7 @@ public class CommonPanel extends JPanel {
 	private Image bgImage;
 	private Frame viewFrame;
 	private JButton backbutt;
+	private char c;
 
 	public CommonPanel(Frame vFrame) {
 		viewFrame = vFrame;
@@ -87,10 +89,39 @@ public class CommonPanel extends JPanel {
 		g.drawImage(bgImage, 0, 0, null);
 		g.setFont(new Font("Calibri", Font.BOLD, 20));
 		g.setColor(Color.RED);
-		about(g);
+		switch (c) {
+		case 'a':
+			about(g);
+			break;
+		case 'i':
+			instruction(g);
+
+		}
 	}
-	
-	public void about(Graphics g){
-		g.drawString("asfjbsajkb", 0, viewFrame.getHeight() / 4);
+
+	public void about(Graphics g) {
+		g.drawString("A tale of a mysterious GangstaFishy as he fight and struggles to", 0, viewFrame.getHeight() / 4);
+		g.drawString("survive in the deep dark ocean of terror.", 0, viewFrame.getHeight() / 4 + 20);
+		repaint();
 	}
+
+	public void instruction(Graphics g) {
+		g.drawString("press ↑ to move GangaFishy up", 20, viewFrame.getHeight() / 4);
+		g.drawString("press ↓ to move GangaFishy down", 20, viewFrame.getHeight() / 4+30);
+		g.drawString("press ← to move GangaFishy left", 20, viewFrame.getHeight() / 4+60);
+		g.drawString("press → to move GangaFishy right", 20, viewFrame.getHeight() / 4+90);
+		g.drawString("Navigate GangstaFishy through the deep dark ocean of terror and", 20, viewFrame.getHeight() / 4+120);
+		g.drawString("devour smaller fishies.", 20, viewFrame.getHeight() / 4+150);
+		g.drawString("Look out for bigger GangstaPiranhas and don't get eaten", 20, viewFrame.getHeight() / 4+180);
+		repaint();
+	}
+
+	public void setchar(char ch) {
+		c = ch;
+	}
+
+	public char getchar() {
+		return c;
+	}
+
 }
