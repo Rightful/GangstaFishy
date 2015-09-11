@@ -162,7 +162,8 @@ public class Player extends Unit {
 		dir = "";
 		lastDir = "";
 		isDead = false;
-		update();
+		width = (int) (score + 75);
+		height = (int) (score + 75);
 		x = Frame.getFrameWidth() / 2 - width / 2;
 		y = Frame.getFrameHeight() / 2 - width / 2;
 		boundary.setFrame(x, y, width, height);
