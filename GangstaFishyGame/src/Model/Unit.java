@@ -66,8 +66,7 @@ public class Unit {
 	/**
 	 * set the speed of the unit.
 	 * 
-	 * @param speed
-	 *            speed of the unit.
+	 * @param speed of the unit.   
 	 */
 	public void setSpeed(double speed) {
 		this.speed = speed;
