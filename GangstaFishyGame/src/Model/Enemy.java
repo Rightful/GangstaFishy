@@ -114,5 +114,10 @@ public class Enemy extends Unit {
 	public void setAnimSprite(BufferedImage animSprite) {
 		this.animSprite = animSprite;
 	}
+	
+	
+	public List<Image> getSprites() {
+		return sprites;
+	}
 
 }

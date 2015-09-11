@@ -13,12 +13,15 @@ import org.junit.Test;
  *
  */
 public class EnemyTest {
-
+	
+	Enemy enemy;
+	
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
+		enemy = new Enemy();
 	}
 
 	/**
@@ -26,7 +29,8 @@ public class EnemyTest {
 	 */
 	@Test
 	public void testLoadSprites() {
-		fail("Not yet implemented");
+		Enemy.loadSprites();
+		assertEquals(5, enemy.getSprites().size());
 	}
 
 	/**
@@ -34,7 +38,8 @@ public class EnemyTest {
 	 */
 	@Test
 	public void testCreateEnemy() {
-		fail("Not yet implemented");
+		Enemy e = enemy.createEnemy();
+		assertNotNull(e);
 	}
 
 	/**
@@ -42,7 +47,7 @@ public class EnemyTest {
 	 */
 	@Test
 	public void testIsToLeft() {
-		fail("Not yet implemented");
+		assertFalse(enemy.isToLeft());
 	}
 
 	/**
@@ -50,23 +55,18 @@ public class EnemyTest {
 	 */
 	@Test
 	public void testSetToLeft() {
-		fail("Not yet implemented");
+		enemy.setToLeft(true);
+		assertTrue(enemy.isToLeft());
 	}
 
 	/**
 	 * Test method for {@link Model.Enemy#getAnimSprite()}.
-	 */
-	@Test
-	public void testGetAnimSprite() {
-		fail("Not yet implemented");
-	}
-
-	/**
 	 * Test method for {@link Model.Enemy#setAnimSprite(java.awt.image.BufferedImage)}.
 	 */
 	@Test
-	public void testSetAnimSprite() {
-		fail("Not yet implemented");
+	public void testAnimSprite() {
+		enemy.setAnimSprite(null);
+		assertNull(enemy.getAnimSprite());
 	}
 
 }

@@ -92,7 +92,7 @@ public class testUnit {
 	@Test
 	public void testSprite() {
 		unit.setSprite(null);
-		assertEquals(null, unit.getSprite());
+		assertNull(unit.getSprite());
 	}
 	
 	/**
