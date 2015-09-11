@@ -133,7 +133,7 @@ public class Controller {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				commonPanel.setchar('a');
+				commonPanel.setC('a');
 				commonPanel.setVisible(true);
 				startPanel.setVisible(false);
 			}
@@ -141,7 +141,7 @@ public class Controller {
 		startPanel.getHelpbutt().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				commonPanel.setchar('i');
+				commonPanel.setC('i');
 				commonPanel.setVisible(true);
 				startPanel.setVisible(false);
 			}
@@ -190,7 +190,7 @@ public class Controller {
 	 */
 
 	private void configureAboutPanel() {
-		commonPanel.setchar('a');
+		commonPanel.setC('a');
 		commonPanel.setSize(viewFrame.getSize());
 		commonPanel.getBackbutt().addActionListener(new ActionListener() {
 			@Override
@@ -202,7 +202,7 @@ public class Controller {
 	}
 
 	private void configureIntructionPanel() {
-		commonPanel.setchar('i');
+		commonPanel.setC('i');
 		commonPanel.setSize(viewFrame.getSize());
 		commonPanel.getBackbutt().addActionListener(new ActionListener() {
 			@Override
@@ -295,7 +295,7 @@ public class Controller {
 	public void gameOver(){
 		if(p.isDead()){
 			t.stop();
-			commonPanel.setchar('g');
+			commonPanel.setC('g');
 			commonPanel.setSize(viewFrame.getSize());
 			commonPanel.setVisible(true);
 			gamePanel.setVisible(false);
