@@ -34,10 +34,12 @@ public class CommonPanel extends JPanel {
 		setVisible(false);
 		backbutt = new JButton("Back");
 		add(backbutt);
-		backbutt.setBounds(vFrame.getWidth() / 5,
-				vFrame.getHeight() - vFrame.getHeight() / 5, (int) backbutt
-						.getPreferredSize().getWidth(), (int) backbutt
-						.getPreferredSize().getHeight());
+		backbutt.setBounds(vFrame.getWidth() / 2
+				- (int) backbutt.getPreferredSize().getWidth() / 2,
+		vFrame.getHeight() / 2
+				- (int) backbutt.getPreferredSize().getHeight() / 2 + 120,
+		(int) backbutt.getPreferredSize().getWidth(), (int) backbutt
+				.getPreferredSize().getHeight());
 	}
 
 	/**
@@ -144,7 +146,7 @@ public class CommonPanel extends JPanel {
 	}
 
 	public void gameOver(Graphics g) {
-		g.drawString("Game Over BITCH!!!", viewFrame.getWidth() / 2, viewFrame.getHeight() / 2);
+		g.drawString("         Game Over BITCH!!!", viewFrame.getWidth() / 3, viewFrame.getHeight() / 2);
 		
 		repaint();
 	}

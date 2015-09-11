@@ -106,8 +106,8 @@ public class StartPanel extends JPanel {
 		super.paintComponent(g);
 		g.drawImage(bgImage, 0, 0, null);
 		g.setFont(new Font("Calibri", Font.BOLD, 35));
-		g.setColor(Color.RED);
-		g.drawString("GangstaFishy", viewFrame.getWidth() / 3,
+		g.setColor(Color.WHITE);
+		g.drawString("     GangstaFishy", viewFrame.getWidth() / 3,
 				viewFrame.getHeight() / 4);
 	}
 
