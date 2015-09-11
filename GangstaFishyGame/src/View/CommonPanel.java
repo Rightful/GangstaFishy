@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
@@ -19,6 +21,7 @@ import javax.swing.JPanel;
 public class CommonPanel extends JPanel {
 	private Image bgImage;
 	private Frame viewFrame;
+	private int score;
 	private JButton backbutt;
 	private char c;
 
@@ -146,26 +149,45 @@ public class CommonPanel extends JPanel {
 	}
 
 	public void gameOver(Graphics g) {
-		g.drawString("         Game Over BITCH!!!", viewFrame.getWidth() / 3, viewFrame.getHeight() / 2);
-		
+		String host = "Anonymous";
+		try
+		{
+		    InetAddress addr;
+		    addr = InetAddress.getLocalHost();
+		    host = addr.getHostName();
+		}
+		catch (UnknownHostException ex)
+		{
+		    System.out.println("Hostname can not be resolved");
+		}
+		g.drawString("Game Over" + host, viewFrame.getWidth() / 3 + 10, viewFrame.getHeight() / 2);
 		repaint();
 	}
 	/**
-	 * Set the char ch to change from panels.
-	 * 
-	 * @param ch
+	 * @return the score
 	 */
-	public void setchar(char ch) {
-		c = ch;
+	public int getScore() {
+		return score;
 	}
 
 	/**
-	 * get the current.
-	 * 
-	 * @return
+	 * @param score the score to set
 	 */
-	public char getchar() {
+	public void setScore(int score) {
+		this.score = score;
+	}
+
+	/**
+	 * @return the c
+	 */
+	public char getC() {
 		return c;
 	}
 
+	/**
+	 * @param c the c to set
+	 */
+	public void setC(char c) {
+		this.c = c;
+	}
 }
