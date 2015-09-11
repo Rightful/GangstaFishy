@@ -36,12 +36,12 @@ public class Player extends Unit {
 		highscore = JSonRW.reader();
 
 		try {
-			sprite = ImageIO.read(new File("img/player.png"));
+			sprite = ImageIO.read(new File("img/gangsta.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		spriteLeft = ((BufferedImage) sprite).getSubimage(0, 0, 1703, 1672);
-		spriteRight = ((BufferedImage) sprite).getSubimage(1703, 0, 1703, 1672);
+		spriteLeft = ((BufferedImage) sprite).getSubimage(0, 0, sprite.getWidth(null)/2, sprite.getHeight(null));
+		spriteRight = ((BufferedImage) sprite).getSubimage(sprite.getWidth(null)/2, 0, sprite.getWidth(null)/2, sprite.getHeight(null));
 		spriteFinal = spriteLeft;
 		update();
 	}
