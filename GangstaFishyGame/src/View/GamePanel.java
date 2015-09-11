@@ -13,6 +13,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 import Model.Enemy;
+import Model.Player;
 
 /**
  * 
@@ -24,13 +25,13 @@ import Model.Enemy;
 @SuppressWarnings("serial")
 public class GamePanel extends JPanel {
 
-	private Image playerSprite;
+	private Player player;
 	private Image bgImage;
-	private int xPlayer, yPlayer, widthPlayer, heightPlayer, score;
 	private String fishSpeed = "0 / 0";
 	private List<Enemy> enemies = new ArrayList<Enemy>();
 
-	public GamePanel() {
+	public GamePanel(Player player) {
+		this.player = player;
 		setVisible(false);
 		try {
 			bgImage = ImageIO.read(new File("img/bg1.jpg"));
@@ -45,118 +46,24 @@ public class GamePanel extends JPanel {
 		g.drawImage(bgImage, 0, 0, null);
 		for (Enemy e : enemies) {
 			g.drawImage(e.getAnimSprite(), e.getX(), e.getY(), e.getWidth(), e.getHeight(), this);
+			g.drawOval(e.getX(), e.getY(), e.getWidth(), e.getHeight());
 		}
 
-		g.drawImage(playerSprite, xPlayer, yPlayer, widthPlayer, heightPlayer, this);
+		g.drawImage(player.getSpriteFinal(), 
+				player.getX(), player.getY(), 
+				player.getWidth(), player.getHeight(), this);
+		
+		
 		// Collision Boundary will use later
-		// g.drawOval(xPlayer, yPlayer, widthPlayer, heightPlayer);
+		g.drawOval(player.getX(), player.getY(), player.getWidth(), player.getHeight());
 		g.setFont(new Font("Calibri", Font.BOLD, 30));
 		g.setColor(Color.white);
-		g.drawString("Score: " + score, 30, 30);
+		g.drawString("Score: " + player.getScore(), 30, 30);
 		g.setFont(new Font("Calibri", Font.BOLD, 16));
 		g.drawString("speed/repaintTime: " + fishSpeed, 30, 60);
 	}
 
-	/**
-	 * 
-	 * @return Sprite image of the player
-	 */
-	public Image getPlayerSprite() {
-		return playerSprite;
-	}
-
-	/**
-	 * 
-	 * @param playerSprite
-	 *            Sprite image of the player
-	 */
-	public void setPlayerSprite(Image playerSprite) {
-		this.playerSprite = playerSprite;
-	}
-
-	/**
-	 * 
-	 * @return get x-coordinate of the player
-	 */
-	public int getXPlayer() {
-		return xPlayer;
-	}
-
-	/**
-	 * 
-	 * @param set
-	 *            x-coordinate of the player
-	 */
-	public void setXPlayer(int xPlayer) {
-		this.xPlayer = xPlayer;
-	}
-
-	/**
-	 * 
-	 * @return get y-coordinate of the player
-	 */
-	public int getYPlayer() {
-		return yPlayer;
-	}
-
-	/**
-	 * 
-	 * @param set
-	 *            y-coordinate of the player
-	 */
-	public void setYPlayer(int yPlayer) {
-		this.yPlayer = yPlayer;
-	}
-
-	/**
-	 * 
-	 * @return get width of the player (sprite)
-	 */
-	public int getWidthPlayer() {
-		return widthPlayer;
-	}
-
-	/**
-	 * 
-	 * @param set
-	 *            width of the player (sprite)
-	 */
-	public void setWidthPlayer(int widthPlayer) {
-		this.widthPlayer = widthPlayer;
-	}
-
-	/**
-	 * 
-	 * @return get height of the player (sprite)
-	 */
-	public int getHeightPlayer() {
-		return heightPlayer;
-	}
-
-	/**
-	 * 
-	 * @param set
-	 *            height of the player (sprite)
-	 */
-	public void setHeightPlayer(int heightPlayer) {
-		this.heightPlayer = heightPlayer;
-	}
-
-	/**
-	 * 
-	 * @return player score
-	 */
-	public int getScore() {
-		return score;
-	}
-
-	/**
-	 * 
-	 * @return player score
-	 */
-	public void setScore(int score) {
-		this.score = score;
-	}
+	
 
 	public String getFishSpeed() {
 		return fishSpeed;
@@ -168,6 +75,14 @@ public class GamePanel extends JPanel {
 
 	public List<Enemy> getEnemies() {
 		return enemies;
+	}
+
+	public Player getPlayer() {
+		return player;
+	}
+
+	public void setPlayer(Player player) {
+		this.player = player;
 	}
 
 }

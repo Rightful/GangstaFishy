@@ -31,5 +31,7 @@ local.properties
 .texlipse
 
 .classpath
+*.classpath
 .project
+.class
 *.class

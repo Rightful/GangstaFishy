@@ -16,7 +16,7 @@ public class Unit {
 	protected double speed = 10, repaintTime = 10;
 	protected Image sprite;
 	protected boolean stop = true;
-	protected int x = 0, y = 0;
+	protected int x = 0, y = 0, width = 0, height = 0;
     protected Ellipse2D boundary = new Ellipse2D.Double();
 	
 	public Ellipse2D getBoundary() {
@@ -69,5 +69,21 @@ public class Unit {
 	public void setY(int y) {
 		this.y = y;
 	}
-	
+
+	public int getWidth() {
+		return width;
+	}
+
+	public void setWidth(int width) {
+		this.width = width;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
+
 }
