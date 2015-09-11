@@ -3,6 +3,7 @@ package Model;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.AbstractMap;
 import java.util.List;
 import java.util.Map.Entry;
 
@@ -17,7 +18,7 @@ import javax.imageio.ImageIO;
 public class Player extends Unit{
 	
 	private List<Entry<String, Integer>> highscore;
-	private double score = 1.5, acceleration = 0.2;
+	private double score = 0, acceleration = 0.2;
 //	private Image sprite;
 	//private double speed = 10, repaintTime = 10;
 	private boolean moving = false, accelerating = false;
@@ -30,8 +31,8 @@ public class Player extends Unit{
 
 	public Player(){
 		highscore = JSonRW.reader();
-		//highscore.add("RealGangsta,99999");
-		JSonRW.writer(highscore);
+		//highscore.add(new AbstractMap.SimpleEntry<String, Integer>("Jasper Gangsta",99999));
+		//JSonRW.writer(highscore);
 		try {
 			sprite = ImageIO.read(new File("img/player.png"));
 		} catch (IOException e) {
@@ -53,7 +54,9 @@ public class Player extends Unit{
 		
 		if(speed<=1.0 && dir.equals("")){
 			moving = false;
-			//System.out.println(this.getY());
+			if (y<500) {
+				y++;
+			}
 		}
 	}
 	/*
@@ -113,8 +116,12 @@ public class Player extends Unit{
 	
 	public void update(){
 		//boundary.getBounds().setSize((int)(1703/15*score), (int)(1672/15*score));
-		width = (int)(1703/15*score);
-		height = (int)(1672/15*score);
+		if (width < 200 && height < 200){
+			//width = (int)(1703/20*score);
+			//height = (int)(1672/20*score);
+			width = (int)(score+75);
+			height = (int)(score+75);
+		}
 		boundary.setFrame(x, y, width, height);
 	}
 	

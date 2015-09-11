@@ -42,7 +42,7 @@ public class Enemy extends Unit{
 	public static Enemy createEnemy(){
 		Enemy e = new Enemy();
 		e.setSprite(sprites.get(generator.nextInt(sprites.size())));
-		e.setWidth(generator.nextInt(250)+50);
+		e.setWidth(generator.nextInt(200)+50);
 		e.setHeight(e.getSprite().getHeight(null)*e.getWidth()*2/e.getSprite().getWidth(null));
 		
 		if(generator.nextBoolean()){

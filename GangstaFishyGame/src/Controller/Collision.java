@@ -2,6 +2,7 @@ package Controller;
 
 import java.awt.geom.Ellipse2D;
 import java.util.List;
+import View.*;
 
 import Model.Enemy;
 import Model.Player;
@@ -19,10 +20,14 @@ public class Collision {
 	        					Math.pow((pB.getCenterY()) - (eB.getCenterY()), 2));
 	
 	        if((int)distance<(pB.getWidth()) && pB.getWidth() > eB.getWidth()){
-		        player.setScore(player.getScore() + 0.06);	
+		        player.setScore(player.getScore() + 10);	
 		        enemies.remove(e);
 		        player.update();
 			}
+	        else if((int)distance<(pB.getWidth()) && pB.getWidth() < eB.getWidth()){
+	        	System.exit(0);
+	        	// Moet eigenlijk naar 'enter name' pagina doorgestuurd worden en daarna naar 'high scores'/'start' panel.
+	        }
 		}
 	}
 }
