@@ -229,10 +229,10 @@ public class Controller {
 		ActionListener move = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent evt) {
-				if (p.isDead()) {
-
-				} else {
-
+//				if (p.isDead()) {
+//
+//				} else {
+				gameOver();
 					Collision.collide(gamePanel.getEnemies(), p);
 					movingHandler();
 
@@ -248,7 +248,7 @@ public class Controller {
 							+ " dir: " + p.getDir() + " lastDir:"
 							+ p.getLastDir());
 					// t.setDelay(p.getRepaintTime());
-				}
+//				}
 			}
 		};
 		t = new Timer(gameSpeed, move);// p.getRepaintTime()
@@ -292,6 +292,23 @@ public class Controller {
 		}
 	}
 
+	public void gameOver(){
+		if(p.isDead()){
+			t.stop();
+			commonPanel.setchar('g');
+			commonPanel.setSize(viewFrame.getSize());
+			commonPanel.setVisible(true);
+			gamePanel.setVisible(false);
+			commonPanel.getBackbutt().addActionListener(new ActionListener(){
+				@Override 
+				public void actionPerformed(ActionEvent e){
+					commonPanel.setVisible(false);
+					startPanel.setVisible(true);
+				}
+			});
+		}
+	}
+	
 	/**
 	 * Function to move the enemy and repaint it on the Frame.
 	 * 

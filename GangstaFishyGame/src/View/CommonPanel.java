@@ -97,7 +97,10 @@ public class CommonPanel extends JPanel {
 			break;
 		case 'i':
 			instruction(g);
-
+			break;
+		case 'g':
+			gameOver(g);
+			break;
 		}
 	}
 
@@ -140,6 +143,11 @@ public class CommonPanel extends JPanel {
 		repaint();
 	}
 
+	public void gameOver(Graphics g) {
+		g.drawString("Game Over BITCH!!!", viewFrame.getWidth() / 2, viewFrame.getHeight() / 2);
+		
+		repaint();
+	}
 	/**
 	 * Set the char ch to change from panels.
 	 * 

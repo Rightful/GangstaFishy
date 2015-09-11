@@ -42,8 +42,8 @@ public class Collision {
 
 			}
 
-			else if ((int) distance < (pB.getWidth())
-					&& pB.getWidth() < eB.getWidth()) {
+			else if ((int) distance < (pB.getWidth()) && pB.getWidth() < eB.getWidth()) {
+				player.setDead(true);
 			}
 
 		}
