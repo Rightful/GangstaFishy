@@ -21,7 +21,7 @@ public class testPlayer {
 	@Test
 	public void testScore() {
 		player.setScore(100.0);
-		assertEquals(100.0, player.getScore());
+		assertTrue(player.getScore()==100.0);
 		
 	}
 
