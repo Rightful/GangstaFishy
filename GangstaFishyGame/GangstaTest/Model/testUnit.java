@@ -53,23 +53,5 @@ public class testUnit {
 		unit.setStop(false);
 		assertEquals(false, unit.isStop());
 	}
-	
-	@Test
-	public void testSprite() {
-		unit.setSprite(null);
-		assertEquals(null, unit.getSprite());
-	}
-	
-	@Test
-	public void testSpeed() {
-		unit.setSpeed(10);
-		assertEquals(10, unit.getSpeed());
-	}
-	
-	@Test
-	public void testRepaintTime() {
-		unit.setSpeed(10);
-		assertEquals(10, unit.getRepaintTime());
-	}
 
 }
