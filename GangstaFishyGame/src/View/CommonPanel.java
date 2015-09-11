@@ -87,8 +87,10 @@ public class CommonPanel extends JPanel {
 		g.drawImage(bgImage, 0, 0, null);
 		g.setFont(new Font("Calibri", Font.BOLD, 20));
 		g.setColor(Color.RED);
-		g.drawString("A tale of a mysterious GangstaFishy as he fight and struggles to", 0, viewFrame.getHeight() / 4);
-		g.drawString("survive in the deep dark ocean of terror.", 0, viewFrame.getHeight() / 4 + 20);
-
+		about(g);
+	}
+	
+	public void about(Graphics g){
+		g.drawString("asfjbsajkb", 0, viewFrame.getHeight() / 4);
 	}
 }
