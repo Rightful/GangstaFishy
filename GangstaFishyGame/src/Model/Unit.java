@@ -1,15 +1,13 @@
 package Model;
 
-import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.geom.Ellipse2D;
-import java.awt.geom.Ellipse2D.Double;
 
 /**
  * 
  * @author Kamran Tadzjibov
- *	
- *	Parent class for Player and Enemy
+ * 
+ *         Parent class for Player and Enemy
  */
 public class Unit {
 
@@ -17,8 +15,11 @@ public class Unit {
 	protected Image sprite;
 	protected boolean stop = true;
 	protected int x = 0, y = 0, width = 0, height = 0;
-    protected Ellipse2D boundary = new Ellipse2D.Double();
-	
+	protected Ellipse2D boundary = new Ellipse2D.Double();
+
+	public Unit(){
+		
+	}
 	public Ellipse2D getBoundary() {
 		return boundary;
 	}
@@ -28,28 +29,31 @@ public class Unit {
 	}
 
 	public int getRepaintTime() {
-		return (int)repaintTime;
+		return (int) repaintTime;
 	}
 
 	public int getSpeed() {
-		return (int)speed;
+		return (int) speed;
 	}
 
 	public void setSpeed(double speed) {
 		this.speed = speed;
 		repaintTime = 20 - speed;
-		
+
 	}
-	
+
 	public Image getSprite() {
 		return sprite;
 	}
+
 	public void setSprite(Image sprite) {
 		this.sprite = sprite;
 	}
+
 	public boolean isStop() {
 		return stop;
 	}
+
 	public void setStop(boolean stop) {
 		this.stop = stop;
 	}
