@@ -47,6 +47,8 @@ public class Controller {
 	private BufferedImage sprite = (BufferedImage) p.getSprite();
 	private Timer t;
 	private double score;
+	private int difficulty = 5;//easy
+	private int gameSpeed = 15;//easy
 	
 	public Controller(){
 		init();
@@ -193,7 +195,7 @@ public class Controller {
 	        	Collision.collide(gamePanel.getEnemies(), p);
 	        	movingHandler();
 	        	 
-	        	if(gamePanel.getEnemies().size()<5){
+	        	if(gamePanel.getEnemies().size()<difficulty){
 	        		gamePanel.getEnemies().add(Enemy.createEnemy());
 	        	}
 	     		gamePanel.repaint();
@@ -202,7 +204,7 @@ public class Controller {
 //	     		t.setDelay(p.getRepaintTime());
 	         }
 	      };
-	      t =  new Timer(15, move);//p.getRepaintTime()
+	      t =  new Timer(gameSpeed, move);//p.getRepaintTime()
 	      
 	}
 	

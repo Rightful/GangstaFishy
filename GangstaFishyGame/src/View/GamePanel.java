@@ -46,7 +46,7 @@ public class GamePanel extends JPanel {
 		g.drawImage(bgImage, 0, 0, null);
 		for (Enemy e : enemies) {
 			g.drawImage(e.getAnimSprite(), e.getX(), e.getY(), e.getWidth(), e.getHeight(), this);
-			g.drawOval(e.getX(), e.getY(), e.getWidth(), e.getHeight());
+//			g.drawOval(e.getX(), e.getY(), e.getWidth(), e.getHeight());
 		}
 
 		g.drawImage(player.getSpriteFinal(), 
@@ -55,7 +55,7 @@ public class GamePanel extends JPanel {
 		
 		
 		// Collision Boundary will use later
-		g.drawOval(player.getX(), player.getY(), player.getWidth(), player.getHeight());
+//		g.drawOval(player.getX(), player.getY(), player.getWidth(), player.getHeight());
 		g.setFont(new Font("Calibri", Font.BOLD, 30));
 		g.setColor(Color.white);
 		g.drawString("Score: " + player.getScore(), 30, 30);
