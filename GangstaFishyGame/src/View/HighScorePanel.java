@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+
 /**
  * 
  * @author Shivam
@@ -24,7 +25,7 @@ public class HighScorePanel extends JPanel {
 	private Frame viewFrame;
 	private JButton backbutt;
 	private JTable table;
-	
+
 	public HighScorePanel(Frame vFrame) {
 		viewFrame = vFrame;
 		setLayout(null);
@@ -41,8 +42,8 @@ public class HighScorePanel extends JPanel {
 				(int) backbutt.getPreferredSize().getWidth(), (int) backbutt.getPreferredSize().getHeight());
 
 		String[] columnNames = { "Rank", "Name", "Score" };
-		Object[][] data = { { "", "", "" },{ "", "", "" },{ "", "", "" }, { "", "", "" },{ "", "", "" }};
-		table  = new JTable(data, columnNames);
+		Object[][] data = { { "", "", "" }, { "", "", "" }, { "", "", "" }, { "", "", "" }, { "", "", "" } };
+		table = new JTable(data, columnNames);
 		table.setMinimumSize(new Dimension(600, 200));
 		JScrollPane pane = new JScrollPane(table);
 		pane.setMinimumSize(new Dimension(600, 23));
@@ -108,10 +109,20 @@ public class HighScorePanel extends JPanel {
 
 	}
 
+	/**
+	 * Get the table of with high scores.
+	 * 
+	 * @return
+	 */
 	public JTable getTable() {
 		return table;
 	}
 
+	/**
+	 * set the table for highscores.
+	 * 
+	 * @param table
+	 */
 	public void setTable(JTable table) {
 		this.table = table;
 	}

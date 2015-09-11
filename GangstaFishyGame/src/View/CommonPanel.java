@@ -99,27 +99,48 @@ public class CommonPanel extends JPanel {
 		}
 	}
 
+	/**
+	 * Paint the strings for the graphics panel.
+	 * 
+	 * @param g
+	 */
 	public void about(Graphics g) {
 		g.drawString("A tale of a mysterious GangstaFishy as he fight and struggles to", 0, viewFrame.getHeight() / 4);
 		g.drawString("survive in the deep dark ocean of terror.", 0, viewFrame.getHeight() / 4 + 20);
 		repaint();
 	}
 
+	/**
+	 * Paint the strings for instruction panel.
+	 * 
+	 * @param g
+	 */
 	public void instruction(Graphics g) {
 		g.drawString("press \u2191 to move GangaFishy up", 20, viewFrame.getHeight() / 4);
-		g.drawString("press \u2193 to move GangaFishy down", 20, viewFrame.getHeight() / 4+30);
-		g.drawString("press \u2190 to move GangaFishy left", 20, viewFrame.getHeight() / 4+60);
-		g.drawString("press \u2192 to move GangaFishy right", 20, viewFrame.getHeight() / 4+90);
-		g.drawString("Navigate GangstaFishy through the deep dark ocean of terror and", 20, viewFrame.getHeight() / 4+120);
-		g.drawString("devour smaller fishies.", 20, viewFrame.getHeight() / 4+150);
-		g.drawString("Look out for bigger GangstaPiranhas and don't get eaten", 20, viewFrame.getHeight() / 4+180);
+		g.drawString("press \u2193 to move GangaFishy down", 20, viewFrame.getHeight() / 4 + 30);
+		g.drawString("press \u2190 to move GangaFishy left", 20, viewFrame.getHeight() / 4 + 60);
+		g.drawString("press \u2192 to move GangaFishy right", 20, viewFrame.getHeight() / 4 + 90);
+		g.drawString("Navigate GangstaFishy through the deep dark ocean of terror and", 20,
+				viewFrame.getHeight() / 4 + 120);
+		g.drawString("devour smaller fishies.", 20, viewFrame.getHeight() / 4 + 150);
+		g.drawString("Look out for bigger GangstaPiranhas and don't get eaten", 20, viewFrame.getHeight() / 4 + 180);
 		repaint();
 	}
 
+	/**
+	 * Set the char ch to change from panels.
+	 * 
+	 * @param ch
+	 */
 	public void setchar(char ch) {
 		c = ch;
 	}
 
+	/**
+	 * get the current.
+	 * 
+	 * @return
+	 */
 	public char getchar() {
 		return c;
 	}
