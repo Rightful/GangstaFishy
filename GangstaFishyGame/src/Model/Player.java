@@ -180,8 +180,8 @@ public class Player extends Unit{
 		return this.isDead;
 	}
 	
-	public void setDead() {
-		this.isDead = true;
+	public void setDead(boolean isDead) {
+		this.isDead = isDead;
 	}
 
 	public BufferedImage getSpriteLeft() {
