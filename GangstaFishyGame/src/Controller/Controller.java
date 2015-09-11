@@ -3,6 +3,8 @@ package Controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.AbstractMap;
 import java.util.Collections;
 import java.util.Comparator;
@@ -341,8 +343,20 @@ public class Controller {
 	}
 	
 	public void saveScores(){
+		String gangstaName;
+		try
+		{
+		    InetAddress addr;
+		    addr = InetAddress.getLocalHost();
+		    gangstaName = addr.getHostName();
+		}
+		catch (UnknownHostException ex)
+		{
+			gangstaName = "Anonymous";
+		    System.out.println("Hostname can not be resolved");
+		}
 		p.getHighscore().add(new AbstractMap.SimpleEntry<String, Integer>(
-						"Player", (int)p.getScore()));
+				gangstaName, (int)p.getScore()));
 		
 		Collections.sort(p.getHighscore(), new Comparator<Entry<String, Integer>>() {
 			@Override
