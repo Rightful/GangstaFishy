@@ -33,8 +33,18 @@ public class Player extends Unit {
 	 * Constructor for the player.
 	 */
 	public Player() {
-		highscore = JSonRW.reader();
-
+		highscore = JSonRW.readDatabase();
+		getBoundsProLeft().setPolygon( JSonRW.readBoundaries("gangsta").getKey());
+		getBoundsProRight().setPolygon( JSonRW.readBoundaries("gangsta").getValue());
+//		System.out.println("Player: width, npoints"+getBoundsPro().getWidth() + " " + getBoundsPro().npoints);
+		
+//		getBoundsPro().translate(x, y);
+//		System.out.println("Player: x,y = " + getBoundsPro().getX() + ", " + getBoundsPro().getY());
+		
+//		getBoundsPro().scaleTo(300, 300);
+//		getBoundsPro().scaleTo(50, 50);
+//		getBoundsPro().scaleTo(70, 70);
+//		
 		try {
 			sprite = ImageIO.read(new File("img/gangsta.png"));
 		} catch (IOException e) {
@@ -96,6 +106,8 @@ public class Player extends Unit {
 		x -= speed;
 		spriteFinal = spriteLeft;
 		boundary.setFrame(x, y, width, height);
+		translateBounds(x, y);
+
 	}
 
 	/**
@@ -112,6 +124,7 @@ public class Player extends Unit {
 		x += speed;
 		spriteFinal = spriteRight;
 		boundary.setFrame(x, y, width, height);
+		translateBounds(x, y);
 	}
 
 	/**
@@ -122,6 +135,7 @@ public class Player extends Unit {
 		if (y > 0) {
 			y -= speed;
 			boundary.setFrame(x, y, width, height);
+			translateBounds(x, y);
 		}
 
 	}
@@ -137,8 +151,8 @@ public class Player extends Unit {
 		if (y < fHeight - height - 30) {
 			y += speed;
 			boundary.setFrame(x, y, width, height);
+			translateBounds(x, y);			
 		}
-
 	}
 
 	/**
@@ -146,13 +160,16 @@ public class Player extends Unit {
 	 * boundaries.
 	 */
 	public void update() {
-		if (width < 200 && height < 200) {
+		if (width < 500 && height < 500) {
 			width = (int) (score + 75);
 			height = (int) (score + 75);
 		}
 		boundary.setFrame(x, y, width, height);
+//		System.out.println(spriteFinal.getWidth() + " " + spriteFinal.getHeight());
+		scaleBounds(width, height);//-(int)(width*0.07)
 	}
 
+	
 	public void clean(){
 		score = 0;
 		acceleration = 0.2;

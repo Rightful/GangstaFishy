@@ -3,6 +3,7 @@ package View;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
@@ -57,6 +58,15 @@ public class GamePanel extends JPanel {
 		g.drawString("Score: " + player.getScore(), 30, 30);
 		g.setFont(new Font("Calibri", Font.BOLD, 16));
 		g.drawString("speed/repaintTime: " + fishSpeed, 30, 60);
+		
+		Graphics2D g2d = (Graphics2D) g;
+		if(player.getSpriteFinal().equals(player.getSpriteLeft()))
+			g2d.drawPolygon(player.getBoundsProLeft());
+		else{
+			g2d.drawPolygon(player.getBoundsProRight());
+		}
+		
+		g2d.fillOval(100, 100, 10, 10);
 	}
 
 	/**

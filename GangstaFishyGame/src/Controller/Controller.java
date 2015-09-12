@@ -105,6 +105,7 @@ public class Controller {
 
 		p.setX(viewFrame.getWidth() / 2 - p.getX() / 2);
 		p.setY(viewFrame.getHeight() / 2 - p.getY() / 2);
+		p.translateBounds(p.getX(), p.getY());
 		p.update();
 
 		update();

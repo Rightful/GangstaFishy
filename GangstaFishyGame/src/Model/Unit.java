@@ -1,15 +1,14 @@
 package Model;
 
 import java.awt.Image;
+import java.awt.Polygon;
 import java.awt.geom.Ellipse2D;
 
 /**
  * 
- * @author Kamran Tadzjibov <<<<<<< HEAD
+ * @author Kamran Tadzjibov 
  *
- *         =======
- * 
- *         >>>>>>> origin/master Parent class for Player and Enemy
+ * Parent class for Player and Enemy
  */
 public class Unit {
 
@@ -18,14 +17,28 @@ public class Unit {
 	protected boolean stop = true;
 	protected int x = 0, y = 0, width = 0, height = 0;
 	protected Ellipse2D boundary = new Ellipse2D.Double();
-
+	
+	protected BoundsPro boundsProLeft = new BoundsPro();
+	protected BoundsPro boundsProRight = new BoundsPro();
 	/**
 	 * Constuctor for the unit class.
 	 */
 	public Unit() {
 
 	}
+	
+	
 
+	public void translateBounds(int x, int y){
+		getBoundsProLeft().translateTo(x, y);
+		getBoundsProRight().translateTo(x, y);
+	}
+	
+
+	public void scaleBounds(int w, int h){
+		getBoundsProLeft().scaleTo(w, h);
+		getBoundsProRight().scaleTo(w, h);
+	}
 	/**
 	 * Get the collision boundaries for the units.
 	 * 
@@ -180,6 +193,14 @@ public class Unit {
 	 */
 	public void setHeight(int height) {
 		this.height = height;
+	}
+
+	public BoundsPro getBoundsProLeft() {
+		return boundsProLeft;
+	}
+
+	public BoundsPro getBoundsProRight() {
+		return boundsProRight;
 	}
 
 }

@@ -1,5 +1,6 @@
 package Model;
 
+import java.awt.Polygon;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -25,14 +26,14 @@ import org.json.simple.parser.ParseException;
 public class JSonRW {
 
 	private static String filePath = "database.json";// "jsonTest.json";
-
+	private static String boundsFilePath = "Boundaries.json";
 	/**
 	 * Read the Json file.
 	 * 
 	 * @return list with String(representing player name) and
 	 *         integer(representing user score).
 	 */
-	public static List<Entry<String, Integer>> reader() {
+	public static List<Entry<String, Integer>> readDatabase() {
 
 		List<Entry<String, Integer>> result = new ArrayList<Entry<String, Integer>>();
 
@@ -74,6 +75,78 @@ public class JSonRW {
 		} catch (NullPointerException ex) {
 			ex.printStackTrace();
 		}
+		return result;
+	}
+	
+	
+	public static Entry<Polygon, Polygon> readBoundaries(String name) {
+		
+		Polygon left = new Polygon();
+		Polygon right = new Polygon();
+		
+
+		try {
+			FileReader reader = new FileReader(boundsFilePath);
+
+			JSONParser jsonParser = new JSONParser();
+			JSONObject jsonObject = (JSONObject) jsonParser.parse(reader);
+			JSONArray gangstaList = (JSONArray) jsonObject.get("GangstaBoundaries");
+			
+			JSONArray pointsList = null;
+
+			Iterator i1 = gangstaList.iterator();
+			while (i1.hasNext()) {
+				JSONObject innerObj = (JSONObject) i1.next();
+				
+				if(innerObj.get("name").equals(name+"_Left")){
+					pointsList=(JSONArray) innerObj.get("points");
+				}
+			}
+			Iterator i2 = pointsList.iterator();
+			String tempPoint;
+			int tempX, tempY;
+
+			
+			while (i2.hasNext()) {
+				JSONObject innerObj = (JSONObject) i2.next();
+				tempPoint = innerObj.get("XY").toString();
+				tempX = Integer.parseInt(tempPoint.split(",")[0]);
+				tempY = Integer.parseInt(tempPoint.split(",")[1]);
+				left.addPoint(tempX, tempY);
+			}
+			
+			//RIGHT
+			i1 = gangstaList.iterator();
+			while (i1.hasNext()) {
+				JSONObject innerObj = (JSONObject) i1.next();
+				
+				if(innerObj.get("name").equals(name+"_Right")){
+					pointsList=(JSONArray) innerObj.get("points");
+				}
+			}
+			i2 = pointsList.iterator();
+
+			
+			while (i2.hasNext()) {
+				JSONObject innerObj = (JSONObject) i2.next();
+				tempPoint = innerObj.get("XY").toString();
+				tempX = Integer.parseInt(tempPoint.split(",")[0]);
+				tempY = Integer.parseInt(tempPoint.split(",")[1]);
+				right.addPoint(tempX, tempY);
+			}
+
+			
+
+		} catch (FileNotFoundException ex) {
+			ex.printStackTrace();
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		} catch (ParseException ex) {
+			ex.printStackTrace();
+		} catch (NullPointerException ex) {
+			ex.printStackTrace();
+		}
+		Entry<Polygon, Polygon> result = new AbstractMap.SimpleEntry<Polygon, Polygon>(left, right);
 		return result;
 	}
 
