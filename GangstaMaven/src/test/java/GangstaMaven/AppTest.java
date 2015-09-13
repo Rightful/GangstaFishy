@@ -1,4 +1,4 @@
-package GangstaMaven;
+package test.java.GangstaMaven;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

@@ -1,7 +1,6 @@
-package Model;
+package main.java.Model;
 
 import java.awt.Image;
-import java.awt.Polygon;
 import java.awt.geom.Ellipse2D;
 
 /**

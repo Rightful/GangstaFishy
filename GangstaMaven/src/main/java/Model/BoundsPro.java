@@ -1,8 +1,7 @@
-package Model;
+package main.java.Model;
 
 import java.awt.Polygon;
 import java.util.Arrays;
-import java.util.List;
 
 @SuppressWarnings("serial")
 public class BoundsPro extends Polygon{

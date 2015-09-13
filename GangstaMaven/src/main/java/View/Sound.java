@@ -1,4 +1,4 @@
-package View;
+package main.java.View;
 
 import java.io.File;
 import java.io.IOException;

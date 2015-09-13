@@ -1,10 +1,10 @@
-package Controller;
+package main.java.Controller;
 
 import java.awt.geom.Ellipse2D;
 import java.util.List;
 
-import Model.Enemy;
-import Model.Player;
+import main.java.Model.Enemy;
+import main.java.Model.Player;
 
 /**
  * Class to calculate collisions.

@@ -1,4 +1,4 @@
-package View;
+package main.java.View;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -13,8 +13,8 @@ import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
-import Model.Enemy;
-import Model.Player;
+import main.java.Model.Enemy;
+import main.java.Model.Player;
 
 /**
  * 

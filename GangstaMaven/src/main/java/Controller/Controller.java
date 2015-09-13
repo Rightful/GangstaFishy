@@ -1,4 +1,4 @@
-package Controller;
+package main.java.Controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,15 +13,14 @@ import java.util.Map.Entry;
 
 import javax.swing.Timer;
 
-import Model.Enemy;
-import Model.JSonRW;
-import Model.Player;
-import View.CommonPanel;
-import View.Frame;
-import View.GamePanel;
-import View.HighScorePanel;
-import View.Sound;
-import View.StartPanel;
+import main.java.Model.Enemy;
+import main.java.Model.JSonRW;
+import main.java.Model.Player;
+import main.java.View.CommonPanel;
+import main.java.View.Frame;
+import main.java.View.GamePanel;
+import main.java.View.HighScorePanel;
+import main.java.View.StartPanel;
 
 /**
  * 

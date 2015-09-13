@@ -1,4 +1,4 @@
-package Model;
+package main.java.Model;
 
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -10,7 +10,7 @@ import java.util.Random;
 
 import javax.imageio.ImageIO;
 
-import View.Frame;
+import main.java.View.Frame;
 
 /**
  * enemy fishes of the game.
