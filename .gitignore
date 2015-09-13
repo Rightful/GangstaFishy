@@ -4,14 +4,13 @@
 bin/
 tmp/
 *.tmp
-*.class
 *.bak
 *.swp
 *~.nib
 local.properties
 .settings/
 .loadpath
-.recommenders
+
 # External tool builders
 .externalToolBuilders/
 
@@ -31,9 +30,4 @@ local.properties
 .texlipse
 
 .classpath
-*.classpath
 .project
-.class
-*.class
-GangstaFishyGame/bin/Controller/Controller.class
-GangstaFishyGame/bin/Controller/Controller.class
