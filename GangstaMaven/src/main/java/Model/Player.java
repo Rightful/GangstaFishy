@@ -122,6 +122,7 @@ public class Player extends Unit {
 	 */
 
 	public void moveRight(int fWidth) {
+		NOTICELOGGER.message("player moved right", Logger.NOTICE);
 		if (x > fWidth) {
 			x = -width;
 		}
@@ -136,6 +137,7 @@ public class Player extends Unit {
 	 */
 
 	public void moveUp() {
+		NOTICELOGGER.message("player moved up", Logger.NOTICE);
 		if (y > 0) {
 			y -= speed;
 			boundary.setFrame(x, y, width, height);
@@ -152,6 +154,7 @@ public class Player extends Unit {
 	 */
 
 	public void moveDown(int fHeight) {
+		NOTICELOGGER.message("player moved down", Logger.NOTICE);
 		if (y < fHeight - height - 30) {
 			y += speed;
 			boundary.setFrame(x, y, width, height);
@@ -207,6 +210,7 @@ public class Player extends Unit {
 	 *            new score of the player.
 	 */
 	public void setScore(double score) {
+		NOTICELOGGER.message("player scored: " + score + " points", Logger.NOTICE);
 		this.score = score;
 	}
 

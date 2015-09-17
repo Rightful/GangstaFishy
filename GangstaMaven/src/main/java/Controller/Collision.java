@@ -4,6 +4,8 @@ import java.awt.geom.Ellipse2D;
 import java.util.List;
 
 import Model.Enemy;
+import Model.Logger;
+import Model.NoticeLogger;
 import Model.Player;
 
 /**
@@ -14,6 +16,8 @@ import Model.Player;
  */
 public class Collision {
 
+	private static Logger NOTICELOGGER = new NoticeLogger();
+	
 	/**
 	 * Method for determining a collision between the player and enemies.
 	 * 
@@ -46,6 +50,7 @@ public class Collision {
 
 			else if ((int) distance < (pB.getHeight()) && pB.getHeight() < eB.getHeight()) {
 				player.setDead(true);
+				NOTICELOGGER.message("player died", Logger.NOTICE);
 			}
 
 		}

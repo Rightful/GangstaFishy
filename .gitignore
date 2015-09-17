@@ -4,9 +4,9 @@
 .recommenders
 .classpath
 .project
-
+target/
 database.json
-
+*.log
 bin/
 tmp/
 *.tmp
