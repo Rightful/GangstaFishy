@@ -1,7 +1,7 @@
 
 import java.awt.EventQueue;
 
-import main.java.Controller.Controller;
+import Controller.Controller;
 
 
 

@@ -1,4 +1,4 @@
-package main.java.Model;
+package Model;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -8,7 +8,7 @@ import java.util.Map.Entry;
 
 import javax.imageio.ImageIO;
 
-import main.java.View.Frame;
+import View.Frame;
 
 /**
  * 

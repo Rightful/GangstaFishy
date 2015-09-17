@@ -1,7 +1,7 @@
 /**
  * 
  */
-package test.java.GangstaMaven;
+package GangstaMaven;
 
 import static org.junit.Assert.fail;
 
@@ -22,7 +22,7 @@ public class PlayerTest {
 	}
 
 	/**
-	 * Test method for {@link main.java.Model.Player#isStop()}.
+	 * Test method for {@link Model.Player#isStop()}.
 	 */
 	@Test
 	public void testIsStop() {
@@ -30,7 +30,7 @@ public class PlayerTest {
 	}
 
 	/**
-	 * Test method for {@link main.java.Model.Player#setStop(boolean)}.
+	 * Test method for {@link Model.Player#setStop(boolean)}.
 	 */
 	@Test
 	public void testSetStop() {
@@ -38,7 +38,7 @@ public class PlayerTest {
 	}
 
 	/**
-	 * Test method for {@link main.java.Model.Player#Player()}.
+	 * Test method for {@link Model.Player#Player()}.
 	 */
 	@Test
 	public void testPlayer() {
@@ -46,7 +46,7 @@ public class PlayerTest {
 	}
 
 	/**
-	 * Test method for {@link main.java.Model.Player#speedController()}.
+	 * Test method for {@link Model.Player#speedController()}.
 	 */
 	@Test
 	public void testSpeedController() {
@@ -54,7 +54,7 @@ public class PlayerTest {
 	}
 
 	/**
-	 * Test method for {@link main.java.Model.Player#setMovingDirection(java.lang.String)}.
+	 * Test method for {@link Model.Player#setMovingDirection(java.lang.String)}.
 	 */
 	@Test
 	public void testSetMovingDirection() {
@@ -62,7 +62,7 @@ public class PlayerTest {
 	}
 
 	/**
-	 * Test method for {@link main.java.Model.Player#moveLeft(int)}.
+	 * Test method for {@link Model.Player#moveLeft(int)}.
 	 */
 	@Test
 	public void testMoveLeft() {
@@ -70,7 +70,7 @@ public class PlayerTest {
 	}
 
 	/**
-	 * Test method for {@link main.java.Model.Player#moveRight(int)}.
+	 * Test method for {@link Model.Player#moveRight(int)}.
 	 */
 	@Test
 	public void testMoveRight() {
@@ -78,7 +78,7 @@ public class PlayerTest {
 	}
 
 	/**
-	 * Test method for {@link main.java.Model.Player#moveUp()}.
+	 * Test method for {@link Model.Player#moveUp()}.
 	 */
 	@Test
 	public void testMoveUp() {
@@ -86,7 +86,7 @@ public class PlayerTest {
 	}
 
 	/**
-	 * Test method for {@link main.java.Model.Player#moveDown(int)}.
+	 * Test method for {@link Model.Player#moveDown(int)}.
 	 */
 	@Test
 	public void testMoveDown() {
@@ -94,7 +94,7 @@ public class PlayerTest {
 	}
 
 	/**
-	 * Test method for {@link main.java.Model.Player#update()}.
+	 * Test method for {@link Model.Player#update()}.
 	 */
 	@Test
 	public void testUpdate() {
@@ -102,7 +102,7 @@ public class PlayerTest {
 	}
 
 	/**
-	 * Test method for {@link main.java.Model.Player#clean()}.
+	 * Test method for {@link Model.Player#clean()}.
 	 */
 	@Test
 	public void testClean() {
@@ -110,7 +110,7 @@ public class PlayerTest {
 	}
 
 	/**
-	 * Test method for {@link main.java.Model.Player#getScore()}.
+	 * Test method for {@link Model.Player#getScore()}.
 	 */
 	@Test
 	public void testGetScore() {
@@ -118,7 +118,7 @@ public class PlayerTest {
 	}
 
 	/**
-	 * Test method for {@link main.java.Model.Player#setScore(double)}.
+	 * Test method for {@link Model.Player#setScore(double)}.
 	 */
 	@Test
 	public void testSetScore() {
@@ -126,7 +126,7 @@ public class PlayerTest {
 	}
 
 	/**
-	 * Test method for {@link main.java.Model.Player#isMoving()}.
+	 * Test method for {@link Model.Player#isMoving()}.
 	 */
 	@Test
 	public void testIsMoving() {
@@ -134,7 +134,7 @@ public class PlayerTest {
 	}
 
 	/**
-	 * Test method for {@link main.java.Model.Player#setMoving(boolean)}.
+	 * Test method for {@link Model.Player#setMoving(boolean)}.
 	 */
 	@Test
 	public void testSetMoving() {
@@ -142,7 +142,7 @@ public class PlayerTest {
 	}
 
 	/**
-	 * Test method for {@link main.java.Model.Player#getDir()}.
+	 * Test method for {@link Model.Player#getDir()}.
 	 */
 	@Test
 	public void testGetDir() {
@@ -150,7 +150,7 @@ public class PlayerTest {
 	}
 
 	/**
-	 * Test method for {@link main.java.Model.Player#getLastDir()}.
+	 * Test method for {@link Model.Player#getLastDir()}.
 	 */
 	@Test
 	public void testGetLastDir() {
@@ -158,7 +158,7 @@ public class PlayerTest {
 	}
 
 	/**
-	 * Test method for {@link main.java.Model.Player#isAccelerating()}.
+	 * Test method for {@link Model.Player#isAccelerating()}.
 	 */
 	@Test
 	public void testIsAccelerating() {
@@ -166,7 +166,7 @@ public class PlayerTest {
 	}
 
 	/**
-	 * Test method for {@link main.java.Model.Player#setAccelerating(boolean)}.
+	 * Test method for {@link Model.Player#setAccelerating(boolean)}.
 	 */
 	@Test
 	public void testSetAccelerating() {
@@ -174,7 +174,7 @@ public class PlayerTest {
 	}
 
 	/**
-	 * Test method for {@link main.java.Model.Player#getMaxSpeed()}.
+	 * Test method for {@link Model.Player#getMaxSpeed()}.
 	 */
 	@Test
 	public void testGetMaxSpeed() {
@@ -182,7 +182,7 @@ public class PlayerTest {
 	}
 
 	/**
-	 * Test method for {@link main.java.Model.Player#setMaxSpeed(int)}.
+	 * Test method for {@link Model.Player#setMaxSpeed(int)}.
 	 */
 	@Test
 	public void testSetMaxSpeed() {
@@ -190,7 +190,7 @@ public class PlayerTest {
 	}
 
 	/**
-	 * Test method for {@link main.java.Model.Player#isDead()}.
+	 * Test method for {@link Model.Player#isDead()}.
 	 */
 	@Test
 	public void testIsDead() {
@@ -198,7 +198,7 @@ public class PlayerTest {
 	}
 
 	/**
-	 * Test method for {@link main.java.Model.Player#setDead(boolean)}.
+	 * Test method for {@link Model.Player#setDead(boolean)}.
 	 */
 	@Test
 	public void testSetDead() {
@@ -206,7 +206,7 @@ public class PlayerTest {
 	}
 
 	/**
-	 * Test method for {@link main.java.Model.Player#getSpriteLeft()}.
+	 * Test method for {@link Model.Player#getSpriteLeft()}.
 	 */
 	@Test
 	public void testGetSpriteLeft() {
@@ -214,7 +214,7 @@ public class PlayerTest {
 	}
 
 	/**
-	 * Test method for {@link main.java.Model.Player#getSpriteRight()}.
+	 * Test method for {@link Model.Player#getSpriteRight()}.
 	 */
 	@Test
 	public void testGetSpriteRight() {
@@ -222,7 +222,7 @@ public class PlayerTest {
 	}
 
 	/**
-	 * Test method for {@link main.java.Model.Player#getHighscore()}.
+	 * Test method for {@link Model.Player#getHighscore()}.
 	 */
 	@Test
 	public void testGetHighscore() {
@@ -230,7 +230,7 @@ public class PlayerTest {
 	}
 
 	/**
-	 * Test method for {@link main.java.Model.Player#getSpriteFinal()}.
+	 * Test method for {@link Model.Player#getSpriteFinal()}.
 	 */
 	@Test
 	public void testGetSpriteFinal() {
@@ -238,7 +238,7 @@ public class PlayerTest {
 	}
 
 	/**
-	 * Test method for {@link main.java.Model.Player#setSpriteFinal(java.awt.image.BufferedImage)}.
+	 * Test method for {@link Model.Player#setSpriteFinal(java.awt.image.BufferedImage)}.
 	 */
 	@Test
 	public void testSetSpriteFinal() {

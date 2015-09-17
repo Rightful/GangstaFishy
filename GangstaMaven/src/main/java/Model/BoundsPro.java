@@ -1,4 +1,4 @@
-package main.java.Model;
+package Model;
 
 import java.awt.Polygon;
 import java.util.Arrays;

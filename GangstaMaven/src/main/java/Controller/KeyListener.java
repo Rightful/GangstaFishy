@@ -1,4 +1,4 @@
-package main.java.Controller;
+package Controller;
 
 import java.awt.KeyEventDispatcher;
 import java.awt.KeyboardFocusManager;
@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.Timer;
 
-import main.java.Model.Player;
+import Model.Player;
 
 /**
  * 
