@@ -1,6 +1,7 @@
 *.pydevproject
 .metadata
 .gradle
+.recommenders
 database.json
 bin/
 tmp/
@@ -8,6 +9,7 @@ tmp/
 *.bak
 *.swp
 *~.nib
+.classpath
 local.properties
 .settings/
 .loadpath
