@@ -50,7 +50,12 @@ public class Collision {
 
 		}
 	}
-	
+	/**
+	 * Method for calculating the distance between two players.
+	 * @param p Player
+	 * @param e Enemy
+	 * @return the distance between the two units.
+	 */
 	private static double collDist(Player p, Enemy e){
 		double distance = 0;
 		
