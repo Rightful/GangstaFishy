@@ -2,14 +2,18 @@
 .metadata
 .gradle
 .recommenders
+.classpath
+.project
+
 database.json
+
 bin/
 tmp/
 *.tmp
 *.bak
 *.swp
 *~.nib
-.classpath
+
 local.properties
 .settings/
 .loadpath
@@ -32,7 +36,6 @@ local.properties
 # TeXlipse plugin
 .texlipse
 
-#.classpath
-.project
+
 /target/
-database.json
+
