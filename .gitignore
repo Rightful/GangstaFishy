@@ -1,6 +1,7 @@
 *.pydevproject
 .metadata
 .gradle
+database.json
 bin/
 tmp/
 *.tmp
