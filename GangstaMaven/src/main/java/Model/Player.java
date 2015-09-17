@@ -28,6 +28,7 @@ public class Player extends Unit {
 	private BufferedImage spriteLeft;
 	private BufferedImage spriteRight;
 	private BufferedImage spriteFinal;
+	private Logger NOTICELOGGER = new NoticeLogger();
 
 	/**
 	 * Constructor for the player.
@@ -45,6 +46,7 @@ public class Player extends Unit {
 //		getBoundsPro().scaleTo(50, 50);
 //		getBoundsPro().scaleTo(70, 70);
 //		
+		
 		try {
 			sprite = ImageIO.read(new File("img/gangsta.png"));
 		} catch (IOException e) {
@@ -100,6 +102,7 @@ public class Player extends Unit {
 	 */
 
 	public void moveLeft(int fWidth) {
+		NOTICELOGGER.message("player moved left", Logger.NOTICE);
 		if (x < -width) {
 			x = fWidth;
 		}
@@ -107,7 +110,8 @@ public class Player extends Unit {
 		spriteFinal = spriteLeft;
 		boundary.setFrame(x, y, width, height);
 		translateBounds(x, y);
-
+		
+		
 	}
 
 	/**
