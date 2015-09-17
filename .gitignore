@@ -5,14 +5,13 @@ database.json
 bin/
 tmp/
 *.tmp
-*.class
 *.bak
 *.swp
 *~.nib
 local.properties
 .settings/
 .loadpath
-.recommenders
+
 # External tool builders
 .externalToolBuilders/
 
@@ -31,10 +30,7 @@ local.properties
 # TeXlipse plugin
 .texlipse
 
-.classpath
-*.classpath
+#.classpath
 .project
-.class
-*.class
-GangstaFishyGame/bin/Controller/Controller.class
-GangstaFishyGame/bin/Controller/Controller.class
+/target/
+database.json
