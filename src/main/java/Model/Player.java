@@ -28,6 +28,7 @@ public class Player extends Unit {
 	private BufferedImage spriteLeft;
 	private BufferedImage spriteRight;
 	private BufferedImage spriteFinal;
+	private Logger NOTICELOGGER = new NoticeLogger();
 
 	/**
 	 * Constructor for the player.
@@ -45,6 +46,7 @@ public class Player extends Unit {
 //		getBoundsPro().scaleTo(50, 50);
 //		getBoundsPro().scaleTo(70, 70);
 //		
+		
 		try {
 			sprite = ImageIO.read(new File("img/gangsta.png"));
 		} catch (IOException e) {
@@ -100,6 +102,7 @@ public class Player extends Unit {
 	 */
 
 	public void moveLeft(int fWidth) {
+		NOTICELOGGER.message("player moved left", Logger.NOTICE);
 		if (x < -width) {
 			x = fWidth;
 		}
@@ -107,7 +110,8 @@ public class Player extends Unit {
 		spriteFinal = spriteLeft;
 		boundary.setFrame(x, y, width, height);
 		translateBounds(x, y);
-
+		
+		
 	}
 
 	/**
@@ -118,6 +122,7 @@ public class Player extends Unit {
 	 */
 
 	public void moveRight(int fWidth) {
+		NOTICELOGGER.message("player moved right", Logger.NOTICE);
 		if (x > fWidth) {
 			x = -width;
 		}
@@ -132,6 +137,7 @@ public class Player extends Unit {
 	 */
 
 	public void moveUp() {
+		NOTICELOGGER.message("player moved up", Logger.NOTICE);
 		if (y > 0) {
 			y -= speed;
 			boundary.setFrame(x, y, width, height);
@@ -148,6 +154,7 @@ public class Player extends Unit {
 	 */
 
 	public void moveDown(int fHeight) {
+		NOTICELOGGER.message("player moved down", Logger.NOTICE);
 		if (y < fHeight - height - 30) {
 			y += speed;
 			boundary.setFrame(x, y, width, height);
@@ -203,6 +210,7 @@ public class Player extends Unit {
 	 *            new score of the player.
 	 */
 	public void setScore(double score) {
+		NOTICELOGGER.message("player scored: " + score + " points", Logger.NOTICE);
 		this.score = score;
 	}
 
