@@ -3,6 +3,7 @@ package View;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 
+import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.Player;
 
 
@@ -30,13 +31,17 @@ public class MP3 {
         }
 
         // run in new thread to play in background
+        
         new Thread() {
             public void run() {
                 try { player.play(); }
                 catch (Exception e) { System.out.println(e); }
             }
         }.start();
-
+       
+       
+        	
+              
         //Some kind of loop so the mp3 will go continuously.
 
 

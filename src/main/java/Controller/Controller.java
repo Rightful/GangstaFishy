@@ -33,7 +33,7 @@ public class Controller {
 
 	private Frame viewFrame = new Frame();
 	StartPanel startPanel = new StartPanel(viewFrame);
-	private MP3 mp3 = new MP3("RastaLove.mp3");
+	private MP3 mp3 = new MP3("RastaLove.mp3"); //You can use test.mp3 with a 2 second sound to test the loop.
 
 	/**
 	 * @return the startPanel
@@ -229,7 +229,7 @@ public class Controller {
 	 */
 	public void update() {
 		score = p.getScore();
-
+		
 	}
 
 	/**
@@ -264,6 +264,7 @@ public class Controller {
 		};
 		t = new Timer(gameSpeed, move);// p.getRepaintTime()
 		kl.setT(t);
+		
 	}
 
 	/**
