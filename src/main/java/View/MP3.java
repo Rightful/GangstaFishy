@@ -3,7 +3,7 @@ package View;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 
-import javazoom.jl.player.Player;
+import javazoom.jl.player.*;
 
 
 public class MP3 {
