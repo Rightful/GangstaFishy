@@ -20,6 +20,7 @@ import View.CommonPanel;
 import View.Frame;
 import View.GamePanel;
 import View.HighScorePanel;
+import View.MP3;
 import View.StartPanel;
 
 /**
@@ -32,6 +33,7 @@ public class Controller {
 
 	private Frame viewFrame = new Frame();
 	StartPanel startPanel = new StartPanel(viewFrame);
+	private MP3 mp3 = new MP3("RastaLove.mp3");
 
 	/**
 	 * @return the startPanel
@@ -74,6 +76,7 @@ public class Controller {
 	 */
 	private void init() {
 //		Sound.playSound("sound/ManyMen.wav");
+		mp3.play();
 		score = p.getScore();
 		configureIntructionPanel();
 		configureGamePanel();
@@ -170,6 +173,7 @@ public class Controller {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				viewFrame.dispose();
+				mp3.close();
 			}
 		});
 
