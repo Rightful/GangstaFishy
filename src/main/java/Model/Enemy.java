@@ -32,7 +32,7 @@ public class Enemy extends Unit {
 		try {
 			sprites.add(ImageIO.read(new File("img/yellowpiranha.png")));
 			sprites.add(ImageIO.read(new File("img/yellow.png")));
-			sprites.add(ImageIO.read(new File("img/brown.png")));
+			sprites.add(ImageIO.read(new File("img/Brown.png")));
 			sprites.add(ImageIO.read(new File("img/bluepiranha.png")));
 			sprites.add(ImageIO.read(new File("img/redpiranha.png")));
 
