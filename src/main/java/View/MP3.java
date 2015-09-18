@@ -13,7 +13,7 @@ public class MP3 {
     // constructor that takes the name of an MP3 file
     public MP3(String filename) {
         this.filename = filename;
-    }
+    } 
 
     public void close() { if (player != null) player.close(); }
 
