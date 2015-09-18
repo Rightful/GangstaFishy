@@ -4,7 +4,9 @@ jdk:
   - oraclejdk8
   - oraclejdk7
   - openjdk6
-  
+
+sudo: required
+
 notifications:
   webhooks:
     - http://octopull.rmhartog.me/api/travis/webhook
