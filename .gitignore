@@ -5,7 +5,6 @@
 .classpath
 .project
 
-database.json
 
 bin/
 tmp/

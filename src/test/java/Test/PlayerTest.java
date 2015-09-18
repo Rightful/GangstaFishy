@@ -1,7 +1,7 @@
 /**
  * 
  */
-package GangstaMaven;
+package Test;
 
 import static org.junit.Assert.fail;
 
