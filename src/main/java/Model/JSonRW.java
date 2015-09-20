@@ -25,8 +25,8 @@ import org.json.simple.parser.ParseException;
  */
 public class JSonRW {
 
-	private static String filePath = "database.json";// "jsonTest.json";
-	private static String boundsFilePath = "Boundaries.json";
+	private static String filePath = "data/database.json";// "jsonTest.json";
+	private static String boundsFilePath = "data/Boundaries.json";
 	/**
 	 * Read the Json file.
 	 * 
