@@ -1,7 +1,14 @@
 package View;
 
 import java.io.BufferedInputStream;
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
+
+import javax.sound.sampled.UnsupportedAudioFileException;
+
+import org.jaudiotagger.audio.AudioFile;
+import org.jaudiotagger.audio.AudioFileIO;
 
 import javazoom.jl.player.Player;
 
@@ -61,11 +68,11 @@ public class MP3 {
 		this.player = player;
 	}
 
-/*	*//**
+	/**
 	 * Get the audio file length
 	 * @throws IOException 
 	 * @throws UnsupportedAudioFileException 
-	 *//*
+	 */
 	public double getAudioLength() throws UnsupportedAudioFileException, IOException{
 		double duration = 0;
 		try {
@@ -77,7 +84,7 @@ public class MP3 {
 
 		}
 		return duration;
-	}*/
+	}
 	
 	/**
 	 * Run in new thread to play in background
