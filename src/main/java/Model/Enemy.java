@@ -49,29 +49,36 @@ public class Enemy extends Unit {
 		Enemy e = new Enemy();
 		e.setSprite(sprites.get(generator.nextInt(sprites.size())));
 		e.setWidth(generator.nextInt(200) + 50);
-
-		e.setHeight(e.getSprite().getHeight(null) * e.getWidth() * 2
-				/ e.getSprite().getWidth(null));
-
+		e.setHeight(e.getSprite().getHeight(null) * e.getWidth() * 2 / e.getSprite().getWidth(null));
 		if (generator.nextBoolean()) {
-			e.setX(-e.getWidth());
-			e.setAnimSprite(((BufferedImage) e.getSprite()).getSubimage(e
-					.getSprite().getWidth(null) / 2, 0,
-					e.getSprite().getWidth(null) / 2,
-					e.getSprite().getHeight(null)));
+			e.generateRightEnemy(e);
 		} else {
-			e.setX(Frame.getFrameWidth());
-			e.setAnimSprite(((BufferedImage) e.getSprite()).getSubimage(0, 0, e
-					.getSprite().getWidth(null) / 2,
-
-			e.getSprite().getHeight(null)));
-			e.setToLeft(true);
+			e.generateLeftEnemy(e);
 		}
 		e.setY(generator.nextInt(Frame.getFrameHeight()));
-
 		e.setSpeed(generator.nextInt(5) + 1);
-
 		return e;
+	}
+
+	/**
+	 * Generate the direction the enemy is facing
+	 */
+	public void generateRightEnemy(Enemy e) {
+		e.setX(-e.getWidth());
+		e.setAnimSprite(((BufferedImage) e.getSprite()).getSubimage(e.getSprite().getWidth(null) / 2, 0,
+				e.getSprite().getWidth(null) / 2, e.getSprite().getHeight(null)));
+	}
+
+	/**
+	 * Generate a left facing enemy
+	 */
+	public void generateLeftEnemy(Enemy e) {
+		e.setX(Frame.getFrameWidth());
+		e.setAnimSprite(((BufferedImage) e.getSprite()).getSubimage(0, 0, e.getSprite().getWidth(null) / 2,
+
+		e.getSprite().getHeight(null)));
+		e.setToLeft(true);
+
 	}
 
 	/**

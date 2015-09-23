@@ -37,15 +37,6 @@ public class Player extends Unit {
 		highscore = JSonRW.readDatabase();
 		getBoundsProLeft().setPolygon( JSonRW.readBoundaries("gangsta").getKey());
 		getBoundsProRight().setPolygon( JSonRW.readBoundaries("gangsta").getValue());
-//		System.out.println("Player: width, npoints"+getBoundsPro().getWidth() + " " + getBoundsPro().npoints);
-		
-//		getBoundsPro().translate(x, y);
-//		System.out.println("Player: x,y = " + getBoundsPro().getX() + ", " + getBoundsPro().getY());
-		
-//		getBoundsPro().scaleTo(300, 300);
-//		getBoundsPro().scaleTo(50, 50);
-//		getBoundsPro().scaleTo(70, 70);
-//		
 		
 		try {
 			sprite = ImageIO.read(new File("img/gangsta.png"));
@@ -110,8 +101,6 @@ public class Player extends Unit {
 		spriteFinal = spriteLeft;
 		boundary.setFrame(x, y, width, height);
 		translateBounds(x, y);
-		
-		
 	}
 
 	/**
@@ -172,11 +161,9 @@ public class Player extends Unit {
 			height = (int) (score + 75);
 		}
 		boundary.setFrame(x, y, width, height);
-//		System.out.println(spriteFinal.getWidth() + " " + spriteFinal.getHeight());
-		scaleBounds(width, height);//-(int)(width*0.07)
+		scaleBounds(width, height);
 	}
 
-	
 	public void clean(){
 		score = 0;
 		acceleration = 0.2;
