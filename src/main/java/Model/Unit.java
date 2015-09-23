@@ -9,7 +9,7 @@ import java.awt.geom.Ellipse2D;
  *
  * Parent class for Player and Enemy
  */
-public class Unit {
+public abstract class Unit {
 
 	protected double speed = 10, repaintTime = 10;
 	protected Image sprite;
