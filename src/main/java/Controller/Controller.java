@@ -91,7 +91,7 @@ public class Controller {
 		exec.scheduleAtFixedRate(new Runnable() {
 		  @Override
 		  public void run() {
-				mp3.setupPlayer("music/RastaLove.mp3");
+				mp3.setupPlayer("music/Space.mp3");
 				try {
 					mp3.getPlayer().play();
 				} catch (JavaLayerException e) {
