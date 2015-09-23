@@ -4,9 +4,7 @@ package Test;
  * 
  */
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -32,12 +30,12 @@ public class testEnemy {
 	/**
 	 * Test method for {@link Model.Enemy#loadSprites()}.
 	 */
-	/*@Test
+	@Test
 	public void testLoadSprites() {
 		Enemy.loadSprites();
-		assertEquals(5, enemy.getSprite());
+		assertEquals(5, enemy.getSprites().size());
 	
-	}*/
+	}
 
 	/**
 	 * Test method for {@link Model.Enemy#createEnemy()}.
