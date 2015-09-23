@@ -111,9 +111,7 @@ public class Controller {
 		viewFrame.add(highPanel);
 		viewFrame.add(startPanel);
 		Enemy.loadSprites();
-
 		viewFrame.setVisible(true);
-
 		kl = new KeyListener();
 		kl.movePlayerKeyListener(p);
 
