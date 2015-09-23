@@ -20,7 +20,7 @@ public class Player extends Unit {
 
 	private List<Entry<String, Integer>> highscore;
 	private double score = 0, acceleration = 0.2;
-
+	private double oldscore = 0;
 	private boolean moving = false, accelerating = false;
 	private int maxSpeed = 7;
 	private String dir = "", lastDir = "";
@@ -35,16 +35,17 @@ public class Player extends Unit {
 	 */
 	public Player() {
 		highscore = JSonRW.readDatabase();
-		getBoundsProLeft().setPolygon( JSonRW.readBoundaries("gangsta").getKey());
-		getBoundsProRight().setPolygon( JSonRW.readBoundaries("gangsta").getValue());
-		
+		getBoundsProLeft().setPolygon(JSonRW.readBoundaries("gangsta").getKey());
+		getBoundsProRight().setPolygon(JSonRW.readBoundaries("gangsta").getValue());
+
 		try {
 			sprite = ImageIO.read(new File("img/gangsta.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		spriteLeft = ((BufferedImage) sprite).getSubimage(0, 0, sprite.getWidth(null)/2, sprite.getHeight(null));
-		spriteRight = ((BufferedImage) sprite).getSubimage(sprite.getWidth(null)/2, 0, sprite.getWidth(null)/2, sprite.getHeight(null));
+		spriteLeft = ((BufferedImage) sprite).getSubimage(0, 0, sprite.getWidth(null) / 2, sprite.getHeight(null));
+		spriteRight = ((BufferedImage) sprite).getSubimage(sprite.getWidth(null) / 2, 0, sprite.getWidth(null) / 2,
+				sprite.getHeight(null));
 		spriteFinal = spriteLeft;
 		update();
 	}
@@ -113,7 +114,7 @@ public class Player extends Unit {
 	public void moveRight(int fWidth) {
 		NOTICELOGGER.message("player moved right", Logger.NOTICE);
 		if (x > fWidth) {
-			x = -width;
+			x = (int) -width;
 		}
 		x += speed;
 		spriteFinal = spriteRight;
@@ -147,7 +148,7 @@ public class Player extends Unit {
 		if (y < fHeight - height - 30) {
 			y += speed;
 			boundary.setFrame(x, y, width, height);
-			translateBounds(x, y);			
+			translateBounds(x, y);
 		}
 	}
 
@@ -156,15 +157,29 @@ public class Player extends Unit {
 	 * boundaries.
 	 */
 	public void update() {
-		if (width < 500 && height < 500) {
-			width = (int) (score + 75);
-			height = (int) (score + 75);
+		double scoredif = score - oldscore;
+		if (width < 90 && height < 90) {
+			width = (int) (width + (scoredif - 6));
+			height = (int) (height + (scoredif - 6));
+		} else if (width < 110 && height < 110) {
+			width = (int) (width + (scoredif - 7));
+			height = (int) (height + (scoredif - 7));
+		} else if (width < 140 && height < 140) {
+			width = (int) (width + (scoredif - 8));
+			height = (int) (height + (scoredif - 8));
+		} else if (width < 180 && height < 180) {
+			width = (int) (width + (scoredif - 9));
+			height = (int) (height + (scoredif - 9));
+		} else if (width < 200 && height < 200) {
+			width = (int) (width + (scoredif - 9.5));
+			height = (int) (height + (scoredif - 9.5));
 		}
 		boundary.setFrame(x, y, width, height);
 		scaleBounds(width, height);
+		oldscore = score;
 	}
 
-	public void clean(){
+	public void clean() {
 		score = 0;
 		acceleration = 0.2;
 		moving = false;
@@ -179,7 +194,7 @@ public class Player extends Unit {
 		y = Frame.getFrameHeight() / 2 - width / 2;
 		boundary.setFrame(x, y, width, height);
 	}
-	
+
 	/**
 	 * get score of player.
 	 * 

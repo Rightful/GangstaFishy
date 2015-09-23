@@ -14,7 +14,7 @@ public class Unit {
 	protected double speed = 10, repaintTime = 10;
 	protected Image sprite;
 	protected boolean stop = true;
-	protected int x = 0, y = 0, width = 0, height = 0;
+	protected int x = 0, y = 0, width = 60, height = 60;
 	protected Ellipse2D boundary = new Ellipse2D.Double();
 	
 	protected BoundsPro boundsProLeft = new BoundsPro();
