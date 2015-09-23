@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 
 import Model.Enemy;
 import Model.Player;
+import Model.Juggernaut;
 
 /**
  * 
@@ -30,7 +31,8 @@ public class GamePanel extends JPanel {
 	private Image bgImage;
 	private String fishSpeed = "0 / 0";
 	private List<Enemy> enemies = new ArrayList<Enemy>();
-
+	private Juggernaut Juggernaut;
+	
 	public GamePanel(Player player) {
 		this.player = player;
 		setVisible(false);
@@ -50,7 +52,8 @@ public class GamePanel extends JPanel {
 			g.drawImage(e.getAnimSprite(), e.getX(), e.getY(), e.getWidth(),
 					e.getHeight(), this);
 		}
-
+		g.drawImage(Juggernaut.getSpriteFinal(), Juggernaut.getX(), Juggernaut.getY(),
+				Juggernaut.getWidth(), Juggernaut.getHeight(), this);
 		g.drawImage(player.getSpriteFinal(), player.getX(), player.getY(),
 				player.getWidth(), player.getHeight(), this);
 		g.setFont(new Font("Calibri", Font.BOLD, 30));

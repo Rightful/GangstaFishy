@@ -30,7 +30,7 @@ public class Player extends Unit {
 	private BufferedImage spriteRight;
 	private BufferedImage spriteFinal;
 	private Logger NOTICELOGGER = new NoticeLogger();
-	private static PowerUp Juggernaut = new Juggernaut();
+	private static Juggernaut Juggernaut = new Juggernaut();
 
 	/**
 	 * Constructor for the player.

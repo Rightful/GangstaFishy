@@ -16,6 +16,7 @@ import javax.swing.Timer;
 import Model.Enemy;
 import Model.JSonRW;
 import Model.Player;
+import Model.Juggernaut;
 import View.CommonPanel;
 import View.Frame;
 import View.GamePanel;
@@ -33,7 +34,7 @@ public class Controller {
 
 	private Frame viewFrame = new Frame();
 	StartPanel startPanel = new StartPanel(viewFrame);
-	private MP3 mp3 = new MP3("music/ManyMen.mp3"); //You can use test.mp3 with a 2 second sound to test the loop.
+	private MP3 mp3 = new MP3("music/ReggaeShark.mp3"); //You can use test.mp3 with a 2 second sound to test the loop.
 
 	/**
 	 * @return the startPanel
@@ -245,6 +246,7 @@ public class Controller {
 //				} else {
 				gameOver();
 					Collision.collide(gamePanel.getEnemies(), p);
+
 					movingHandler();
 
 					if (gamePanel.getEnemies().size() < difficulty) {
