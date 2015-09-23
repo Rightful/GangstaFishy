@@ -3,6 +3,7 @@ package Controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.AbstractMap;
@@ -10,7 +11,11 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map.Entry;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.Timer;
 
 import Model.Enemy;
@@ -22,6 +27,7 @@ import View.GamePanel;
 import View.HighScorePanel;
 import View.MP3;
 import View.StartPanel;
+import javazoom.jl.decoder.JavaLayerException;
 
 /**
  * 
@@ -33,7 +39,8 @@ public class Controller {
 
 	private Frame viewFrame = new Frame();
 	StartPanel startPanel = new StartPanel(viewFrame);
-	private MP3 mp3 = new MP3("music/RastaLove.mp3"); //You can use test.mp3 with a 2 second sound to test the loop.
+	private MP3 mp3 = new MP3();
+	
 
 	/**
 	 * @return the startPanel
@@ -57,15 +64,17 @@ public class Controller {
 	private BufferedImage sprite = (BufferedImage) p.getSprite();
 	private Timer t;
 	private double score;
-
+	ScheduledExecutorService exec;
 	private int difficulty = 5;
 	private int gameSpeed = 15;
 	private KeyListener kl;
 
 	/**
 	 * Constructor to initialize the Controller.
+	 * @throws IOException 
+	 * @throws UnsupportedAudioFileException 
 	 */
-	public Controller() {
+	public Controller() throws UnsupportedAudioFileException, IOException {
 
 		init();
 		updateFrames();
@@ -73,10 +82,24 @@ public class Controller {
 
 	/**
 	 * Initializing a Game
+	 * @throws IOException 
+	 * @throws UnsupportedAudioFileException 
 	 */
-	private void init() {
-//		Sound.playSound("sound/ManyMen.wav");
-		mp3.play();
+	private void init() throws UnsupportedAudioFileException, IOException {
+		mp3.setupPlayer("music/test.mp3");
+		exec = Executors.newSingleThreadScheduledExecutor();
+		exec.scheduleAtFixedRate(new Runnable() {
+		  @Override
+		  public void run() {
+				mp3.setupPlayer("music/RastaLove.mp3");
+				try {
+					mp3.getPlayer().play();
+				} catch (JavaLayerException e) {
+					e.printStackTrace();
+				}
+		  }
+		  
+		}, 0, 190, TimeUnit.SECONDS);
 		score = p.getScore();
 		configureIntructionPanel();
 		configureGamePanel();
@@ -88,9 +111,7 @@ public class Controller {
 		viewFrame.add(highPanel);
 		viewFrame.add(startPanel);
 		Enemy.loadSprites();
-
 		viewFrame.setVisible(true);
-
 		kl = new KeyListener();
 		kl.movePlayerKeyListener(p);
 
@@ -173,6 +194,7 @@ public class Controller {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				viewFrame.dispose();
+				exec.shutdown();
 				mp3.close();
 			}
 		});
