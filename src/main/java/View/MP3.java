@@ -7,9 +7,6 @@ import java.io.IOException;
 
 import javax.sound.sampled.UnsupportedAudioFileException;
 
-import org.jaudiotagger.audio.AudioFile;
-import org.jaudiotagger.audio.AudioFileIO;
-
 import javazoom.jl.player.Player;
 
 public class MP3 {
@@ -66,24 +63,6 @@ public class MP3 {
 	 */
 	public void setPlayer(Player player) {
 		this.player = player;
-	}
-
-	/**
-	 * Get the audio file length
-	 * @throws IOException 
-	 * @throws UnsupportedAudioFileException 
-	 */
-	public double getAudioLength() throws UnsupportedAudioFileException, IOException{
-		double duration = 0;
-		try {
-		  AudioFile audioFile = AudioFileIO.read(new File(this.filename));
-		  duration = audioFile.getAudioHeader().getTrackLength();
-
-		} catch (Exception e) {
-		  e.printStackTrace();
-
-		}
-		return duration;
 	}
 	
 }
