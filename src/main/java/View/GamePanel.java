@@ -55,9 +55,9 @@ public class GamePanel extends JPanel {
 				player.getWidth(), player.getHeight(), this);
 		g.setFont(new Font("Calibri", Font.BOLD, 30));
 		g.setColor(Color.white);
-		g.drawString("Score: " + player.getScore(), 30, 30);
+		g.drawString("player height " + player.getHeight(), 30, 30);
 		g.setFont(new Font("Calibri", Font.BOLD, 16));
-		g.drawString("speed/repaintTime: " + fishSpeed, 30, 60);
+		g.drawString("player width " + player.getWidth(), 30, 60);
 		
 		Graphics2D g2d = (Graphics2D) g;
 		if(player.getSpriteFinal().equals(player.getSpriteLeft()))

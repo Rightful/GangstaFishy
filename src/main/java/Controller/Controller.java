@@ -86,7 +86,6 @@ public class Controller {
 	 * @throws UnsupportedAudioFileException 
 	 */
 	private void init() throws UnsupportedAudioFileException, IOException {
-		mp3.setupPlayer("music/test.mp3");
 		exec = Executors.newSingleThreadScheduledExecutor();
 		exec.scheduleAtFixedRate(new Runnable() {
 		  @Override
@@ -143,6 +142,13 @@ public class Controller {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				mp3.setupPlayer("music/test.mp3");
+				try {
+					mp3.getPlayer().play();
+				} catch (JavaLayerException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				gamePanel.setVisible(true);
 				startPanel.setVisible(false);
 
