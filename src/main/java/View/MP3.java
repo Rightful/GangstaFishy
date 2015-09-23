@@ -86,21 +86,4 @@ public class MP3 {
 		return duration;
 	}
 	
-	/**
-	 * Run in new thread to play in background
-	 */
-	public Thread createPlayerThread() {
-		Thread thread = new Thread() {
-			public void run() {
-				while(true){
-				try {
-					player.play();
-				} catch (Exception e) {
-					System.out.println(e);
-				}
-			}}
-		};
-		return thread;
-	}
-
 }

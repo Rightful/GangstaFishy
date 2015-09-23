@@ -27,6 +27,7 @@ import View.GamePanel;
 import View.HighScorePanel;
 import View.MP3;
 import View.StartPanel;
+import javazoom.jl.decoder.JavaLayerException;
 
 /**
  * 
@@ -91,7 +92,11 @@ public class Controller {
 		  @Override
 		  public void run() {
 				mp3.setupPlayer("music/RastaLove.mp3");
-				mp3.createPlayerThread().start();
+				try {
+					mp3.getPlayer().play();
+				} catch (JavaLayerException e) {
+					e.printStackTrace();
+				}
 		  }
 		  
 		}, 0, 190, TimeUnit.SECONDS);
