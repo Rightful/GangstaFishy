@@ -86,7 +86,7 @@ public class Controller {
 	 * @throws UnsupportedAudioFileException 
 	 */
 	private void init() throws UnsupportedAudioFileException, IOException {
-		mp3.setupPlayer("music/test.mp3");
+	
 		exec = Executors.newSingleThreadScheduledExecutor();
 		exec.scheduleAtFixedRate(new Runnable() {
 		  @Override
