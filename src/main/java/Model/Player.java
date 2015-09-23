@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map.Entry;
+import javax.swing.Timer;
 
 import javax.imageio.ImageIO;
 
@@ -29,6 +30,7 @@ public class Player extends Unit {
 	private BufferedImage spriteRight;
 	private BufferedImage spriteFinal;
 	private Logger NOTICELOGGER = new NoticeLogger();
+	private static PowerUp Juggernaut = new Juggernaut();
 
 	/**
 	 * Constructor for the player.
@@ -367,5 +369,13 @@ public class Player extends Unit {
 	 */
 	public void setSpriteFinal(BufferedImage spriteFinal) {
 		this.spriteFinal = spriteFinal;
+	}
+	
+	/** 
+	 * Returns the juggernaut object of the player
+	 * @return Juggernaut
+	 */
+	public static PowerUp getJuggernaut(){
+		return Juggernaut;
 	}
 }

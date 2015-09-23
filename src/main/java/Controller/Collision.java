@@ -7,6 +7,7 @@ import Model.Enemy;
 import Model.Logger;
 import Model.NoticeLogger;
 import Model.Player;
+import Model.PowerUp;
 
 /**
  * Class to calculate collisions.
@@ -49,8 +50,10 @@ public class Collision {
 			}
 
 			else if ((int) distance < (pB.getHeight()) && pB.getHeight() < eB.getHeight()) {
-				player.setDead(true);
-				NOTICELOGGER.message("player died", Logger.NOTICE);
+				if (!player.getJuggernaut().getStatus()) {
+					player.setDead(true);
+					NOTICELOGGER.message("player died", Logger.NOTICE);
+				}
 			}
 
 		}
@@ -106,5 +109,43 @@ public class Collision {
 		distance = distanceEnemy + distancePlayer;
 		
 		return distance;
+	}
+	
+	/**
+	 * Method for determining a collision between the player and enemies.
+	 * 
+	 * @param enemies
+	 *            List of enemies the player can collide with.
+	 * @param player
+	 *            The player of the game.
+	 */
+	public static void collidePowerUp(List<Enemy> enemies, Player player, PowerUp PowerUp) {
+
+		Ellipse2D pB = player.getBoundary();
+		
+		Ellipse2D powerB = player.getBoundary();
+
+		
+		
+		for (int i = 0; i < enemies.size(); i++) {
+			Enemy e = enemies.get(i);
+			Ellipse2D eB = e.getBoundary();
+
+			double distance = Math.sqrt(Math.pow(
+					(pB.getCenterX()) - (powerB.getCenterX()), 2)
+					+ Math.pow((pB.getCenterY()) - (powerB.getCenterY()), 2));
+			
+			if ((int) distance < (pB.getHeight()) && pB.getHeight() > powerB.getHeight()) {
+				ActivateJuggernaut.activateJuggernaut();
+				NOTICELOGGER.message("Juggernaut activated", Logger.NOTICE);
+
+			}
+
+			else if ((int) distance < (pB.getHeight()) && pB.getHeight() < eB.getHeight()) {
+				ActivateJuggernaut.activateJuggernaut();
+				NOTICELOGGER.message("Juggernaut activated", Logger.NOTICE);
+			}
+
+		}
 	}
 }

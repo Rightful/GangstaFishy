@@ -19,6 +19,7 @@ public class Unit {
 	
 	protected BoundsPro boundsProLeft = new BoundsPro();
 	protected BoundsPro boundsProRight = new BoundsPro();
+
 	/**
 	 * Constuctor for the unit class.
 	 */
