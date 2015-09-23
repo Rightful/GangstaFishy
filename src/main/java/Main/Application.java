@@ -1,6 +1,9 @@
 package Main;
 
 import java.awt.EventQueue;
+import java.io.IOException;
+
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 import Controller.Controller;
 
@@ -16,7 +19,12 @@ public class Application {
 
 			@Override
 			public void run() {
-				Controller controller = new Controller();
+				try {
+					Controller controller = new Controller();
+				} catch (UnsupportedAudioFileException | IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 	}

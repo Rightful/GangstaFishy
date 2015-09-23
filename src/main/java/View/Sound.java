@@ -16,12 +16,16 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  *
  */
 public class Sound {
+	
+	public Sound(){
+		
+	}
 	/**
 	 * create thread to play the sound.
 	 * 
 	 * @param filename
 	 */
-	public synchronized static void playSound(final String filename) {
+	public void playSound(final String filename) {
 		new Thread(new Runnable() {
 			public void run() {
 				AudioInputStream inputStream = null;
