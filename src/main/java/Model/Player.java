@@ -161,16 +161,20 @@ public class Player extends Unit {
 		if (width < 90 && height < 90) {
 			width = (int) (width + (scoredif - 6));
 			height = (int) (height + (scoredif - 6));
-		} else if (width < 110 && height < 110) {
+		} 
+		else if (width < 110 && height < 110) {
 			width = (int) (width + (scoredif - 7));
 			height = (int) (height + (scoredif - 7));
-		} else if (width < 140 && height < 140) {
+		} 
+		else if (width < 140 && height < 140) {
 			width = (int) (width + (scoredif - 8));
 			height = (int) (height + (scoredif - 8));
-		} else if (width < 180 && height < 180) {
+		} 
+		else if (width < 180 && height < 180) {
 			width = (int) (width + (scoredif - 9));
 			height = (int) (height + (scoredif - 9));
-		} else if (width < 200 && height < 200) {
+		}
+		else if (width < 200 && height < 200) {
 			width = (int) (width + (scoredif - 9.5));
 			height = (int) (height + (scoredif - 9.5));
 		}
