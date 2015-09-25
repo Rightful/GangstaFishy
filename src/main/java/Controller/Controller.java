@@ -142,13 +142,6 @@ public class Controller {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				mp3.setupPlayer("music/test.mp3");
-				try {
-					mp3.getPlayer().play();
-				} catch (JavaLayerException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
 				gamePanel.setVisible(true);
 				startPanel.setVisible(false);
 
@@ -310,9 +303,11 @@ public class Controller {
 			}
 			if (dir.contains("left")) {
 				p.moveLeft(viewFrame.getWidth());
+				p.setBoundsPro(p.getBoundsProLeft());
 			}
 			if (dir.contains("right")) {
 				p.moveRight(viewFrame.getWidth());
+				p.setBoundsPro(p.getBoundsProRight());
 			}
 
 			if (dir.contains("up")) {
@@ -338,6 +333,8 @@ public class Controller {
 			commonPanel.setC('g');
 			commonPanel.setScore((int)p.getScore());
 			saveScores();
+			p.clean();
+			gamePanel.getEnemies().removeAll(gamePanel.getEnemies());
 			commonPanel.setSize(viewFrame.getSize());
 			commonPanel.setVisible(true);
 			gamePanel.setVisible(false);
@@ -346,7 +343,7 @@ public class Controller {
 				public void actionPerformed(ActionEvent e){
 					commonPanel.setVisible(false);
 					startPanel.setVisible(true);
-					p.clean();
+//					p.clean();
 					gamePanel.getEnemies().clear();
 				}
 			});
@@ -362,9 +359,12 @@ public class Controller {
 	private void moveEnemy(Enemy e) {
 		if (e.isToLeft()) {
 			e.setX(e.getX() - e.getSpeed());
+			e.setBoundsPro(e.getBoundsProLeft());
 		} else {
 			e.setX(e.getX() + e.getSpeed());
+			e.setBoundsPro(e.getBoundsProRight());
 		}
+			e.translateBounds(e.getX(), e.getY());
 
 		if (e.getX() > Frame.getFrameWidth() + 10
 				|| e.getX() < -e.getWidth() - 10) {

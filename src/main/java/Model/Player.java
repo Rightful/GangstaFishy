@@ -1,5 +1,6 @@
 package Model;
 
+import java.awt.Polygon;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -29,7 +30,7 @@ public class Player extends Unit {
 	private BufferedImage spriteRight;
 	private BufferedImage spriteFinal;
 	private Logger NOTICELOGGER = new NoticeLogger();
-
+	
 	/**
 	 * Constructor for the player.
 	 */
@@ -47,7 +48,8 @@ public class Player extends Unit {
 		spriteRight = ((BufferedImage) sprite).getSubimage(sprite.getWidth(null) / 2, 0, sprite.getWidth(null) / 2,
 				sprite.getHeight(null));
 		spriteFinal = spriteLeft;
-		update();
+		
+		clean();
 	}
 
 	/**
@@ -181,6 +183,7 @@ public class Player extends Unit {
 
 	public void clean() {
 		score = 0;
+		oldscore = 0;
 		acceleration = 0.2;
 		moving = false;
 		accelerating = false;
@@ -192,7 +195,10 @@ public class Player extends Unit {
 		height = (int) (score + 75);
 		x = Frame.getFrameWidth() / 2 - width / 2;
 		y = Frame.getFrameHeight() / 2 - width / 2;
-		boundary.setFrame(x, y, width, height);
+		spriteFinal = spriteLeft;
+		setBoundsPro(getBoundsProLeft());
+		translateBounds(x,y);
+		scaleBounds(width, height);
 	}
 
 	/**

@@ -44,9 +44,10 @@ public class GamePanel extends JPanel {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
+		Graphics2D g2d = (Graphics2D) g;
+		
 		g.drawImage(bgImage, 0, 0, null);
 		for (Enemy e : enemies) {
-//			g.drawOval(e.getX(), e.getY(), e.getWidth(), e.getHeight());
 			g.drawImage(e.getAnimSprite(), e.getX(), e.getY(), e.getWidth(),
 					e.getHeight(), this);
 		}
@@ -55,18 +56,10 @@ public class GamePanel extends JPanel {
 				player.getWidth(), player.getHeight(), this);
 		g.setFont(new Font("Calibri", Font.BOLD, 30));
 		g.setColor(Color.white);
-		g.drawString("player height " + player.getHeight(), 30, 30);
+		g.drawString("Score: " + player.getScore(), 30, 30);
+		g.drawString("player height " + player.getHeight(), 30, 60);
 		g.setFont(new Font("Calibri", Font.BOLD, 16));
-		g.drawString("player width " + player.getWidth(), 30, 60);
-		
-		Graphics2D g2d = (Graphics2D) g;
-		if(player.getSpriteFinal().equals(player.getSpriteLeft()))
-			g2d.drawPolygon(player.getBoundsProLeft());
-		else{
-			g2d.drawPolygon(player.getBoundsProRight());
-		}
-		
-		g2d.fillOval(100, 100, 10, 10);
+		g.drawString("player width " + player.getWidth(), 30, 90);		
 	}
 
 	/**

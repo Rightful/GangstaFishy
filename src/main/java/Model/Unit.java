@@ -14,11 +14,12 @@ public abstract class Unit {
 	protected double speed = 10, repaintTime = 10;
 	protected Image sprite;
 	protected boolean stop = true;
-	protected int x = 0, y = 0, width = 60, height = 60;
+	protected int x = 0, y = 0, width = 100, height = 100;
 	protected Ellipse2D boundary = new Ellipse2D.Double();
 	
 	protected BoundsPro boundsProLeft = new BoundsPro();
 	protected BoundsPro boundsProRight = new BoundsPro();
+	protected BoundsPro boundsPro = new BoundsPro();
 	/**
 	 * Constuctor for the unit class.
 	 */
@@ -200,6 +201,18 @@ public abstract class Unit {
 
 	public BoundsPro getBoundsProRight() {
 		return boundsProRight;
+	}
+
+
+
+	public BoundsPro getBoundsPro() {
+		return boundsPro;
+	}
+
+
+
+	public void setBoundsPro(BoundsPro boundsPro) {
+		this.boundsPro = boundsPro;
 	}
 
 }
