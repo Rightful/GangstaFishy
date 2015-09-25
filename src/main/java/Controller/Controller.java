@@ -98,7 +98,7 @@ public class Controller {
 				}
 		  }
 		  
-		}, 0, 190, TimeUnit.SECONDS);
+		}, 0, 441, TimeUnit.SECONDS);
 		score = p.getScore();
 		configureIntructionPanel();
 		configureGamePanel();
@@ -142,13 +142,6 @@ public class Controller {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				mp3.setupPlayer("music/test.mp3");
-				try {
-					mp3.getPlayer().play();
-				} catch (JavaLayerException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
 				gamePanel.setVisible(true);
 				startPanel.setVisible(false);
 
