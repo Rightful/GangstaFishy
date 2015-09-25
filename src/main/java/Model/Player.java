@@ -1,5 +1,6 @@
 package Model;
 
+import java.awt.Polygon;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -29,17 +30,15 @@ public class Player extends Unit {
 	private BufferedImage spriteRight;
 	private BufferedImage spriteFinal;
 	private Logger NOTICELOGGER = new NoticeLogger();
-
+	
 	/**
 	 * Constructor for the player.
 	 */
 	public Player() {
 		highscore = JSonRW.readDatabase();
-		getBoundsProLeft().setPolygon(JSonRW.readBoundaries("gangsta").getKey());
-		getBoundsProRight().setPolygon(JSonRW.readBoundaries("gangsta").getValue());
 
 		try {
-			sprite = ImageIO.read(new File("img/gangsta.png"));
+			sprite = ImageIO.read(new File("img/gangsta_new.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -47,7 +46,8 @@ public class Player extends Unit {
 		spriteRight = ((BufferedImage) sprite).getSubimage(sprite.getWidth(null) / 2, 0, sprite.getWidth(null) / 2,
 				sprite.getHeight(null));
 		spriteFinal = spriteLeft;
-		update();
+		
+		clean();
 	}
 
 	/**
@@ -185,6 +185,7 @@ public class Player extends Unit {
 
 	public void clean() {
 		score = 0;
+		oldscore = 0;
 		acceleration = 0.2;
 		moving = false;
 		accelerating = false;
@@ -196,7 +197,12 @@ public class Player extends Unit {
 		height = (int) (score + 75);
 		x = Frame.getFrameWidth() / 2 - width / 2;
 		y = Frame.getFrameHeight() / 2 - width / 2;
-		boundary.setFrame(x, y, width, height);
+		spriteFinal = spriteLeft;
+		getBoundsProLeft().setPolygon(JSonRW.readBoundaries("gangsta").getKey());
+		getBoundsProRight().setPolygon(JSonRW.readBoundaries("gangsta").getValue());
+		setBoundsPro(getBoundsProLeft());
+		translateBounds(x,y);
+		scaleBounds(width, height);
 	}
 
 	/**
@@ -304,8 +310,9 @@ public class Player extends Unit {
 	 *            maxspeed to be set.
 	 */
 	public void setMaxSpeed(int maxSpeed) {
-		if (maxSpeed <= 20)
+		if (maxSpeed <= 20) {
 			this.maxSpeed = maxSpeed;
+		}
 	}
 
 	/**

@@ -1,6 +1,6 @@
 package Controller;
 
-import java.awt.geom.Ellipse2D;
+import java.util.ArrayList;
 import java.util.List;
 
 import Model.Enemy;
@@ -28,31 +28,36 @@ public class Collision {
 	 */
 	public static void collide(List<Enemy> enemies, Player player) {
 
-		Ellipse2D pB = player.getBoundary();
-
+		double distance;
+		
+		List<Enemy> enemyToRemove = new ArrayList<Enemy>();
 		for (int i = 0; i < enemies.size(); i++) {
 			Enemy e = enemies.get(i);
-			Ellipse2D eB = e.getBoundary();
-
-			double distance = Math.sqrt(Math.pow(
-					(pB.getCenterX()) - (eB.getCenterX()), 2)
-					+ Math.pow((pB.getCenterY()) - (eB.getCenterY()), 2));
-
-			double collDist = collDist(player, e);
+			distance = Math.sqrt(
+					Math.pow((player.getHeight()/2+player.getY()) - (e.getHeight()/2+e.getY()),2) +
+					Math.pow((player.getWidth()/2+player.getX()) - (e.getWidth()/2+e.getX()), 2));
 			
-			if ((int) distance < (pB.getHeight())
-					&& pB.getHeight() > eB.getHeight()) {
-				player.setScore(player.getScore() + 10);
-				enemies.remove(e);
-				player.update();
-
+			if(distance <= player.getHeight()/2+e.getHeight()/2){
+				for(int j = 0; j < player.getBoundsPro().npoints; j++){
+					if(e.getBoundsPro().contains(player.getBoundsPro().xpoints[j], player.getBoundsPro().ypoints[j])){
+						if (player.getHeight() >= e.getHeight()) {
+							player.setScore(player.getScore() + 10);
+							enemyToRemove.add(e);
+							player.update();
+			
+						}
+			
+						else{
+							player.setDead(true);
+							NOTICELOGGER.message("player died", Logger.NOTICE);
+						}
+					}
+				}
 			}
-
-			else if ((int) distance < (pB.getHeight()) && pB.getHeight() < eB.getHeight()) {
-				player.setDead(true);
-				NOTICELOGGER.message("player died", Logger.NOTICE);
-			}
-
+		}
+		
+		for(Enemy e: enemyToRemove){
+			enemies.remove(e);
 		}
 	}
 	

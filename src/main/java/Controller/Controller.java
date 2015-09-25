@@ -144,7 +144,7 @@ public class Controller {
 			public void actionPerformed(ActionEvent e) {
 				gamePanel.setVisible(true);
 				startPanel.setVisible(false);
-
+				p.clean();
 				t.start();
 			}
 		});
@@ -265,12 +265,12 @@ public class Controller {
 //
 //				} else {
 				gameOver();
-					Collision.collide(gamePanel.getEnemies(), p);
 					movingHandler();
-
 					if (gamePanel.getEnemies().size() < difficulty) {
 						gamePanel.getEnemies().add(Enemy.createEnemy());
 					}
+					Collision.collide(gamePanel.getEnemies(), p);
+					
 					gamePanel.repaint();
 					p.speedController();
 
@@ -303,9 +303,11 @@ public class Controller {
 			}
 			if (dir.contains("left")) {
 				p.moveLeft(viewFrame.getWidth());
+				p.setBoundsPro(p.getBoundsProLeft());
 			}
 			if (dir.contains("right")) {
 				p.moveRight(viewFrame.getWidth());
+				p.setBoundsPro(p.getBoundsProRight());
 			}
 
 			if (dir.contains("up")) {
@@ -331,6 +333,8 @@ public class Controller {
 			commonPanel.setC('g');
 			commonPanel.setScore((int)p.getScore());
 			saveScores();
+			p.clean();
+			gamePanel.getEnemies().removeAll(gamePanel.getEnemies());
 			commonPanel.setSize(viewFrame.getSize());
 			commonPanel.setVisible(true);
 			gamePanel.setVisible(false);
@@ -339,7 +343,7 @@ public class Controller {
 				public void actionPerformed(ActionEvent e){
 					commonPanel.setVisible(false);
 					startPanel.setVisible(true);
-					p.clean();
+//					p.clean();
 					gamePanel.getEnemies().clear();
 				}
 			});
@@ -355,10 +359,13 @@ public class Controller {
 	private void moveEnemy(Enemy e) {
 		if (e.isToLeft()) {
 			e.setX(e.getX() - e.getSpeed());
+			e.setBoundsPro(e.getBoundsProLeft());
 		} else {
 			e.setX(e.getX() + e.getSpeed());
+			e.setBoundsPro(e.getBoundsProRight());
 		}
-
+		e.translateBounds(e.getX(), e.getY());
+		e.scaleBounds(e.getWidth(), e.getHeight());
 		if (e.getX() > Frame.getFrameWidth() + 10
 				|| e.getX() < -e.getWidth() - 10) {
 

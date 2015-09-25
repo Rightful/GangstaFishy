@@ -15,7 +15,7 @@ import Model.Enemy;
  * @author Jasper
  *
  */
-public class testEnemy {
+public class EnemyTest {
 	
 	Enemy enemy;
 	

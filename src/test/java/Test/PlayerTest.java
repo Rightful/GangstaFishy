@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import Model.Player;
 
-public class testPlayer {
+public class PlayerTest {
 	Player player;
 	
 	@Before

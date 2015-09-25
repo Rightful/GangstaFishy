@@ -8,6 +8,7 @@ import java.awt.geom.Ellipse2D;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import Model.Unit;
 
@@ -15,7 +16,7 @@ import Model.Unit;
  * @author Jasper
  *
  */
-public class testUnit {
+public class UnitTest {
 	Unit unit;
 
 	/**
@@ -23,7 +24,7 @@ public class testUnit {
 	 */
 	@Before
 	public void setup() {
-		unit = new Unit();
+		unit = Mockito.mock(Unit.class, Mockito.CALLS_REAL_METHODS);
 	}
 
 	/**
