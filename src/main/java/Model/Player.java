@@ -36,8 +36,6 @@ public class Player extends Unit {
 	 */
 	public Player() {
 		highscore = JSonRW.readDatabase();
-		getBoundsProLeft().setPolygon(JSonRW.readBoundaries("gangsta").getKey());
-		getBoundsProRight().setPolygon(JSonRW.readBoundaries("gangsta").getValue());
 
 		try {
 			sprite = ImageIO.read(new File("img/gangsta_new.png"));
@@ -196,6 +194,8 @@ public class Player extends Unit {
 		x = Frame.getFrameWidth() / 2 - width / 2;
 		y = Frame.getFrameHeight() / 2 - width / 2;
 		spriteFinal = spriteLeft;
+		getBoundsProLeft().setPolygon(JSonRW.readBoundaries("gangsta").getKey());
+		getBoundsProRight().setPolygon(JSonRW.readBoundaries("gangsta").getValue());
 		setBoundsPro(getBoundsProLeft());
 		translateBounds(x,y);
 		scaleBounds(width, height);
@@ -306,8 +306,9 @@ public class Player extends Unit {
 	 *            maxspeed to be set.
 	 */
 	public void setMaxSpeed(int maxSpeed) {
-		if (maxSpeed <= 20)
+		if (maxSpeed <= 20) {
 			this.maxSpeed = maxSpeed;
+		}
 	}
 
 	/**

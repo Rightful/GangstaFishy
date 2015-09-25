@@ -20,7 +20,7 @@ public class BoundsPro extends Polygon{
 	}
 	
 	public void setPolygon(Polygon p){
-		
+		this.reset();
 		for(int i = 0; i < p.npoints; i++){
 			this.addPoint(p.xpoints[i], p.ypoints[i]);
 		}
