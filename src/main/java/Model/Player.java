@@ -40,7 +40,7 @@ public class Player extends Unit {
 		getBoundsProRight().setPolygon(JSonRW.readBoundaries("gangsta").getValue());
 
 		try {
-			sprite = ImageIO.read(new File("img/gangsta.png"));
+			sprite = ImageIO.read(new File("img/gangsta_new.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
