@@ -28,58 +28,57 @@ import Model.NoticeLogger;
  */
 @RunWith(Parameterized.class)
 public class LoggerTest {
+	
+	private Logger logger;
+	/**
+	 * constructor for Collisionmap tests.
+	 * @param collisionmap the collisionmap.
+	 */
+	public LoggerTest(Logger logger) {
+		this.logger = logger;
+	}
 
-  private Logger logger;
+	/**
+	 * Test method for {@link Model.Logger#writeMessage(java.lang.String)}.
+	 * Tests if a file containing the message gets created
+	 */
+	@Test
+	public void testWriteMessageFileCreation() {
+		String filename = "testfile";
+		String teststring = "teststring";
+		File file = new File(filename);
+		assertFalse(file.exists());
+		if(file.exists())
+		{
+			return;
+		}
+		
+		logger.writeMessage(teststring, filename);
 
-  /**
-   * constructor for Collisionmap tests.
-   * 
-   * @param collisionmap
-   *          the collisionmap.
-   */
-  public LoggerTest(Logger logger) {
-    this.logger = logger;
-  }
+		assertTrue(file.exists());
+		Scanner scanner = null;
+		try {
+			scanner = new Scanner(file);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String lineFromFile = scanner.nextLine();
+		assertTrue(lineFromFile.contains(teststring));
+		scanner.close();		
+		file.delete();
+	}
 
-  /**
-   * Test method for {@link Model.Logger#writeMessage(java.lang.String)}. Tests
-   * if a file containing the message gets created
-   */
-  @Test
-  public void testWriteMessageFileCreation() {
-    String filename = "testfile";
-    String teststring = "teststring";
-    File file = new File(filename);
-    assertFalse(file.exists());
-    if (file.exists()) {
-      return;
-    }
-
-    logger.writeMessage(teststring, filename);
-
-    assertTrue(file.exists());
-    Scanner scanner = null;
-    try {
-      scanner = new Scanner(file);
-    } catch (FileNotFoundException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
-    String lineFromFile = scanner.nextLine();
-    assertTrue(lineFromFile.contains(teststring));
-    scanner.close();
-    file.delete();
-  }
-
-  /**
-   * parameters used for this test.
-   * 
-   * @return list of parameters
-   */
-  @Parameters
-  public static Collection<Object[]> data() {
-    return Arrays.asList(new Object[] { new ErrorLogger() },
-        new Object[] { new DebugLogger() },
-        new Object[] { new NoticeLogger() });
-  }
+	
+	/**
+	 * parameters used for this test.
+	 * @return list of parameters
+	 */	
+	@Parameters
+	public static Collection<Object[]> data() {
+		return Arrays.asList(new Object[]{new ErrorLogger()},
+				new Object[]{new DebugLogger()},
+				new Object[]{new NoticeLogger()}
+				); 
+	}
 }
